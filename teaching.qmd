@@ -4,4 +4,4 @@ title: "Teaching"
 
 # Presentations
 
-- [Causal inference with observational data using propensity score matching](./docs/presentations/2023-09-24_causal_inference_matching.html)
+- [Causal inference with observational data using propensity score matching](./presentations/2023-09-24_causal_inference_matching.html)
