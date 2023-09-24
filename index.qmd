@@ -1,11 +1,22 @@
 ---
-title: "jarbet.github.io"
+title: "Jaron Arbet, Ph.D."
+image: jaron.jpg
+about:
+  template: jolla
+  image-shape: rounded
+  image-width: 26em
+  links:
+    - text: Email
+      icon: envelope
+      href: mailto:jarbet@mednet.ucla.edu
+    - text: LinkedIn
+      icon: linkedin
+      href: https://www.linkedin.com/in/jaron-arbet-6307b61b5/
+    - text: GitHub
+      icon: github
+      href: https://github.com/jarbet
+    - text: Scholar
+      icon: google
+      href: https://scholar.google.com/citations?user=hbqQUw0AAAAJ&hl=en
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```

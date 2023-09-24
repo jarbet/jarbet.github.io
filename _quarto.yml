@@ -3,17 +3,18 @@ project:
   output-dir: docs
 
 website:
-  title: "jarbet.github.io"
+  title: "Jaron Arbet, Ph.D."
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-    background: blue
+      - research.qmd
+      - teaching.qmd
+    background: "#702963"
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
     toc: true
 
