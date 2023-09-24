@@ -19,5 +19,614 @@
     "title": "Research",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#why",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#why",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "RCTs are expensive:\n\nMedian cost of Phase 3 trials: $19 million (IQR: $12.2 - $33.1M)\nAvg. cost of bringing new drug to market ~ 1 - 3 billion\nMay not generalize to larger “real world” population\n\nMay not be practical or ethically feasible\n\n\n(Moore et al. 2018; Wouters, McKee, and Luyten 2020)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#real-world",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#real-world",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "Real World Data RWD:\n\nObservational, collected in “real world” setting\nEHR database, hospital visit notes, wearable devices\nMedical claims/billing database, disease registries\n\nReal World Evidence RWE:\n\nClinical evidence about the benefits/harms of medical products derived from analyzing RWD (Franklin et al. 2021)\nPoor quality RWD: garbage-in-garbage-out\n90 examples of RWE used by FDA"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#potential-outcomes-causal-framework",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#potential-outcomes-causal-framework",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "2 exposure groups: e.g. Treatment vs Control\nHow does the exposure affect a given outcome \\(Y\\)?\nThe \\(i\\)th subject has 2 potential outcomes: \\[Y_i(T) \\text{ and } Y_i(C)\\]\nFor each subject, the treatment effect is defined as: \\[Y_i(T) - Y_i(C)\\]\n\nOnly 1 of these is observed in reality\n\n\n(Little and Rubin 2000; Rubin 2005)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#example",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#example",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "Subject\n\\(Y_i(T)\\)\n\\(Y_i(C)\\)\nTrt. Effect: \\(Y_i(T) - Y_i(C)\\)\n\n\n\n\n1\n14\n?\n?\n\n\n2\n9\n?\n?\n\n\n3\n8\n?\n?\n\n\n4\n?\n5\n?\n\n\n5\n?\n10\n?\n\n\n6\n?\n7\n?\n\n\nMean\n10.33\n7.33\n3\n\n\n\n\nIn RCT, \\(\\tau = \\bar{Y}_i(T) - \\bar{Y}_i(C)\\) estimates a causal effect\nIn general, \\(\\tau\\) is not causal for observational studies (OS)\n\nMany methods try to change this (Austin 2011a; Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#propensity-scores-ps",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#propensity-scores-ps",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "“Probability of treatment assignment based on observed baseline covariates” (Rosenbaum and Rubin 1983)\n\n\nGiven treatment variable \\(X_i \\in \\{0,1\\}\\) and baseline covariates \\(\\boldsymbol{Z}_i\\), then estimate PS:\n\n\\[\nPS_i = Pr(X_i = 1) = f(\\boldsymbol{Z}_i) + \\epsilon_i\n\\tag{1}\\]\n Logistic regression or machine learning to estimate Equation 1"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#why-model-treatment-assignment",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#why-model-treatment-assignment",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "Confounder \\(\\boldsymbol{Z}\\) causes trt \\(\\boldsymbol{X}\\) and outcome \\(\\boldsymbol{Y}\\)\n\nThis makes \\(\\boldsymbol{X}\\) correlated with \\(\\boldsymbol{Y}\\), but correlation \\(\\neq\\) causation\n\nPS models the relation between \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Z}\\), thus removes confounding\n\n  https://sixsigmadsi.com/glossary/confounding/\n\n\n\n Without a model for how treatments are assigned to units, formal causal inference is impossible (Little and Rubin 2000)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#methods-of-using-ps",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#methods-of-using-ps",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "(Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#section",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#section",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "The PS is a balancing score: patients with similar PS should have similar baseline covariates (Austin 2011a)\n\n\n\n\n (McDonald et al. 2013)\n\n\nPS is a composite summary of all baseline covariates\nMatch Trt-Control patients with similar PS values"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#matching-many-choices",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#matching-many-choices",
+    "title": "Causal inference with observational data",
+    "section": "Matching: many choices",
+    "text": "Matching: many choices\nRecommendations from simulations of (Austin 2014a):\n\nOptimal vs greedy nearest neighbor matching?\n\n\n\n\n\n\n(Chen et al. 2022)\n\n\nGreedy: iteratively match to nearest neighbor\nOptimal: minimize the total distance between all pairs"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#caliper-or-no-caliper",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#caliper-or-no-caliper",
+    "title": "Causal inference with observational data",
+    "section": "Caliper or no caliper?",
+    "text": "Caliper or no caliper?\n\n https://help.easymedstat.com/support/solutions/articles/77000538175-caliper-in-propensity-score-matching"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#section-1",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#section-1",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "How wide should caliper be? 0.2*SD of logit PS (Austin 2011b)\n\n\n\nMatch with or without replacement?\n\n\n\nFor greedy matching, what order should you select the treated subjects?\n\nLowest to highest PS, highest to lowest, best match first, or random order"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#types-of-treatment-effects",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#types-of-treatment-effects",
+    "title": "Causal inference with observational data",
+    "section": "Types of treatment effects",
+    "text": "Types of treatment effects\nATE: \\(E\\big[Y_i(T) - Y_i(C)\\big]\\)\n\nAverage effect for ALL patients in the population\n\nATT: \\(E\\big[Y_i(T) - Y_i(C)\\big | T]\\)\n\nAmong patients who were Treated, how would their outcomes have changed if they were a Control?\n\nATC: \\(E\\big[Y_i(T) - Y_i(C)\\big | C]\\)\n\nAmong patients who were Controls, how would their outcomes have changed if they were Treated?\n\n\n\n\nMethod\nATE\nATT/ATC\n\n\n\n\nMatching\n❌\n✅\n\n\nStratification\n✅\n✅\n\n\nInverse probability weighting\n✅\n✅\n\n\nCovariate adjustment\n❌\n❌\n\n\n\n (Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#employment-training-and-income",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#employment-training-and-income",
+    "title": "Causal inference with observational data",
+    "section": "Employment training and income",
+    "text": "Employment training and income\n\nTreatment (N = 185): National Supported Work Demonstration (NSW) employment training program\nControl (N = 429): from the Population Survey of Income Dynamics (PSID)\nGoal: Does training program increase mean income (1978)?\nBaseline covariates: age, education, race, marital status, pre-treatment income (1974/1975)\n\n\n\n(Dehejia and Wahba 1999)\n\ndata(lalonde, package = 'MatchIt');\ndataset &lt;- lalonde;\npsvars &lt;- c('age', 'educ', 'race', 'married', 'nodegree', 're74', 're75');\noutcome &lt;- 're78';\nexposure &lt;- 'treat';\npsdata &lt;- dataset[,c(exposure, psvars)];\nstopifnot(all(c(psvars,outcome, exposure) %in% colnames(dataset)));\n\n# check initial balance\nmatch.null &lt;- matchit(\n    treat~.,\n    data = psdata,\n    method = NULL\n    )\n#summary(match.null);"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#nearest-neighbor-caliper-matching",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#nearest-neighbor-caliper-matching",
+    "title": "Causal inference with observational data",
+    "section": "Nearest neighbor caliper matching",
+    "text": "Nearest neighbor caliper matching\n\nlibrary(MatchIt);\n\nset.seed(1234);\nmatch.nnc.logit &lt;- matchit(\n    treat ~.,\n    data = psdata,\n    method = 'nearest',\n    distance = 'glm',\n    replace = FALSE,\n    caliper = 0.2,\n    std.caliper = TRUE,\n    ratio = 1 # 1:1 matching\n    );\n\n\n\nMatchIt R package (Stuart 2011)\nDefault is logistic reg., but ?distance gives many other options (e.g. LASSO, random forests, boosting, NNets)\n(Austin 2011b) recommends caliper = 0.2*SD logit PS"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#ps-distribution-beforeafter-matching",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#ps-distribution-beforeafter-matching",
+    "title": "Causal inference with observational data",
+    "section": "PS distribution before/after matching",
+    "text": "PS distribution before/after matching\n\n\nbal.plot(\n    x = match.nnc.logit,\n    var.name = 'distance',\n    which = 'both',\n    sample.names = c('Unmatched', 'Matched')\n    );\n\n\n\n\n\n\nNotice poor overlap before matching ➔ won’t match all Trt patients, unless \\(N_{control}\\) is large\n\n\ntab &lt;- matchit.pct.matched(match.nnc.logit)$tab.counts.pct;\nknitr::kable(tab);\n\n\n\n\n\nControl\nTreated\n\n\n\n\nTotal\n429\n185\n\n\nMatched\n113 (26.3%)\n113 (61.1%)\n\n\nUnmatched\n316 (73.7%)\n72 (38.9%)\n\n\n\n\n\n\n⬆ unmatched Trt patients = ⬆ biased \\(\\widehat{\\text{ATT}}\\), instead estimates “Average treatment effect in the Overlap population (ATO)” (Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#covariate-balance",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#covariate-balance",
+    "title": "Causal inference with observational data",
+    "section": "Covariate balance",
+    "text": "Covariate balance\n\n\nplot(\n    match.nnc.logit,\n    type = 'density',\n    interactive = FALSE\n    );"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#standardized-differences",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#standardized-differences",
+    "title": "Causal inference with observational data",
+    "section": "Standardized differences",
+    "text": "Standardized differences\n\n\n\nplot(summary(match.nnc.logit, un = TRUE), threshold = c(0.1, 0.25));\n\n\n\n\n\n\n\nCutoffs:\n\n\\(\\le\\) 0.1 (Austin 2011a)\n\\(\\le\\) 0.25 (Harder 2010)\nNo p-values (Austin 2011a)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#estimated-treatment-effect",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#estimated-treatment-effect",
+    "title": "Causal inference with observational data",
+    "section": "Estimated treatment effect",
+    "text": "Estimated treatment effect\n\nmdata &lt;- match.data(match.nnc.logit);\ncolnames(mdata)[colnames(mdata) == 'subclass'] &lt;- 'match.id';\nmdata$patient.id &lt;- rownames(mdata);\nodata &lt;- dataset[, outcome, drop = FALSE];\nodata$patient.id &lt;- rownames(odata);\n\nmdata &lt;- merge(\n    x = mdata,\n    y = odata,\n    by = 'patient.id',\n    all.x = TRUE\n    );\n\n\ncreate.densityplot(\n    x = data.frame(mdata$re78[mdata$treat==1], mdata$re78[mdata$treat==0]),\n    xlab.label = 'Income in 1978 (USD)',\n    xlimits = c(0, 30000),\n    xat = seq(0, 30000, by = 5000),\n    col = default.colours(2),\n    # Legend\n    legend = list(\n        inside = list(\n            fun = draw.key,\n            args = list(\n                key = list(\n                    points = list(\n                        col = default.colours(2),\n                        pch = 21,\n                        cex = 1.5,\n                        fill = default.colours(2)\n                        ),\n                    text = list(\n                        lab = c('Treatment', 'Control')\n                        ),\n                    padding.text = c(0,5,0),\n                    cex = 1\n                    )\n                ),\n            x = 0.65,\n            y = 0.97,\n            draw = FALSE\n            )\n        ),\n    );\n\n\n\n\n\n\nmean.diff &lt;- t.test(re78 ~ factor(treat, levels = c(1, 0)), data = mdata);\nmean.diff &lt;- broom::tidy(mean.diff);\ncolnames(mean.diff)[colnames(mean.diff) == 'estimate'] &lt;- 'diff'\ncolnames(mean.diff)[colnames(mean.diff) == 'estimate1'] &lt;- 'trt.mean'\ncolnames(mean.diff)[colnames(mean.diff) == 'estimate2'] &lt;- 'ctrl.mean'\nmean.diff &lt;- mean.diff[c('trt.mean', 'ctrl.mean', 'diff', 'conf.low', 'conf.high', 'p.value')];\n\nknitr::kable(\n    mean.diff,\n    digits = c(rep(0, 5), 3),\n    table.attr = \"style='width:50%;'\"\n    );\n\n\n\n\n\n\n\n\n\n\n\n\ntrt.mean\nctrl.mean\ndiff\nconf.low\nconf.high\np.value\n\n\n\n\n6510\n4938\n1572\n-365\n3508\n0.111\n\n\n\n\n\n\n\n Interestingly, PS estimate of trt effect ($1572) is close to RCT estimate ($1641) (LaLonde 1986)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#optimal-matching",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#optimal-matching",
+    "title": "Causal inference with observational data",
+    "section": "Optimal matching",
+    "text": "Optimal matching\n\n\nset.seed(seed);\nmatch.opt &lt;- matchit(\n    treat~.,\n    data = psdata,\n    method = 'optimal',\n    distance = 'glm',\n    # estimand: set to ATT if N_treat &gt;&gt; N_control, \n    #   ATC if N_control &gt;&gt; N_treat\n    estimand = 'ATT',\n    replace = FALSE,\n    ratio = 1 # 1:1 matching\n    );\nplot(summary(match.opt, un = TRUE), threshold = c(0.1, 0.25));\n\n\n\n\n\n\nMatches 100% of Trt patients (unlike greedy caliper match)\nAttempts to optimize the total distance between all pairs\nHowever, resulted in much worse covariate balance"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#summary",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#summary",
+    "title": "Causal inference with observational data",
+    "section": "Summary",
+    "text": "Summary\n\nGoal: estimate causal effect of exposure \\(X\\) on outcome \\(Y\\), using observational data\nPS matching balances measured confounders between exposure groups (similar to RCT)\n\n Intuitive: show covariates are balanced after matching, like RCT \n Of course, unmeasured confounders may remain \n\nIf estimating ATT (ATC), then need to match all Trt (Control) patients. If high % unmatched, consider other methods."
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#alternatives",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#alternatives",
+    "title": "Causal inference with observational data",
+    "section": "Alternatives",
+    "text": "Alternatives\n\nStratification on PS uses all patients, but does not work well with survival data (Austin 2014b, 2016)\nInverse probability weighting and regression adjustment are very flexible, but generally not accepted by FDA (unlike matching) (Lu 2019)\nCausal Random Forests look promising: https://grf-labs.github.io/grf/"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "library(MatchIt);\nlibrary(cobalt);\n\n cobalt (Version 4.5.0, Build Date: 2023-03-21)\n\n\n\nAttaching package: 'cobalt'\n\n\nThe following object is masked from 'package:MatchIt':\n\n    lalonde\n\nlibrary(BoutrosLab.plotting.general);\n\nLoading required package: lattice\n\n\nLoading required package: latticeExtra\n\n\nLoading required package: cluster\n\n\nLoading required package: hexbin\n\n\nLoading required package: grid\n\n\n\nAttaching package: 'BoutrosLab.plotting.general'\n\n\nThe following object is masked from 'package:stats':\n\n    dist\n\nseed &lt;- 1234;\n\nsource('utilities.R')\n\n\n\nRCTs are expensive:\n\nMedian cost of Phase 3 trials: $19 million (IQR: $12.2 - $33.1M)\nAvg. cost of bringing new drug to market ~ 1 - 3 billion\nMay not generalize to larger “real world” population\n\nMay not be practical or ethically feasible\n\n\n(Moore et al. 2018; Wouters, McKee, and Luyten 2020)\n\n\n\nReal World Data RWD:\n\nObservational, collected in “real world” setting\nEHR database, hospital visit notes, wearable devices\nMedical claims/billing database, disease registries\n\nReal World Evidence RWE:\n\nClinical evidence about the benefits/harms of medical products derived from analyzing RWD (Franklin et al. 2021)\nPoor quality RWD: garbage-in-garbage-out\n90 examples of RWE used by FDA\n\n\n\n\n\n2 exposure groups: e.g. Treatment vs Control\nHow does the exposure affect a given outcome \\(Y\\)?\nThe \\(i\\)th subject has 2 potential outcomes: \\[Y_i(T) \\text{ and } Y_i(C)\\]\nFor each subject, the treatment effect is defined as: \\[Y_i(T) - Y_i(C)\\]\n\nOnly 1 of these is observed in reality\n\n\n(Little and Rubin 2000; Rubin 2005)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSubject\n\\(Y_i(T)\\)\n\\(Y_i(C)\\)\nTrt. Effect: \\(Y_i(T) - Y_i(C)\\)\n\n\n\n\n1\n14\n?\n?\n\n\n2\n9\n?\n?\n\n\n3\n8\n?\n?\n\n\n4\n?\n5\n?\n\n\n5\n?\n10\n?\n\n\n6\n?\n7\n?\n\n\nMean\n10.33\n7.33\n3\n\n\n\n\nIn RCT, \\(\\tau = \\bar{Y}_i(T) - \\bar{Y}_i(C)\\) estimates a causal effect\nIn general, \\(\\tau\\) is not causal for observational studies (OS)\n\nMany methods try to change this (Austin 2011a; Varga et al. 2023)\n\n\n\n\n\n\n“Probability of treatment assignment based on observed baseline covariates” (Rosenbaum and Rubin 1983)\n\n\nGiven treatment variable \\(X_i \\in \\{0,1\\}\\) and baseline covariates \\(\\boldsymbol{Z}_i\\), then estimate PS:\n\n\\[\nPS_i = Pr(X_i = 1) = f(\\boldsymbol{Z}_i) + \\epsilon_i\n\\tag{1}\\]\n Logistic regression or machine learning to estimate Equation 1\n\n\n\n\n\nConfounder \\(\\boldsymbol{Z}\\) causes trt \\(\\boldsymbol{X}\\) and outcome \\(\\boldsymbol{Y}\\)\n\nThis makes \\(\\boldsymbol{X}\\) correlated with \\(\\boldsymbol{Y}\\), but correlation \\(\\neq\\) causation\n\nPS models the relation between \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Z}\\), thus removes confounding\n\n  https://sixsigmadsi.com/glossary/confounding/\n\n\n\n Without a model for how treatments are assigned to units, formal causal inference is impossible (Little and Rubin 2000) \n\n\n\n\n\n\n\n(Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#why",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#why",
+    "title": "Causal inference with observational data",
+    "section": "Why?",
+    "text": "Why?\nRCTs are expensive:\n\nMedian cost of Phase 3 trials: $19 million (IQR: $12.2 - $33.1M)\nAvg. cost of bringing new drug to market ~ 1 - 3 billion\nMay not generalize to larger “real world” population\n\nMay not be practical or ethically feasible\n\n\n(Moore et al. 2018; Wouters, McKee, and Luyten 2020)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#real-world",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#real-world",
+    "title": "Causal inference with observational data",
+    "section": "Real World",
+    "text": "Real World\nReal World Data RWD:\n\nObservational, collected in “real world” setting\nEHR database, hospital visit notes, wearable devices\nMedical claims/billing database, disease registries\n\nReal World Evidence RWE:\n\nClinical evidence about the benefits/harms of medical products derived from analyzing RWD (Franklin et al. 2021)\nPoor quality RWD: garbage-in-garbage-out\n90 examples of RWE used by FDA"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#potential-outcomes-causal-framework",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#potential-outcomes-causal-framework",
+    "title": "Causal inference with observational data",
+    "section": "Potential outcomes causal framework",
+    "text": "Potential outcomes causal framework\n\n2 exposure groups: e.g. Treatment vs Control\nHow does the exposure affect a given outcome \\(Y\\)?\nThe \\(i\\)th subject has 2 potential outcomes: \\[Y_i(T) \\text{ and } Y_i(C)\\]\nFor each subject, the treatment effect is defined as: \\[Y_i(T) - Y_i(C)\\]\n\nOnly 1 of these is observed in reality\n\n\n(Little and Rubin 2000; Rubin 2005)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#example",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#example",
+    "title": "Causal inference with observational data",
+    "section": "Example",
+    "text": "Example\n\n\n\n\n\n\n\n\n\n\n\nSubject\n\\(Y_i(T)\\)\n\\(Y_i(C)\\)\nTrt. Effect: \\(Y_i(T) - Y_i(C)\\)\n\n\n\n\n1\n14\n?\n?\n\n\n2\n9\n?\n?\n\n\n3\n8\n?\n?\n\n\n4\n?\n5\n?\n\n\n5\n?\n10\n?\n\n\n6\n?\n7\n?\n\n\nMean\n10.33\n7.33\n3\n\n\n\n\nIn RCT, \\(\\tau = \\bar{Y}_i(T) - \\bar{Y}_i(C)\\) estimates a causal effect\nIn general, \\(\\tau\\) is not causal for observational studies (OS)\n\nMany methods try to change this (Austin 2011a; Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#propensity-scores-ps",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#propensity-scores-ps",
+    "title": "Causal inference with observational data",
+    "section": "Propensity scores (PS)",
+    "text": "Propensity scores (PS)\n\n“Probability of treatment assignment based on observed baseline covariates” (Rosenbaum and Rubin 1983)\n\n\nGiven treatment variable \\(X_i \\in \\{0,1\\}\\) and baseline covariates \\(\\boldsymbol{Z}_i\\), then estimate PS:\n\n\\[\nPS_i = Pr(X_i = 1) = f(\\boldsymbol{Z}_i) + \\epsilon_i\n\\qquad(1)\\]\n Logistic regression or machine learning to estimate Equation 1"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#why-model-treatment-assignment",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#why-model-treatment-assignment",
+    "title": "Causal inference with observational data",
+    "section": "Why model treatment assignment?",
+    "text": "Why model treatment assignment?\n\n\nConfounder \\(\\boldsymbol{Z}\\) causes trt \\(\\boldsymbol{X}\\) and outcome \\(\\boldsymbol{Y}\\)\n\nThis makes \\(\\boldsymbol{X}\\) correlated with \\(\\boldsymbol{Y}\\), but correlation \\(\\neq\\) causation\n\nPS models the relation between \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Z}\\), thus removes confounding\n\n  https://sixsigmadsi.com/glossary/confounding/\n\n\n\n Without a model for how treatments are assigned to units, formal causal inference is impossible (Little and Rubin 2000)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#methods-of-using-ps",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#methods-of-using-ps",
+    "title": "Causal inference with observational data",
+    "section": "4 methods of using PS",
+    "text": "4 methods of using PS\n\n\n\n(Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#section",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#section",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "The PS is a balancing score: patients with similar PS should have similar baseline covariates (Austin 2011a)\n\n\n\n\n (McDonald et al. 2013)\n\n\nPS is a composite summary of all baseline covariates\nMatch Trt-Control patients with similar PS values"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#matching-many-choices",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#matching-many-choices",
+    "title": "Causal inference with observational data",
+    "section": "Matching: many choices",
+    "text": "Matching: many choices\nRecommendations from simulations of (Austin 2014a):\n\nOptimal vs greedy nearest neighbor matching?\n\n\n\n\n\n\n\nGreedy: iteratively match to nearest neighbor\nOptimal: minimize the total distance between all pairs\n\n\n\n\n(Chen et al. 2022)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#caliper-or-no-caliper",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#caliper-or-no-caliper",
+    "title": "Causal inference with observational data",
+    "section": "Caliper or no caliper?",
+    "text": "Caliper or no caliper?\n\n https://help.easymedstat.com/support/solutions/articles/77000538175-caliper-in-propensity-score-matching"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#section-1",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#section-1",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "How wide should caliper be? 0.2*SD of logit PS (Austin 2011b)\n\n\n\nMatch with or without replacement?\n\n\n\nFor greedy matching, what order should you select the treated subjects?\n\nLowest to highest PS, highest to lowest, best match first, or random order"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#types-of-treatment-effects",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#types-of-treatment-effects",
+    "title": "Causal inference with observational data",
+    "section": "Types of treatment effects",
+    "text": "Types of treatment effects\nATE: \\(E\\big[Y_i(T) - Y_i(C)\\big]\\)\n\nAverage effect for ALL patients in the population\n\nATT: \\(E\\big[Y_i(T) - Y_i(C)\\big | T]\\)\n\nAmong patients who were Treated, how would their outcomes have changed if they were a Control?\n\nATC: \\(E\\big[Y_i(T) - Y_i(C)\\big | C]\\)\n\nAmong patients who were Controls, how would their outcomes have changed if they were Treated?\n\n\n\n\nMethod\nATE\nATT/ATC\n\n\n\n\nMatching\n❌\n✅\n\n\nStratification\n✅\n✅\n\n\nInverse probability weighting\n✅\n✅\n\n\nCovariate adjustment\n❌\n❌\n\n\n\n (Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#employment-training-and-income",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#employment-training-and-income",
+    "title": "Causal inference with observational data",
+    "section": "Employment training and income",
+    "text": "Employment training and income\n\nTreatment (N = 185): National Supported Work Demonstration (NSW) employment training program\nControl (N = 429): from the Population Survey of Income Dynamics (PSID)\nGoal: Does training program increase mean income (1978)?\nBaseline covariates: age, education, race, marital status, pre-treatment income (1974/1975)\n\n\n\ndata(lalonde, package = 'MatchIt');\ndataset &lt;- lalonde;\npsvars &lt;- c('age', 'educ', 'race', 'married', 'nodegree', 're74', 're75');\noutcome &lt;- 're78';\nexposure &lt;- 'treat';\npsdata &lt;- dataset[,c(exposure, psvars)];\nstopifnot(all(c(psvars,outcome, exposure) %in% colnames(dataset)));\n\n# check initial balance\nmatch.null &lt;- matchit(\n    treat~.,\n    data = psdata,\n    method = NULL\n    )\n#summary(match.null);\n\n\n(Dehejia and Wahba 1999)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#nearest-neighbor-caliper-matching",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#nearest-neighbor-caliper-matching",
+    "title": "Causal inference with observational data",
+    "section": "Nearest neighbor caliper matching",
+    "text": "Nearest neighbor caliper matching\n\nlibrary(MatchIt);\n\nset.seed(1234);\nmatch.nnc.logit &lt;- matchit(\n    treat ~.,\n    data = psdata,\n    method = 'nearest',\n    distance = 'glm',\n    replace = FALSE,\n    caliper = 0.2,\n    std.caliper = TRUE,\n    ratio = 1 # 1:1 matching\n    );\n\n\n\nMatchIt R package (Stuart 2011)\nDefault is logistic reg., but ?distance gives many other options (e.g. LASSO, random forests, boosting, NNets)\n(Austin 2011b) recommends caliper = 0.2*SD logit PS"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#ps-distribution-beforeafter-matching",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#ps-distribution-beforeafter-matching",
+    "title": "Causal inference with observational data",
+    "section": "PS distribution before/after matching",
+    "text": "PS distribution before/after matching\n\n\nbal.plot(\n    x = match.nnc.logit,\n    var.name = 'distance',\n    which = 'both',\n    sample.names = c('Unmatched', 'Matched')\n    );\n\n\n\n\n\n\nNotice poor overlap before matching ➔ won’t match all Trt patients, unless \\(N_{control}\\) is large\n\n\ntab &lt;- matchit.pct.matched(match.nnc.logit)$tab.counts.pct;\nknitr::kable(tab);\n\n\n\n\n\nControl\nTreated\n\n\n\n\nTotal\n429\n185\n\n\nMatched\n113 (26.3%)\n113 (61.1%)\n\n\nUnmatched\n316 (73.7%)\n72 (38.9%)\n\n\n\n\n\n\n⬆ unmatched Trt patients = ⬆ biased \\(\\widehat{\\text{ATT}}\\), instead estimates “Average treatment effect in the Overlap population (ATO)” (Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#covariate-balance",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#covariate-balance",
+    "title": "Causal inference with observational data",
+    "section": "Covariate balance",
+    "text": "Covariate balance\n\n\nplot(\n    match.nnc.logit,\n    type = 'density',\n    interactive = FALSE\n    );"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#standardized-differences",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#standardized-differences",
+    "title": "Causal inference with observational data",
+    "section": "Standardized differences",
+    "text": "Standardized differences\n\n\n\nplot(summary(match.nnc.logit, un = TRUE), threshold = c(0.1, 0.25));\n\n\n\n\n\n\n\nCutoffs:\n\n\\(\\le\\) 0.1 (Austin 2011a)\n\\(\\le\\) 0.25 (Harder 2010)\nNo p-values (Austin 2011a)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#estimated-treatment-effect",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#estimated-treatment-effect",
+    "title": "Causal inference with observational data",
+    "section": "Estimated treatment effect",
+    "text": "Estimated treatment effect\n\nmdata &lt;- match.data(match.nnc.logit);\ncolnames(mdata)[colnames(mdata) == 'subclass'] &lt;- 'match.id';\nmdata$patient.id &lt;- rownames(mdata);\nodata &lt;- dataset[, outcome, drop = FALSE];\nodata$patient.id &lt;- rownames(odata);\n\nmdata &lt;- merge(\n    x = mdata,\n    y = odata,\n    by = 'patient.id',\n    all.x = TRUE\n    );\n\n\ncreate.densityplot(\n    x = data.frame(mdata$re78[mdata$treat==1], mdata$re78[mdata$treat==0]),\n    xlab.label = 'Income in 1978 (USD)',\n    xlimits = c(0, 30000),\n    xat = seq(0, 30000, by = 5000),\n    col = default.colours(2),\n    # Legend\n    legend = list(\n        inside = list(\n            fun = draw.key,\n            args = list(\n                key = list(\n                    points = list(\n                        col = default.colours(2),\n                        pch = 21,\n                        cex = 1.5,\n                        fill = default.colours(2)\n                        ),\n                    text = list(\n                        lab = c('Treatment', 'Control')\n                        ),\n                    padding.text = c(0,5,0),\n                    cex = 1\n                    )\n                ),\n            x = 0.65,\n            y = 0.97,\n            draw = FALSE\n            )\n        ),\n    );\n\n\n\n\nmean.diff &lt;- t.test(re78 ~ factor(treat, levels = c(1, 0)), data = mdata);\nmean.diff &lt;- broom::tidy(mean.diff);\ncolnames(mean.diff)[colnames(mean.diff) == 'estimate'] &lt;- 'diff'\ncolnames(mean.diff)[colnames(mean.diff) == 'estimate1'] &lt;- 'trt.mean'\ncolnames(mean.diff)[colnames(mean.diff) == 'estimate2'] &lt;- 'ctrl.mean'\nmean.diff &lt;- mean.diff[c('trt.mean', 'ctrl.mean', 'diff', 'conf.low', 'conf.high', 'p.value')];\n\nknitr::kable(\n    mean.diff,\n    digits = c(rep(0, 5), 3),\n    table.attr = \"style='width:50%;'\"\n    );\n\n\n\n\n\n\n\n\n\n\n\n\ntrt.mean\nctrl.mean\ndiff\nconf.low\nconf.high\np.value\n\n\n\n\n6510\n4938\n1572\n-365\n3508\n0.111\n\n\n\n\n\n\n\n Interestingly, PS estimate of trt effect ($1572) is close to RCT estimate ($1641) (LaLonde 1986)"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#optimal-matching",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#optimal-matching",
+    "title": "Causal inference with observational data",
+    "section": "Optimal matching",
+    "text": "Optimal matching\n\n\nset.seed(seed);\nmatch.opt &lt;- matchit(\n    treat~.,\n    data = psdata,\n    method = 'optimal',\n    distance = 'glm',\n    # estimand: set to ATT if N_treat &gt;&gt; N_control, \n    #   ATC if N_control &gt;&gt; N_treat\n    estimand = 'ATT',\n    replace = FALSE,\n    ratio = 1 # 1:1 matching\n    );\nplot(summary(match.opt, un = TRUE), threshold = c(0.1, 0.25));\n\n\n\n\n\n\nMatches 100% of Trt patients (unlike greedy caliper match)\nAttempts to optimize the total distance between all pairs\nHowever, resulted in much worse covariate balance"
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#summary",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#summary",
+    "title": "Causal inference with observational data",
+    "section": "Summary",
+    "text": "Summary\n\nGoal: estimate causal effect of exposure \\(X\\) on outcome \\(Y\\), using observational data\nPS matching balances measured confounders between exposure groups (similar to RCT)\n\n Intuitive: show covariates are balanced after matching, like RCT \n Of course, unmeasured confounders may remain \n\nIf estimating ATT (ATC), then need to match all Trt (Control) patients. If high % unmatched, consider other methods."
+  },
+  {
+    "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#alternatives",
+    "href": "presentations/causal-inference-observational-data-matching/causal-inference-matching-intro.html#alternatives",
+    "title": "Causal inference with observational data",
+    "section": "Alternatives",
+    "text": "Alternatives\n\nStratification on PS uses all patients, but does not work well with survival data (Austin 2014b, 2016)\nInverse probability weighting and regression adjustment are very flexible, but generally not accepted by FDA (unlike matching) (Lu 2019)\nCausal Random Forests look promising: https://grf-labs.github.io/grf/"
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "Presentations\n\nCausal inference with observational data using propensity score matching"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "RCTs are expensive:\n\nMedian cost of Phase 3 trials: $19 million (IQR: $12.2 - $33.1M)\nAvg. cost of bringing new drug to market ~ 1 - 3 billion\nMay not generalize to larger “real world” population\n\nMay not be practical or ethically feasible\n\n\n(Moore et al. 2018; Wouters, McKee, and Luyten 2020)\n\n\n\nReal World Data RWD:\n\nObservational, collected in “real world” setting\nEHR database, hospital visit notes, wearable devices\nMedical claims/billing database, disease registries\n\nReal World Evidence RWE:\n\nClinical evidence about the benefits/harms of medical products derived from analyzing RWD (Franklin et al. 2021)\nPoor quality RWD: garbage-in-garbage-out\n90 examples of RWE used by FDA\n\n\n\n\n\n2 exposure groups: e.g. Treatment vs Control\nHow does the exposure affect a given outcome \\(Y\\)?\nThe \\(i\\)th subject has 2 potential outcomes: \\[Y_i(T) \\text{ and } Y_i(C)\\]\nFor each subject, the treatment effect is defined as: \\[Y_i(T) - Y_i(C)\\]\n\nOnly 1 of these is observed in reality\n\n\n(Little and Rubin 2000; Rubin 2005)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSubject\n\\(Y_i(T)\\)\n\\(Y_i(C)\\)\nTrt. Effect: \\(Y_i(T) - Y_i(C)\\)\n\n\n\n\n1\n14\n?\n?\n\n\n2\n9\n?\n?\n\n\n3\n8\n?\n?\n\n\n4\n?\n5\n?\n\n\n5\n?\n10\n?\n\n\n6\n?\n7\n?\n\n\nMean\n10.33\n7.33\n3\n\n\n\n\nIn RCT, \\(\\tau = \\bar{Y}_i(T) - \\bar{Y}_i(C)\\) estimates a causal effect\nIn general, \\(\\tau\\) is not causal for observational studies (OS)\n\nMany methods try to change this (Austin 2011a; Varga et al. 2023)\n\n\n\n\n\n\n“Probability of treatment assignment based on observed baseline covariates” (Rosenbaum and Rubin 1983)\n\n\nGiven treatment variable \\(X_i \\in \\{0,1\\}\\) and baseline covariates \\(\\boldsymbol{Z}_i\\), then estimate PS:\n\n\\[\nPS_i = Pr(X_i = 1) = f(\\boldsymbol{Z}_i) + \\epsilon_i\n\\tag{1}\\]\n Logistic regression or machine learning to estimate Equation 1\n\n\n\n\n\nConfounder \\(\\boldsymbol{Z}\\) causes trt \\(\\boldsymbol{X}\\) and outcome \\(\\boldsymbol{Y}\\)\n\nThis makes \\(\\boldsymbol{X}\\) correlated with \\(\\boldsymbol{Y}\\), but correlation \\(\\neq\\) causation\n\nPS models the relation between \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Z}\\), thus removes confounding\n\n  https://sixsigmadsi.com/glossary/confounding/\n\n\n\n Without a model for how treatments are assigned to units, formal causal inference is impossible (Little and Rubin 2000) \n\n\n\n\n\n\n\n(Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#why",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#why",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "RCTs are expensive:\n\nMedian cost of Phase 3 trials: $19 million (IQR: $12.2 - $33.1M)\nAvg. cost of bringing new drug to market ~ 1 - 3 billion\nMay not generalize to larger “real world” population\n\nMay not be practical or ethically feasible\n\n\n(Moore et al. 2018; Wouters, McKee, and Luyten 2020)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#real-world",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#real-world",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "Real World Data RWD:\n\nObservational, collected in “real world” setting\nEHR database, hospital visit notes, wearable devices\nMedical claims/billing database, disease registries\n\nReal World Evidence RWE:\n\nClinical evidence about the benefits/harms of medical products derived from analyzing RWD (Franklin et al. 2021)\nPoor quality RWD: garbage-in-garbage-out\n90 examples of RWE used by FDA"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#potential-outcomes-causal-framework",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#potential-outcomes-causal-framework",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "2 exposure groups: e.g. Treatment vs Control\nHow does the exposure affect a given outcome \\(Y\\)?\nThe \\(i\\)th subject has 2 potential outcomes: \\[Y_i(T) \\text{ and } Y_i(C)\\]\nFor each subject, the treatment effect is defined as: \\[Y_i(T) - Y_i(C)\\]\n\nOnly 1 of these is observed in reality\n\n\n(Little and Rubin 2000; Rubin 2005)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#example",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#example",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "Subject\n\\(Y_i(T)\\)\n\\(Y_i(C)\\)\nTrt. Effect: \\(Y_i(T) - Y_i(C)\\)\n\n\n\n\n1\n14\n?\n?\n\n\n2\n9\n?\n?\n\n\n3\n8\n?\n?\n\n\n4\n?\n5\n?\n\n\n5\n?\n10\n?\n\n\n6\n?\n7\n?\n\n\nMean\n10.33\n7.33\n3\n\n\n\n\nIn RCT, \\(\\tau = \\bar{Y}_i(T) - \\bar{Y}_i(C)\\) estimates a causal effect\nIn general, \\(\\tau\\) is not causal for observational studies (OS)\n\nMany methods try to change this (Austin 2011a; Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#propensity-scores-ps",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#propensity-scores-ps",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "“Probability of treatment assignment based on observed baseline covariates” (Rosenbaum and Rubin 1983)\n\n\nGiven treatment variable \\(X_i \\in \\{0,1\\}\\) and baseline covariates \\(\\boldsymbol{Z}_i\\), then estimate PS:\n\n\\[\nPS_i = Pr(X_i = 1) = f(\\boldsymbol{Z}_i) + \\epsilon_i\n\\tag{1}\\]\n Logistic regression or machine learning to estimate Equation 1"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#why-model-treatment-assignment",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#why-model-treatment-assignment",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "Confounder \\(\\boldsymbol{Z}\\) causes trt \\(\\boldsymbol{X}\\) and outcome \\(\\boldsymbol{Y}\\)\n\nThis makes \\(\\boldsymbol{X}\\) correlated with \\(\\boldsymbol{Y}\\), but correlation \\(\\neq\\) causation\n\nPS models the relation between \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Z}\\), thus removes confounding\n\n  https://sixsigmadsi.com/glossary/confounding/\n\n\n\n Without a model for how treatments are assigned to units, formal causal inference is impossible (Little and Rubin 2000)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#methods-of-using-ps",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#methods-of-using-ps",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "(Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#section",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#section",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "The PS is a balancing score: patients with similar PS should have similar baseline covariates (Austin 2011a)\n\n\n\n\n (McDonald et al. 2013)\n\n\nPS is a composite summary of all baseline covariates\nMatch Trt-Control patients with similar PS values"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#matching-many-choices",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#matching-many-choices",
+    "title": "Causal inference with observational data",
+    "section": "Matching: many choices",
+    "text": "Matching: many choices\nRecommendations from simulations of (Austin 2014a):\n\nOptimal vs greedy nearest neighbor matching?\n\n\n\n\n\n\n(Chen et al. 2022)\n\n\nGreedy: iteratively match to nearest neighbor\nOptimal: minimize the total distance between all pairs"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#caliper-or-no-caliper",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#caliper-or-no-caliper",
+    "title": "Causal inference with observational data",
+    "section": "Caliper or no caliper?",
+    "text": "Caliper or no caliper?\n\n https://help.easymedstat.com/support/solutions/articles/77000538175-caliper-in-propensity-score-matching"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#section-1",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#section-1",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "How wide should caliper be? 0.2*SD of logit PS (Austin 2011b)\n\n\n\nMatch with or without replacement?\n\n\n\nFor greedy matching, what order should you select the treated subjects?\n\nLowest to highest PS, highest to lowest, best match first, or random order"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#types-of-treatment-effects",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#types-of-treatment-effects",
+    "title": "Causal inference with observational data",
+    "section": "Types of treatment effects",
+    "text": "Types of treatment effects\nATE: \\(E\\big[Y_i(T) - Y_i(C)\\big]\\)\n\nAverage effect for ALL patients in the population\n\nATT: \\(E\\big[Y_i(T) - Y_i(C)\\big | T]\\)\n\nAmong patients who were Treated, how would their outcomes have changed if they were a Control?\n\nATC: \\(E\\big[Y_i(T) - Y_i(C)\\big | C]\\)\n\nAmong patients who were Controls, how would their outcomes have changed if they were Treated?\n\n\n\n\nMethod\nATE\nATT/ATC\n\n\n\n\nMatching\n❌\n✅\n\n\nStratification\n✅\n✅\n\n\nInverse probability weighting\n✅\n✅\n\n\nCovariate adjustment\n❌\n❌\n\n\n\n (Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#employment-training-and-income",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#employment-training-and-income",
+    "title": "Causal inference with observational data",
+    "section": "Employment training and income",
+    "text": "Employment training and income\n\nTreatment (N = 185): National Supported Work Demonstration (NSW) employment training program\nControl (N = 429): from the Population Survey of Income Dynamics (PSID)\nGoal: Does training program increase mean income (1978)?\nBaseline covariates: age, education, race, marital status, pre-treatment income (1974/1975)\n\n\n\n(Dehejia and Wahba 1999)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#nearest-neighbor-caliper-matching",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#nearest-neighbor-caliper-matching",
+    "title": "Causal inference with observational data",
+    "section": "Nearest neighbor caliper matching",
+    "text": "Nearest neighbor caliper matching\n\nlibrary(MatchIt);\n\nset.seed(1234);\nmatch.nnc.logit &lt;- matchit(\n    treat ~.,\n    data = psdata,\n    method = 'nearest',\n    distance = 'glm',\n    replace = FALSE,\n    caliper = 0.2,\n    std.caliper = TRUE,\n    ratio = 1 # 1:1 matching\n    );\n\n\n\nMatchIt R package (Stuart 2011)\nDefault is logistic reg., but ?distance gives many other options (e.g. LASSO, random forests, boosting, NNets)\n(Austin 2011b) recommends caliper = 0.2*SD logit PS"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#ps-distribution-beforeafter-matching",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#ps-distribution-beforeafter-matching",
+    "title": "Causal inference with observational data",
+    "section": "PS distribution before/after matching",
+    "text": "PS distribution before/after matching\n\n\n\n\n\n\n\n\nNotice poor overlap before matching ➔ won’t match all Trt patients, unless \\(N_{control}\\) is large\n\n\n\n\n\n\n\nControl\nTreated\n\n\n\n\nTotal\n429\n185\n\n\nMatched\n113 (26.3%)\n113 (61.1%)\n\n\nUnmatched\n316 (73.7%)\n72 (38.9%)\n\n\n\n\n\n\n⬆ unmatched Trt patients = ⬆ biased \\(\\widehat{\\text{ATT}}\\), instead estimates “Average treatment effect in the Overlap population (ATO)” (Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#covariate-balance",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#covariate-balance",
+    "title": "Causal inference with observational data",
+    "section": "Covariate balance",
+    "text": "Covariate balance"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#standardized-differences",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#standardized-differences",
+    "title": "Causal inference with observational data",
+    "section": "Standardized differences",
+    "text": "Standardized differences\n\n\n\n\n\n\n\n\n\n\nCutoffs:\n\n\\(\\le\\) 0.1 (Austin 2011a)\n\\(\\le\\) 0.25 (Harder 2010)\nNo p-values (Austin 2011a)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#estimated-treatment-effect",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#estimated-treatment-effect",
+    "title": "Causal inference with observational data",
+    "section": "Estimated treatment effect",
+    "text": "Estimated treatment effect\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntrt.mean\nctrl.mean\ndiff\nconf.low\nconf.high\np.value\n\n\n\n\n6510\n4938\n1572\n-365\n3508\n0.111\n\n\n\n\n\n\n\n Interestingly, PS estimate of trt effect ($1572) is close to RCT estimate ($1641) (LaLonde 1986)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#optimal-matching",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#optimal-matching",
+    "title": "Causal inference with observational data",
+    "section": "Optimal matching",
+    "text": "Optimal matching\n\n\n\n\n\n\n\n\nMatches 100% of Trt patients (unlike greedy caliper match)\nAttempts to optimize the total distance between all pairs\nHowever, resulted in much worse covariate balance"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#summary",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#summary",
+    "title": "Causal inference with observational data",
+    "section": "Summary",
+    "text": "Summary\n\nGoal: estimate causal effect of exposure \\(X\\) on outcome \\(Y\\), using observational data\nPS matching balances measured confounders between exposure groups (similar to RCT)\n\n Intuitive: show covariates are balanced after matching, like RCT \n Of course, unmeasured confounders may remain \n\nIf estimating ATT (ATC), then need to match all Trt (Control) patients. If high % unmatched, consider other methods."
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#alternatives",
+    "href": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html#alternatives",
+    "title": "Causal inference with observational data",
+    "section": "Alternatives",
+    "text": "Alternatives\n\nStratification on PS uses all patients, but does not work well with survival data (Austin 2014b, 2016)\nInverse probability weighting and regression adjustment are very flexible, but generally not accepted by FDA (unlike matching) (Lu 2019)\nCausal Random Forests look promising: https://grf-labs.github.io/grf/"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#why",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#why",
+    "title": "Causal inference with observational data",
+    "section": "Why?",
+    "text": "Why?\nRCTs are expensive:\n\nMedian cost of Phase 3 trials: $19 million (IQR: $12.2 - $33.1M)\nAvg. cost of bringing new drug to market ~ 1 - 3 billion\nMay not generalize to larger “real world” population\n\nMay not be practical or ethically feasible\n\n\n(Moore et al. 2018; Wouters, McKee, and Luyten 2020)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#real-world",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#real-world",
+    "title": "Causal inference with observational data",
+    "section": "Real World",
+    "text": "Real World\nReal World Data RWD:\n\nObservational, collected in “real world” setting\nEHR database, hospital visit notes, wearable devices\nMedical claims/billing database, disease registries\n\nReal World Evidence RWE:\n\nClinical evidence about the benefits/harms of medical products derived from analyzing RWD (Franklin et al. 2021)\nPoor quality RWD: garbage-in-garbage-out\n90 examples of RWE used by FDA"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#potential-outcomes-causal-framework",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#potential-outcomes-causal-framework",
+    "title": "Causal inference with observational data",
+    "section": "Potential outcomes causal framework",
+    "text": "Potential outcomes causal framework\n\n2 exposure groups: e.g. Treatment vs Control\nHow does the exposure affect a given outcome \\(Y\\)?\nThe \\(i\\)th subject has 2 potential outcomes: \\[Y_i(T) \\text{ and } Y_i(C)\\]\nFor each subject, the treatment effect is defined as: \\[Y_i(T) - Y_i(C)\\]\n\nOnly 1 of these is observed in reality\n\n\n(Little and Rubin 2000; Rubin 2005)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#example",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#example",
+    "title": "Causal inference with observational data",
+    "section": "Example",
+    "text": "Example\n\n\n\n\n\n\n\n\n\n\n\nSubject\n\\(Y_i(T)\\)\n\\(Y_i(C)\\)\nTrt. Effect: \\(Y_i(T) - Y_i(C)\\)\n\n\n\n\n1\n14\n?\n?\n\n\n2\n9\n?\n?\n\n\n3\n8\n?\n?\n\n\n4\n?\n5\n?\n\n\n5\n?\n10\n?\n\n\n6\n?\n7\n?\n\n\nMean\n10.33\n7.33\n3\n\n\n\n\nIn RCT, \\(\\tau = \\bar{Y}_i(T) - \\bar{Y}_i(C)\\) estimates a causal effect\nIn general, \\(\\tau\\) is not causal for observational studies (OS)\n\nMany methods try to change this (Austin 2011a; Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#propensity-scores-ps",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#propensity-scores-ps",
+    "title": "Causal inference with observational data",
+    "section": "Propensity scores (PS)",
+    "text": "Propensity scores (PS)\n\n“Probability of treatment assignment based on observed baseline covariates” (Rosenbaum and Rubin 1983)\n\n\nGiven treatment variable \\(X_i \\in \\{0,1\\}\\) and baseline covariates \\(\\boldsymbol{Z}_i\\), then estimate PS:\n\n\\[\nPS_i = Pr(X_i = 1) = f(\\boldsymbol{Z}_i) + \\epsilon_i\n\\qquad(1)\\]\n Logistic regression or machine learning to estimate Equation 1"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#why-model-treatment-assignment",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#why-model-treatment-assignment",
+    "title": "Causal inference with observational data",
+    "section": "Why model treatment assignment?",
+    "text": "Why model treatment assignment?\n\n\nConfounder \\(\\boldsymbol{Z}\\) causes trt \\(\\boldsymbol{X}\\) and outcome \\(\\boldsymbol{Y}\\)\n\nThis makes \\(\\boldsymbol{X}\\) correlated with \\(\\boldsymbol{Y}\\), but correlation \\(\\neq\\) causation\n\nPS models the relation between \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Z}\\), thus removes confounding\n\n  https://sixsigmadsi.com/glossary/confounding/\n\n\n\n Without a model for how treatments are assigned to units, formal causal inference is impossible (Little and Rubin 2000)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#methods-of-using-ps",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#methods-of-using-ps",
+    "title": "Causal inference with observational data",
+    "section": "4 methods of using PS",
+    "text": "4 methods of using PS\n\n\n\n(Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#section",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#section",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "The PS is a balancing score: patients with similar PS should have similar baseline covariates (Austin 2011a)\n\n\n\n\n (McDonald et al. 2013)\n\n\nPS is a composite summary of all baseline covariates\nMatch Trt-Control patients with similar PS values"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#matching-many-choices",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#matching-many-choices",
+    "title": "Causal inference with observational data",
+    "section": "Matching: many choices",
+    "text": "Matching: many choices\nRecommendations from simulations of (Austin 2014a):\n\nOptimal vs greedy nearest neighbor matching?\n\n\n\n\n\n\n\nGreedy: iteratively match to nearest neighbor\nOptimal: minimize the total distance between all pairs\n\n\n\n\n(Chen et al. 2022)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#caliper-or-no-caliper",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#caliper-or-no-caliper",
+    "title": "Causal inference with observational data",
+    "section": "Caliper or no caliper?",
+    "text": "Caliper or no caliper?\n\n https://help.easymedstat.com/support/solutions/articles/77000538175-caliper-in-propensity-score-matching"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#section-1",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#section-1",
+    "title": "Causal inference with observational data",
+    "section": "",
+    "text": "How wide should caliper be? 0.2*SD of logit PS (Austin 2011b)\n\n\n\nMatch with or without replacement?\n\n\n\nFor greedy matching, what order should you select the treated subjects?\n\nLowest to highest PS, highest to lowest, best match first, or random order"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#types-of-treatment-effects",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#types-of-treatment-effects",
+    "title": "Causal inference with observational data",
+    "section": "Types of treatment effects",
+    "text": "Types of treatment effects\nATE: \\(E\\big[Y_i(T) - Y_i(C)\\big]\\)\n\nAverage effect for ALL patients in the population\n\nATT: \\(E\\big[Y_i(T) - Y_i(C)\\big | T]\\)\n\nAmong patients who were Treated, how would their outcomes have changed if they were a Control?\n\nATC: \\(E\\big[Y_i(T) - Y_i(C)\\big | C]\\)\n\nAmong patients who were Controls, how would their outcomes have changed if they were Treated?\n\n\n\n\nMethod\nATE\nATT/ATC\n\n\n\n\nMatching\n❌\n✅\n\n\nStratification\n✅\n✅\n\n\nInverse probability weighting\n✅\n✅\n\n\nCovariate adjustment\n❌\n❌\n\n\n\n (Deb et al. 2016)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#employment-training-and-income",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#employment-training-and-income",
+    "title": "Causal inference with observational data",
+    "section": "Employment training and income",
+    "text": "Employment training and income\n\nTreatment (N = 185): National Supported Work Demonstration (NSW) employment training program\nControl (N = 429): from the Population Survey of Income Dynamics (PSID)\nGoal: Does training program increase mean income (1978)?\nBaseline covariates: age, education, race, marital status, pre-treatment income (1974/1975)\n\n\n\n(Dehejia and Wahba 1999)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#nearest-neighbor-caliper-matching",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#nearest-neighbor-caliper-matching",
+    "title": "Causal inference with observational data",
+    "section": "Nearest neighbor caliper matching",
+    "text": "Nearest neighbor caliper matching\n\nlibrary(MatchIt);\n\nset.seed(1234);\nmatch.nnc.logit &lt;- matchit(\n    treat ~.,\n    data = psdata,\n    method = 'nearest',\n    distance = 'glm',\n    replace = FALSE,\n    caliper = 0.2,\n    std.caliper = TRUE,\n    ratio = 1 # 1:1 matching\n    );\n\n\n\nMatchIt R package (Stuart 2011)\nDefault is logistic reg., but ?distance gives many other options (e.g. LASSO, random forests, boosting, NNets)\n(Austin 2011b) recommends caliper = 0.2*SD logit PS"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#ps-distribution-beforeafter-matching",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#ps-distribution-beforeafter-matching",
+    "title": "Causal inference with observational data",
+    "section": "PS distribution before/after matching",
+    "text": "PS distribution before/after matching\n\n\n\n\n\n\n\n\nNotice poor overlap before matching ➔ won’t match all Trt patients, unless \\(N_{control}\\) is large\n\n\n\n\n\n\n\nControl\nTreated\n\n\n\n\nTotal\n429\n185\n\n\nMatched\n113 (26.3%)\n113 (61.1%)\n\n\nUnmatched\n316 (73.7%)\n72 (38.9%)\n\n\n\n\n\n\n⬆ unmatched Trt patients = ⬆ biased \\(\\widehat{\\text{ATT}}\\), instead estimates “Average treatment effect in the Overlap population (ATO)” (Varga et al. 2023)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#covariate-balance",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#covariate-balance",
+    "title": "Causal inference with observational data",
+    "section": "Covariate balance",
+    "text": "Covariate balance"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#standardized-differences",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#standardized-differences",
+    "title": "Causal inference with observational data",
+    "section": "Standardized differences",
+    "text": "Standardized differences\n\n\n\n\n\n\n\n\n\n\nCutoffs:\n\n\\(\\le\\) 0.1 (Austin 2011a)\n\\(\\le\\) 0.25 (Harder 2010)\nNo p-values (Austin 2011a)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#estimated-treatment-effect",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#estimated-treatment-effect",
+    "title": "Causal inference with observational data",
+    "section": "Estimated treatment effect",
+    "text": "Estimated treatment effect\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntrt.mean\nctrl.mean\ndiff\nconf.low\nconf.high\np.value\n\n\n\n\n6510\n4938\n1572\n-365\n3508\n0.111\n\n\n\n\n\n\n\n Interestingly, PS estimate of trt effect ($1572) is close to RCT estimate ($1641) (LaLonde 1986)"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#optimal-matching",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#optimal-matching",
+    "title": "Causal inference with observational data",
+    "section": "Optimal matching",
+    "text": "Optimal matching\n\n\n\n\n\n\n\n\nMatches 100% of Trt patients (unlike greedy caliper match)\nAttempts to optimize the total distance between all pairs\nHowever, resulted in much worse covariate balance"
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#summary",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#summary",
+    "title": "Causal inference with observational data",
+    "section": "Summary",
+    "text": "Summary\n\nGoal: estimate causal effect of exposure \\(X\\) on outcome \\(Y\\), using observational data\nPS matching balances measured confounders between exposure groups (similar to RCT)\n\n Intuitive: show covariates are balanced after matching, like RCT \n Of course, unmeasured confounders may remain \n\nIf estimating ATT (ATC), then need to match all Trt (Control) patients. If high % unmatched, consider other methods."
+  },
+  {
+    "objectID": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#alternatives",
+    "href": "presentations/causal-inference-matching/2023-09-24_causal_inference_matching.html#alternatives",
+    "title": "Causal inference with observational data",
+    "section": "Alternatives",
+    "text": "Alternatives\n\nStratification on PS uses all patients, but does not work well with survival data (Austin 2014b, 2016)\nInverse probability weighting and regression adjustment are very flexible, but generally not accepted by FDA (unlike matching) (Lu 2019)\nCausal Random Forests look promising: https://grf-labs.github.io/grf/"
   }
 ]
