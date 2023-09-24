@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
   resources:
-     - './presentations/*.html'
+     - './docs/presentations/*.html'
 
 website:
   title: "Jaron Arbet, Ph.D."
