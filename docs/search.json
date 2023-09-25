@@ -326,7 +326,7 @@
     "href": "teaching.html",
     "title": "Teaching",
     "section": "",
-    "text": "Presentations\n\nCausal inference with observational data using propensity score matching"
+    "text": "Presentations\n\nLinear regression diagnostics\nCausal inference with observational data using propensity score matching"
   },
   {
     "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html",
@@ -628,5 +628,152 @@
     "title": "Causal inference with observational data",
     "section": "Alternatives",
     "text": "Alternatives\n\nStratification on PS uses all patients, but does not work well with survival data (Austin 2014b, 2016)\nInverse probability weighting and regression adjustment are very flexible, but generally not accepted by FDA (unlike matching) (Lu 2019)\nCausal Random Forests look promising: https://grf-labs.github.io/grf/"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#overview",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#overview",
+    "title": "Regression Diagnostics",
+    "section": "Overview",
+    "text": "Overview\n\nWhat is linear regression?\nAssumptions\nDiagnostics and remedies for failed assumptions"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#linear-regression",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#linear-regression",
+    "title": "Regression Diagnostics",
+    "section": "Linear regression",
+    "text": "Linear regression\n\n\n\nContinuous response: \\(\\big\\{Y_i\\big\\}_{i=1}^N = (Y_1, ...., Y_N)\\)\nPredictors: \\(\\boldsymbol{X}_i = (X_{i1}, ..., X_{iP})\\)\n\n\n https://www.mathbootcamps.com/reading-scatterplots/ \n\nModel:\n\\[\\begin{equation}\nY_i = \\beta_0 + \\sum_{j=1}^P \\beta_j * X_{ij} + \\epsilon_i \\\\\n\\end{equation}\\]\nIndependent normal errors with constant variance:\n\\[\\begin{equation}\n\\epsilon_i \\overset{\\text{iid}}{\\sim} \\text{Normal}(0, \\sigma^2)\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#ordinary-least-squares-ols",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#ordinary-least-squares-ols",
+    "title": "Regression Diagnostics",
+    "section": "Ordinary Least Squares (OLS)",
+    "text": "Ordinary Least Squares (OLS)\n\nEstimate \\(\\hat{\\boldsymbol{\\beta}}\\) such that “sum of squared residuals” is minimized: \\(\\sum_{i=1}^n(y_i - \\hat{y})^2\\), where \\(\\hat{y}_i = \\hat{\\beta}_0 + \\sum_{j=1}^P \\hat{\\beta}_j * X_{ij}\\)\n\n\n\n\n\n\n https://medium.com/analytics-vidhya/ordinary-least-square-ols-method-for-linear-regression-ef8ca10aadfc"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#assumptions",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#assumptions",
+    "title": "Regression Diagnostics",
+    "section": "Assumptions",
+    "text": "Assumptions\n\n\nLinearity: relationship btwn \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Y}\\) is approximately linear\nNormally distributed residuals\n\nOR the sample size is large (Central Limit Theorem)\n\n\n…simulations studies show that “sufficiently large” is often under 100, and even for our extremely nonNormal medical cost data it is less than 500. (Lumley et al. 2002)\n\nHomoscedasticity (equal variance): the residuals have equal variance at every value of \\(\\boldsymbol{X}\\)\nIndependence: residuals are independent (not correlated)\n\nOther issues:\n\nMulticollinearity: highly correlated predictors can greatly increase Var(\\(\\hat{\\beta}\\))\nInfluencial observations/outliers can bias results\nAdditivity: by default, assumes no interactions btwn predictors. Need to manually add interaction terms."
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#example-dataset",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#example-dataset",
+    "title": "Regression Diagnostics",
+    "section": "Example dataset",
+    "text": "Example dataset\n\nOutcome = forced expiatory volume in liters (fev)\nN = 654 youths age 3-19 from East Boston during 1970’s\n\n\n\nGGally::ggpairs(fev, showStrips = TRUE)"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#initial-model-with-all-variables",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#initial-model-with-all-variables",
+    "title": "Regression Diagnostics",
+    "section": "Initial model with all variables",
+    "text": "Initial model with all variables\n\n\nfit &lt;- lm(formula = fev ~., data = fev)\nsjPlot::tab_model(fit, ci.hyphen = ',&nbsp;', p.style = 'scientific', digits.p = 2);\n\n\n\n\n \nfev\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-4.46\n-4.89, -4.02\n1.07e-69\n\n\nage\n0.07\n0.05, 0.08\n1.21e-11\n\n\nheight inches\n0.10\n0.09, 0.11\n4.98e-80\n\n\nsex [Male]\n0.16\n0.09, 0.22\n2.74e-06\n\n\nsmoke [Yes]\n-0.09\n-0.20, 0.03\n1.41e-01\n\n\nObservations\n654\n\n\nR2 / R2 adjusted\n0.775 / 0.774"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#linearity",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#linearity",
+    "title": "Regression Diagnostics",
+    "section": "Linearity",
+    "text": "Linearity\n\n\nPlot residuals (\\(y - \\hat{y}\\)) vs. each predictor and \\(\\hat{y}\\). Want to see horizontal band around 0 with no patterns.\nCurvature in the plots suggests non-linear relationship\n\n\n\n\ncar::residualPlots(fit);\n\n\n\n\n\n\n\n\n              Test stat Pr(&gt;|Test stat|)    \nage              5.0256        6.500e-07 ***\nheight.inches    7.6489        7.354e-14 ***\nsex                                         \nsmoke                                       \nTukey test       8.3559        &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\ncar::residualPlots outputs a table which tests the linearity assumption of each continuous predictor. It reports the p-value for \\(X_j^2\\)."
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-non-linearity",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-non-linearity",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for non-linearity",
+    "text": "Remedies for non-linearity\n\nData transformation: transforming the outcome and/or predictor to make more normally distributed may help\nGAM: Generalized Additive Model automatically models linear/non-linear effects using smoothing splines: previous lab talks: 2022-12-08 and 2018-04-27\nPolynomials: e.g. \\(Age + Age^2 + Age^3 + ...\\)\n\nuse stats::poly() for uncorrelated polynomials; regular polynomials are usually highly correlated\n\n\n\n\nfit.poly &lt;- lm(fev ~ poly(age, 2) + poly(height.inches, 2) + sex + smoke, data = fev);\ncar::residualPlots(fit.poly, tests = FALSE);\n\n\n\n\n\n\n\n\n\n\nNote the adjusted \\(R^2\\) was 0.77 and 0.79 for the linear and polynomial models"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#normality-of-residuals-or-large-n",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#normality-of-residuals-or-large-n",
+    "title": "Regression Diagnostics",
+    "section": "Normality of residuals or large N",
+    "text": "Normality of residuals or large N\n\nSimulations and refs from (Lumley et al. 2002) suggest our N = 654 is sufficient. Nevertheless, you can visually check normality below.\nP-value tests of Normality are not recommended: low power in the scenario you care about (small N) but usually significant in the scenario you don’t care about (large N)"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-non-normal-residuals",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-non-normal-residuals",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for non-normal residuals",
+    "text": "Remedies for non-normal residuals\n\nLarge \\(N\\)\nData transformation of outcome and/or predictors\nMake sure linearity assumption is met\nBootstrap confidence intervals for robust inference:\n\n\nset.seed(123);\nbootstrap &lt;- car::Boot(fit, method = 'case');\nround(confint(bootstrap), 3);\n\nBootstrap bca confidence intervals\n\n               2.5 % 97.5 %\n(Intercept)   -4.936 -3.940\nage            0.046  0.087\nheight.inches  0.093  0.114\nsexMale        0.103  0.231\nsmokeYes      -0.249  0.068"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#homoscedasticity-equal-variance",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#homoscedasticity-equal-variance",
+    "title": "Regression Diagnostics",
+    "section": "Homoscedasticity (equal variance)",
+    "text": "Homoscedasticity (equal variance)\n\n\nPlot residuals vs fitted values: want flat/horizontal band around 0\nFunnel pattern like &lt; or &gt; indicates heteroscedasticity\n\n\n\npar(mfrow = c(1,2))\ncar::residualPlot(fit, main = 'Linear fit');\ncar::residualPlot(fit.poly, main = 'Polynomial fit');\n\n\n\n\n\ncar::spreadLevelPlot: \\(log(|\\text{studentized residuals}|)\\) vs. \\(log(\\hat{y})\\)\n\nFlat horizontal line means equal variance\n\n\n\n\nSuggested power transformation:  0.3772182 \n\n\n\n\n\n\nSuggested power transformation:  -0.09245971 \n\n\n\ncar::ncvTest(fit);\n\nNon-constant Variance Score Test \nVariance formula: ~ fitted.values \nChisquare = 93.4299, Df = 1, p = &lt; 2.22e-16\n\ncar::ncvTest(fit.poly);\n\nNon-constant Variance Score Test \nVariance formula: ~ fitted.values \nChisquare = 127.954, Df = 1, p = &lt; 2.22e-16"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-unequal-variance",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-unequal-variance",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for unequal variance",
+    "text": "Remedies for unequal variance\n\nTransform \\(\\boldsymbol{Y}\\): car::spreadLevelPlot() prints a “Suggested power transformation” \\(\\tau\\). Refit model with \\(\\boldsymbol{Y}^\\tau\\).\nUnequal variance affects \\(Var({\\hat{\\beta}})\\) but not \\(\\hat{\\beta}\\). Thus, can use robust standard errors or bootstrap for CIs/pvalues:\n\n\n# robust standard errors\nrobust.se &lt;- lmtest::coeftest(\n    x = fit, \n    vcov = sandwich::vcovHC(fit)\n    );\nconfint(robust.se);"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#independent-residuals",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#independent-residuals",
+    "title": "Regression Diagnostics",
+    "section": "Independent residuals",
+    "text": "Independent residuals\n\nCorrelated residuals can occur from repeated measures, or when patients cluster by some group (e.g. family, hospital)\nPlot residuals vs time or other suspected clustering variables\nRemedies: robust sandwich standard errors to account for cluster effect; or linear mixed models"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#multicollinearity",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#multicollinearity",
+    "title": "Regression Diagnostics",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nHighly correlated predictors can increase \\(Var(\\hat{\\beta})\\), producing unreliable results\ncaret::findCorrelation removes predictors with corr &gt; cutoff\nVariance inflation factors: \\(\\text{VIF}(X_j) = \\frac{1}{1 - R^2_j}\\), where \\(R^2_j\\) is % variance of \\(X_j\\) explained by all other predictors\n\nVIF &gt; 10 is a common cutoff\n\n\n\ncar::vif(fit);\n\n          age height.inches           sex         smoke \n     3.019010      2.829728      1.060228      1.209564 \n\n\n\nOther remedies include PCA and regularized regression"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#influential-observations",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#influential-observations",
+    "title": "Regression Diagnostics",
+    "section": "Influential observations",
+    "text": "Influential observations\n\nExtreme values in \\(\\boldsymbol{Y}\\) and/or \\(\\boldsymbol{X}\\) can highly influence results\n\\(|\\text{Standardized residuals}| &gt; 3\\) indicates potential outlier (If normally distributed, expect 99.7% &lt; 3)\n\n\n\nplot(\n    x = fitted(fit),\n    y = rstandard(fit),\n    ylab = 'Standardized Residuals',\n    xlab = 'Fitted values'\n    );\nabline(h = -3, lty = 2);\nabline(h = 3, lty = 2);"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#cooks-distance",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#cooks-distance",
+    "title": "Regression Diagnostics",
+    "section": "Cook’s distance",
+    "text": "Cook’s distance\n\n\n\\(D_i = \\frac{\\sum_j(\\hat{y}_j - \\hat{y}_{j(i)})^2}{(p+1) * \\hat{\\sigma}^2}\\)\n\\(D_i\\) is proportional to the distance that the predicted values would move if the \\(i\\)th patient was excluded\nVarious cutoffs have been used in the literature, e.g. 1, \\(\\frac{4}{N}\\), or \\(\\frac{4}{N - p - 1}\\).. or visually identify patients with relatively large vals\n\n\n\n\ncar::influenceIndexPlot(fit, vars = 'Cook');"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-influential-observations",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#remedies-for-influential-observations",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for influential observations",
+    "text": "Remedies for influential observations\n\nSensitivity analysis: fit 2 models that include or exclude influential obs. Do the results substantially change?\nRobust regression: include all patients but downweight influential observations\n\nR: https://www.john-fox.ca/Companion/appendices/Appendix-Robust-Regression.pdf\nquantreg::rq() for median regression"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#interactions",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#interactions",
+    "title": "Regression Diagnostics",
+    "section": "Interactions",
+    "text": "Interactions\n\nSomeone should do a short talk on interactions!\nBy default, linear regression assumes no interactions between predictors.\nYou can manually add interaction terms to the model to investigate. A*B in R formula gives A + B + A:B\n\n\n\n# allow all variables to interact with Sex\nfit.interaction &lt;- lm(fev ~ (age + height.inches + smoke) * sex, data = fev);\nsjPlot::tab_model(fit.interaction, ci.hyphen = ',&nbsp;', p.style = 'scientific', digits.p = 2);\n\n\n\n\n\n\n\n\n\n\n \nfev\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-3.36\n-4.07, -2.65\n1.93e-19\n\n\nage\n0.06\n0.03, 0.08\n5.05e-06\n\n\nheight inches\n0.09\n0.07, 0.10\n7.83e-30\n\n\nsmoke [Yes]\n-0.07\n-0.22, 0.08\n3.75e-01\n\n\nsex [Male]\n-1.32\n-2.23, -0.41\n4.48e-03\n\n\nage × sex [Male]\n0.03\n-0.01, 0.06\n1.39e-01\n\n\nheight inches × sex\n[Male]\n0.02\n0.00, 0.04\n4.07e-02\n\n\nsmoke [Yes] × sex [Male]\n0.02\n-0.22, 0.25\n8.93e-01\n\n\nObservations\n654\n\n\nR2 / R2 adjusted\n0.786 / 0.783\n\n\n\n\n\n\n\n\n\nIf you suspect many interactions, might be better to use a machine learning model that automatically handles interactions like decision-trees or Random Forest"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#summary",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#summary",
+    "title": "Regression Diagnostics",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\n\n\n\nAssumption \nAssessment \n\nSolution \n\n\n\n\nLinearity\ncar::residualPlots, want horizontal band around 0 for each predictor\n\n- Transform \\(Y\\) or \\(X\\) - GAM to automate linear/non-linear - Polynomials\n\n\nNormality of residuals\n- Histogram/density plot - Normal QQ plot\n\n- Large N - Transform \\(Y\\) or \\(X\\) - Make sure linear assumption met - Bootstrap CIs: confint(car::Boot(fit))\n\n\nEqual variance\n- car::residualPlot and car::spreadLevelPlot, want horizontal band around 0 - car::ncvTest\n\n- Transform \\(Y\\) using exponent from spreadLevelPlot - Robust standard errors or bootstrap CI\n\n\nIndependent residuals\nPlot residuals vs time or other suspected clustering variables\n\n- Robust sandwich standard errors for cluster effect - Linear mixed models\n\n\nMulticollinearity\n- Check correlation between predictors - car::vif, want VIF &lt; 10\n\n- Given 2 highly corr. predictors, only keep 1 - caret::findCorrelation to remove predictors with corr &gt; cutoff - PCA, regularized regression\n\n\nInfluential obs\n- Plot standardized residuals vs fitted values; |r| &gt; 3 outlier - Cook’s distance, car::influenceIndexPlot\n\n- Sensitivity analysis fitting models with/without influential obs - Robust regression to downweight influential obs: quantreg::rq\n\n\nInteractions\n- Manually add interaction terms, significant?\n\n- Manually add interaction terms - Stratify model by potential interaction terms - ML models that automatically handle interactions"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#extensions-to-general-linear-models",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#extensions-to-general-linear-models",
+    "title": "Regression Diagnostics",
+    "section": "Extensions to General Linear Models",
+    "text": "Extensions to General Linear Models\n\nGeneral linear model (GLM): for binary, multi-category, ordinal, or count outcomes\ncar::residualPlots to assess linearity of each predictor. Want to see horizontal band around 0 with no patterns. For non-linearity, use polynomials or GAM.\ncar::vif to assess multicollinearity\ncar::influenceIndexPlot to assess influential observations\ncar::Boot for robust bootstrap confidence intervals\nGLM also makes assumptions about the variance.. if false, can use bootstrap or robust standard errors:\n\n\nlmtest::coeftest(fit, vcov = sandwich::vcovHC(fit))"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#references",
+    "href": "presentations/regression-diagnostics/2023-09-24_regression_diagnostics.html#references",
+    "title": "Regression Diagnostics",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\nLumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” Annual Review of Public Health 23 (1): 151–69."
   }
 ]
