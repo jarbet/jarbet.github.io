@@ -4,4 +4,5 @@ title: "Teaching"
 
 # Presentations
 
+- [Linear regression diagnostics](./presentations/2023-09-24_regression_diagnostics.html)
 - [Causal inference with observational data using propensity score matching](./presentations/2023-09-24_causal_inference_matching.html)
