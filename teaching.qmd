@@ -7,4 +7,6 @@ title: "Teaching"
 - 2023-09-24: [Linear regression diagnostics](./presentations/2023-09-24_regression_diagnostics.html)
 - 2023-04-28: [Causal inference with observational data using propensity score matching](./presentations/2023-09-24_causal_inference_matching.html)
 - 2022-08-25: [Introduction to Bayesian statistics](./presentations/2022-08-25_Bayesian_stats.pptx)
+- 2022-04-22: [Triplet matching: propensity score matching with 3 groups](./presentations/20220422_triplet_matching.pptx)
+- 2021-11-21: [Multiomics cancer data analysis](./presentations/2021-11-21_multiomics_cancer.pptx)
 - 2020-01-21: [Interpretable machine learning](./presentations/2020-01-21_interpretable_machine_learning.pptx)
