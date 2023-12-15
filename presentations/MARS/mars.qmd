@@ -1,0 +1,427 @@
+---
+title: 'Nonparametric feature selection for big data with MARS'
+author: "[Jaron Arbet]{style='color: steelblue;'}"
+date: '`r Sys.Date()`'
+date-format: short
+format: 
+  revealjs: 
+    output-file: 2023-12-15_mars.html
+scrollable: TRUE
+slide-number: c/t
+bibliography: references.bib
+embed-resources: true
+---
+
+```{r}
+library(BoutrosLab.plotting.general);
+library(GGally);
+library(earth);
+library(pdp);
+seed <- 1234;
+
+source('utilities.R');
+```
+
+```{r prepare datasets}
+data(PreDiabetes, package = 'MLDataR');
+
+diabetes <- data.frame(subset(x = PreDiabetes, select = c(Time_Pre_To_Diabetes, Sex, IMD_Decile, BMI, Age_PreDiabetes, HbA1C, PreDiabetes_Checks_Before_Diabetes)));
+
+colnames(diabetes)[colnames(diabetes) == 'Time_Pre_To_Diabetes'] <- 'Years_Pre_To_Diabetes';
+```
+
+```{r prepare fev data}
+data(fev, package = 'mplot');
+colnames(fev)[colnames(fev) == 'height'] <- 'height.inches';
+fev$sex <- factor(fev$sex, levels = c(0,1), labels = c('Female', 'Male'));
+fev$smoke <- factor(fev$smoke, levels = c(0, 1), labels = c('No', 'Yes'));
+```
+
+## `r colorize('Motivation', 'steelblue')`
+
+**`r colorize('Goal:', 'steelblue')`** build a flexible yet *interpretable* model like:
+
+\begin{equation}
+\boldsymbol{y} = f(\boldsymbol{x}_1, ..., \boldsymbol{x}_P) + \boldsymbol{e}
+\end{equation}
+
+**`r colorize('General linear models', 'steelblue')`** (GLM), *e.g.* linear or logistic regression are interpretable and can be flexible, but you need to decide:
+
+1. **`r colorize('Which predictors', 'steelblue')`** to include?
+2. For each predictor: **`r colorize('linear or non-linear', 'steelblue')`** effect?
+3. Do predictors **`r colorize('interact', 'steelblue')`**? If yes, 2-way, 3-way, ...?
+
+:::{.column-body-outset} 
+![](figures/decisions.jpeg){height=225px width=500px fig-align="center"}
+:::
+
+**`r colorize('MARS', 'steelblue')`** (multivariate adaptive regression splines) automatically determines all of this for you &#128515;
+
+
+## Piecewise linear functions
+
+MARS uses simple piecewise linear functions ("splines") that can approximate complex relationships
+
+* **`r colorize('Knots', 'steelblue')`**: points in $\boldsymbol{X}$ where effect on $\boldsymbol{Y}$ (slope) changes
+
+
+::: {layout-ncol=2}
+![](figures/piecewise_linear3.png)
+
+![](figures/piecewise_linear2.png)
+:::
+
+
+![](figures/pikachu.png){fig-align="center"}
+
+
+:::{.column-body-outset} 
+
+**`r colorize('Question:', 'steelblue')`** what are 3 things you need to determine when fitting a piecewise linear spline?
+
+::: {.incremental} 
+1. Number of knots
+2. Location of knots
+3. How the slopes change at each knot (i.e. estimate separate slopes within each interval)
+
+- **`r colorize('MARS automatically decides all 3!', 'steelblue')`**
+::: 
+:::
+
+::: {style="font-size: 50%;"}
+- Everingham, Y. L., J. Sexton, and Jimmy White. "An introduction to multivariate adaptive regression splines for the cane industry." Proceedings of the 2011 Conference of the Australian Society of Sugar Cane Technologists. 2011.
+- https://jekel.me/2017/Fit-a-piecewise-linear-function-to-data/
+- https://flexbooks.ck12.org/cbook/ck-12-interactive-algebra-1-for-ccss/section/1.4/primary/lesson/piecewise-linear-functions-alg-1-ccss/
+:::
+
+## `r colorize('Hinge function', 'steelblue')`
+
+* Main building block of MARS used to construct the piecewise linear functions
+* For predictor $x$ and knot at $x=t$, hinge fn has 2 parts [@ESL]:
+
+![](figures/hinge_formula.png){fig-align="center"}
+
+![](figures/hinge.png){fig-align="center"}
+
+* The hinge fn comes in a *pair* of terms: \n
+**`r colorize('Left', 'skyblue')`** $(t-x)_+$ and **`r colorize('Right', 'gold')`** $(x-t)_+$
+* If MARS selects a given hinge fn, it is input to a GLM and estimates 2 coefficients: $\beta_{Left}(t-x)_+ + \beta_{Right}(x-t)$
+
+## {.scrollable}
+
+Suppose knot $t = 0.5$. Here is what the hinge $\beta_{L}(t-x)_+ + \beta_{R}(x-t)$ looks like for various coeffients:
+
+```{r, echo = FALSE, include = FALSE}
+set.seed(123);
+
+x <- rnorm(1000);
+knot <- 0.5;
+right <- ifelse(
+    test = x > knot,
+    yes = x - knot,
+    no = 0
+    );
+left <- ifelse(
+    test = x < knot,
+    yes = knot - x,
+    no = 0
+    );
+params <- expand.grid(
+    beta.left = c(-2, 0, 2),
+    beta.right = c(-2, 0, 2)
+    );
+plots <- lapply(
+    X = 1:nrow(params),
+    FUN = function(w) {
+        beta.left <- params$beta.left[w];
+        beta.right <- params$beta.right[w];
+        dataset <- data.frame(
+            y = beta.left * left + beta.right * right,
+            x = x
+            );
+        create.scatterplot(
+            formula = y ~ x,
+            data = dataset,
+            ylimits = c(-8, 8),
+            yat = seq(-8, 8, by = 4),
+            yaxis.lab = seq(-8, 8, by = 4),
+            main = as.expression(bquote(beta[L] * '= ' * .(beta.left) * ', ' * beta[R] * '= ' * .(beta.right)))
+            );
+        }
+    );
+
+create.multipanelplot(
+    filename = './figures/example_hinges.png',
+    resolution = 500,
+    plot.objects = plots,
+    layout.width = 3,
+    layout.height = 3,
+    width = 20,
+    height = 20
+    );
+```
+
+:::{.column-body-outset} 
+![](./figures/example_hinges.png){fig-align="center"}
+::: 
+
+## Why piecewise linear hinge functions?
+
+* Many fancier splines exist (*e.g.* cubic, smoothing, penalized, B-splines)
+
+::: {.incremental} 
+* The piecewise linear hinges are generally much faster and easier to implement for big data
+* > ...the regression surface is built up parsimoniously, using nonzero components locally—only where they are needed. This is important, since one should “spend” parameters carefully in high dimensions, as they can run out quickly ["curse of dimensionality"]. The use of other basis functions such as polynomials, would produce a nonzero product everywhere, and would not work as well [@ESL]
+:::
+
+# MARS algorithm
+
+## Overview
+
+1. **`r colorize('Forward', 'steelblue')`**: build a large # hinges that overfit the data
+2. **`r colorize('Backward', 'steelblue')`**: use backward VS to prune the model
+3. Estimate the final coefficients in `lm/glm`
+
+:::{.column-body-outset} 
+![](./figures/earth_overview.png){fig-align="center"}
+<font size='2'> http://www.milbo.org/doc/earth-notes.pdf</font>
+
+**`r colorize('Nonparametric?', 'steelblue')`**
+
+* Parametric models require the user to *pre-determine* all parameters of the model to be estimated.
+* Nonparametric models like MARS automatically determine how to parameterize the model (# and form); more flexible.
+
+::: 
+
+## Forward step {.scrollable}
+
+* $\boldsymbol{M}$ = set of terms in model.  Start with just an intercept $\{1\}$.
+* $\boldsymbol{C}$ = set of candidate hinge functions to add to model.  Contains
+hinge functions at each observed value for each predictor ($N * P * 2$ total terms):
+
+\begin{equation}
+\boldsymbol{C} = \big\{(X_j - t)_+, (t - X_j)_+\big\} \\ t \in \{x_{1j}, x_{2j}, ..., x_{Nj}\}; \ j = 1,2, ..., P
+\end{equation}
+
+> "At each stage we consider all *products* of a candidate hinge in $\boldsymbol{C}$ with a hinge in the model $\boldsymbol{M}$. The product that decreases the residual error the most is added into the current model." [@ESL] 
+
+Thus at each step, it's possible to add:
+
+* Interaction term
+* New variable 
+* New knot to an existing variable in the model
+
+Example first 3 steps:
+
+:::{.column-body-outset} 
+![](figures/forward_step.png){fig-align="center"}
+::: 
+
+* Stop once maximum number of terms is reached
+
+## Backwards step
+
+* Forward step purposely builds a large model that overfits
+* Backward step prunes the model to reduce overfitting:
+
+> The term whose removal causes the smallest increase in residual squared error is deleted from the model at each stage, producing an estimated best model $f_\lambda$ of each size (number of terms) $λ$ [@ESL]
+
+Thus the best models of size 1, 2, ..., `nprune` features are identified
+
+**`r colorize('Best?', 'steelblue')`**  Measured by fast generalized cross validation (GCV) or more accurate but slower K-fold CV
+
+> **GCV** provides a convenient approximation to leave-one out cross-validation for linear models [without needing to split/resample/refit data][@ESL]
+
+## Tuning MARS
+
+**Potential tuning parameters**:
+
+1. Max `degree` of interactions allowed (set to 1 for none).
+2. Number of retained terms in the final model (`nprune`)
+3. Max number of terms in the Forward step (`nk`)
+
+**Simplest tuning strategy**:
+
+* Set `degree` to a moderate value like 5 and use default `nk`
+    + GCV is used to automatically select `nprune`
+    + If "Reached max number of terms" then increase `nk`
+    + If many 5-way interactions, then increase `degree`
+
+**Medium tuning strategy**:
+
+* Same as above but use K-fold CV to select `nprune`
+
+**Advanced tuning strategy**:
+
+* Grid for `degree`, `nk` and use K-fold CV to optimize.
+
+
+## Example
+
+* Outcome = forced expiatory volume in liters (**fev**)
+* N = `r nrow(fev)` youths age 3-19 from East Boston during 1970's
+
+:::{.column-body-outset} 
+```{r, echo = TRUE, cache = TRUE, fig.align = 'center'}
+GGally::ggpairs(fev, showStrips = TRUE)
+```
+:::
+
+
+## Fitting MARS with `earth` R package {.scrollable}
+
+* By default, uses GCV to select optimal number of terms
+
+```{r echo = TRUE}
+library(earth);
+fit.gcv <- earth(
+    formula = fev ~.,
+    data = fev,
+    degree = 5,
+    keepxy = TRUE
+    );
+print(fit.gcv);
+```
+
+* Selected all `r nrow(evimp(fit.gcv))` predictors, using `r ncol(fit.gcv$bx)` total hinge functions
+* `GRSq` normalizes GCV from 0 to 1, similar to adjusted $R^2$.
+
+:::{.column-body-outset} 
+```{r, echo = TRUE}
+plot(fit.gcv, which = c(1));
+```
+:::
+
+## Using 10-fold CV (5 repeats) to select the model size {.scrollable}
+
+:::{.column-body-outset} 
+```{r, echo = TRUE}
+#| code-line-numbers: "7-9"
+set.seed(123);
+fit.cv <- earth(
+    formula = fev ~.,
+    data = fev,
+    degree = 5,
+    keepxy = TRUE,
+    pmethod = 'cv',
+    nfold = 10,
+    ncross = 5
+    );
+print(fit.cv);
+plot(fit.cv, which = 1);
+```
+
+:::
+
+* Very similar GRSq/RSq as using the simpler GCV tuning method, but 1 less term and omits smoke status
+
+
+## Predictor effects {.scrollable}
+
+Let's explore the predictor effects from `fit.gcv`:
+
+**Selected hinge functions and $\hat{\beta}$**:
+
+```{r}
+fit.gcv$coefficients;
+```
+
+
+**Variable importance scores:**
+
+:::{.column-body-outset}
+```{r, echo = TRUE}
+evimp(fit.gcv);
+```
+:::
+
+**Partial dependence plots**:
+
+* `plotmo()` can be used to plot the estimated effects
+* I prefer the `pdp` R package for making similar plots:
+
+:::{.column-body-outset}
+
+```{r}
+plot.features <- list(
+    c('height.inches'),
+    c('age'),
+    c('sex'),
+    c('smoke'),
+    c('height.inches', 'sex'),
+    c('age', 'smoke')
+    );
+pdps <- lapply(
+    X = plot.features,
+    FUN = function(x) {
+        title <- ifelse(length(x) == 1, x, paste(x, collapse = ', '));
+        p <- pdp::partial(
+            object = fit.gcv,
+            pred.var = x,
+            rug = T
+            );
+        pdp::plotPartial(p, main = title, ylim = c(1, 4),  rug = TRUE, train = fit.gcv$data);
+        }
+    );
+
+create.multipanelplot(
+    filename = './figures/pdps.png',
+    resolution = 500,
+    plot.objects = pdps,
+    layout.width = 3,
+    layout.height = 2,
+    width = 10,
+    height = 7
+    );
+```
+
+![](figures/pdps.png){fig-align="center"}
+:::
+
+
+
+
+
+
+## Extensions
+
+* MARS/`earth` can be used for continuous, count, binary or multinomial outcomes
+   + If multinomial, it's recommended to also try using MARS with Flexable Discriminant Analaysis (FDA) - see ["Notes on the earth package"](http://www.milbo.org/doc/earth-notes.pdf) for details.
+* In theory, MARS can handle **`r colorize('missing values', 'steelblue')`** and **`r colorize('time-to-event outcomes', 'steelblue')`**.  However, I'm not aware of any R implementations that support this.
+* `caret`'s bagged MARS can improve prediction performance at the expense of interpretability
+
+
+## Summary
+
+MARS automatically handles: 
+
+* **`r colorize('Feature engineering', 'steelblue')`**: what *type* of features to include? linear or non-linear, additive or interaction?
+* **`r colorize('Feature selection', 'steelblue')`**: given a high-dimensional set of initial features, which should you include?
+
+Other benefits:
+
+* Fast
+* Easy to tune: simplest approach has 0 tuning parameters
+* Interpretable
+* Handles mixed numeric/categorical predictors without needing further transformation (similar to tree-methods)
+* Robust to outliers in the predictors
+
+**Downsides?**
+
+::: {.incremental} 
+1. In my experience, although MARS is more interpretable, it generally has **`r colorize('lower predictive performance compared to Random Forests', 'steelblue')`**.  Bagging and/or random variable sets (like RF) might improve this, but needs further investigation.
+2. **`r colorize('No statistical inference', 'steelblue')`** (p-values or confidence intervals).  I have ideas for how to do this, talk with me if interested.
+3. Although MARS in theory can handle **`r colorize('missing values or time-to-event outcomes', 'steelblue')`**, I'm not aware of any free software that supports this.  In contrast, many packages for tree-based models supports missing values and time-to-event outcomes (e.g. [randomForestSRC](https://cran.r-project.org/web/packages/randomForestSRC/index.html) R package).
+::: 
+
+
+## Questions?
+
+![](figures/questions.jpg){fig-align="center"}
+
+## References
+
+* ["Notes on the earth package"](http://www.milbo.org/doc/earth-notes.pdf)
+* **Original MARS paper**: Friedman, Jerome H. "Multivariate adaptive regression splines." The annals of statistics 19.1 (1991): 1-67.
+    + A slightly more accessible Intro: Friedman, Jerome H., and Charles B. Roosen. "An introduction to multivariate adaptive regression splines." Statistical methods in medical research 4.3 (1995): 197-217.
+* IMO, the [Elements of Statistical Learning](https://hastie.su.domains/Papers/ESLII.pdf) chapter on MARS is the best short introduction
