@@ -4,6 +4,7 @@ title: "Teaching"
 
 # Presentations
 
+- 2023-12-15: [Nonparametric feature selection for big data with MARS](./presentations/2023-12-15_mars.html)
 - 2023-09-24: [Linear regression diagnostics](./presentations/2023-09-24_regression_diagnostics.html)
 - 2023-04-28: [Causal inference with observational data using propensity score matching](./presentations/2023-09-24_causal_inference_matching.html)
 - 2022-08-25: [Introduction to Bayesian statistics](./presentations/2022-08-25_Bayesian_stats.pptx)
