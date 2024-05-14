@@ -20,3 +20,9 @@ about:
       href: https://scholar.google.com/citations?user=hbqQUw0AAAAJ&hl=en
 ---
 
+:::{#jaron-heading}
+I'm a biostatistician and data scientist working at the [UCLA Jonsson Comprehensive Cancer
+Center](https://www.uclahealth.org/cancer) in [Dr. Paul Boutros' Cancer Data Science lab](https://www.uclahealth.org/departments/urology/iuo/research/faculty-labs/dr-paul-boutros-lab).
+
+I'm passionate about using statistics, data science, and software development to advance cancer research and improve public health.
+:::

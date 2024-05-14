@@ -1,3 +1,68 @@
 ---
 title: "Research"
 ---
+
+## Interests
+
+* Machine learning and predictive modeling
+* Working with high-dimensional "Big Data"
+* Variable selection
+* Multi-omics cancer data integration
+
+
+## Publications
+
+1.	Ni, K., Rogowitz, E., Farahmand, A. K., Kaizer, L. K., **Arbet, J.**, Cunningham, C. R., ... & Saxon, D. R. (2024). Weight Loss Outcomes in a Veterans Affairs Pharmacotherapy-based Weight Management Clinic. *Journal of the Endocrine Society*, 8(5), bvae042. [https://doi.org/10.1210/jendso/bvae042](https://doi.org/10.1210/jendso/bvae042)
+1.	Lippitt, W., Carlson, N. E., **Arbet, J.**, Fingerlin, T. E., Maier, L. A., & Kechris, K. (2024). Limitations of clustering with PCA and correlated noise. *Journal of Statistical Computation and Simulation*, 1-29.
+[https://doi.org/10.1080/00949655.2024.2329976](https://doi.org/10.1080/00949655.2024.2329976) 
+1.	Greca, A. L., Grau, L., **Arbet, J.**, Liao, L. M., Sosa, J. A., Haugen, B. R., & Kitahara, C. M. (2023). Anthropometric, dietary, and lifestyle factors and risk of advanced thyroid cancer: The NIH‐AARP diet and health cohort study. *Clinical Endocrinology*, 99(6), 586-597.
+[https://doi.org/10.1111/cen.14970](https://doi.org/10.1111/cen.14970)
+1.	Chan, T. W., Dodson, J. P., **Arbet, J.**, Boutros, P. C., & Xiao, X. (2023). Single-cell analysis in lung adenocarcinoma implicates RNA editing in cancer innate immunity and patient prognosis. *Cancer research*, 83(3), 374-385. [https://doi.org/10.1158/0008-5472.CAN-22-1062](https://doi.org/10.1158/0008-5472.CAN-22-1062)
+1.	Gamallat Y, Choudhry M, Li Q, Rokne JG, Alhajj R, Abdelsalam R, Ghosh S, **Arbet J**, Boutros PC, Bismar TA. (2023) Serrate RNA Effector Molecule (SRRT) Is Associated with Prostate Cancer Progression and Is a Predictor of Poor Prognosis in Lethal Prostate Cancer. *Cancers*, 15(10):2867. 
+[https://doi.org/10.3390/cancers15102867](https://doi.org/10.3390/cancers15102867)
+1.	Grau, L., **Arbet, J.**, Ostendorf, D. M., Blankenship, J. M., Panter, S. L., Catenacci, V. A., ... & Creasy, S. A. (2022). Creating an algorithm to identify indices of sleep quantity and quality from a wearable armband in adults. *Sleep Science*, 15(03), 279-287.
+[https://doi.org/10.5935/1984-0063.20220052](https://doi.org/10.5935/1984-0063.20220052)
+1.	Creasy, S. A., Ostendorf, D. M., Blankenship, J. M., Grau, L., **Arbet, J.**, Bessesen, D. H., ... & Catenacci, V. A. (2022). Effect of sleep on weight loss and adherence to diet and physical activity recommendations during an 18-month behavioral weight loss intervention. *International Journal of Obesity*, 46(8), 1510-1517.
+[https://doi.org/10.1038/s41366-022-01141-z](https://doi.org/10.1038/s41366-022-01141-z)
+1.	Lin, N. W., **Arbet, J.**, Mroz, M. M., Liao, S. Y., Restrepo, C. I., Mayer, A. S., ... & Maier, L. A. (2022). Clinical phenotyping in sarcoidosis using cluster analysis. *Respiratory research*, 23(1), 88.
+[https://doi.org/10.1186/s12931-022-01993-z](https://doi.org/10.1186/s12931-022-01993-z) 
+1.	Wood, C., **Arbet, J.**, Amura, C. R., Nodine, P., Collins, M. R., Orlando, B. S., ... & Anderson, J. (2022). Multicenter Study Evaluating Nitrous Oxide Use for Labor Analgesia at High-and Low-Altitude Institutions. *Anesthesia & Analgesia*, 134(2), 294-302.
+[https://doi.org/10.1213/ane.0000000000005712](https://doi.org/10.1213/ane.0000000000005712) 
+1.	Okamoto, Y., Devoe, S., Seto, N., Minarchick, V., Wilson, T., Rothfuss, H.M., Mohning, M.P., **Arbet, J.**, Kroehl, M., Visser, A. and August, J., (2022). Association of sputum neutrophil extracellular trap subsets with IgA anti–citrullinated protein antibodies in subjects at risk for rheumatoid arthritis. *Arthritis & Rheumatology*, 74(1), pp.38-48.
+[https://doi.org/10.1002/art.41948](https://doi.org/10.1002/art.41948)
+1.	Carpenter, C. M., Frank, D. N., Williamson, K., **Arbet, J.**, Wagner, B. D., Kechris, K., & Kroehl, M. E. (2021), “tidyMicro: a pipeline for microbiome data analysis and visualization using the tidyverse in R,” *BMC Bioinformatics*, 22(1), 1-13.
+[https://doi.org/10.1186/s12859-021-03967-2](https://doi.org/10.1186/s12859-021-03967-2) 
+1.	Ostendorf, D. M., Blankenship, J. M., Grau, L., **Arbet, J.**, Mitchell, N. S., Creasy, S. A., ... & Catenacci, V. A. (2021). Predictors of long‐term weight loss trajectories during a behavioral weight loss intervention: an exploratory analysis. *Obesity Science & Practice*, 7(5), 569-582.
+[https://doi.org/10.1002/osp4.530](https://doi.org/10.1002/osp4.530)
+1.	Nodine, P. M., **Arbet, J.**, Jenkins, P. A., Rosenthal, L., Carrington, S., Purcell, S. K., ... & Hoon, S. (2021), “Graduate nursing student stressors during the COVID-19 pandemic,” *Journal of Professional Nursing*, 37(4), 721-728. 
+[https://doi.org/10.1016/j.profnurs.2021.04.008](https://doi.org/10.1016/j.profnurs.2021.04.008)
+1.	Rosenthal, L., Lee, S., Jenkins, P., **Arbet, J.**, Carrington, S., Hoon, S., ... & Nodine, P. (2021), “A Survey of Mental Health in Graduate Nursing Students during the COVID-19 Pandemic,” *Nurse Educator*. 46.4: 215-220.
+[https://doi.org/10.1097/nne.0000000000001013](https://doi.org/10.1097/nne.0000000000001013)
+1.	**Arbet, J.**, Zhuang, Y., Litkowski, E., Saba, L., & Kechris, K. (2021), “Comparing Statistical Tests for Differential Network Analysis of Gene Modules,” *Frontiers in Genetics*, 12, 748.
+[https://doi.org/10.3389/fgene.2021.630215](https://doi.org/10.3389/fgene.2021.630215)  
+1.	Ramakrishnan, V. R., **Arbet, J.**, Mace, J. C., Suresh, K., Shintani Smith, S., Soler, Z. M., & Smith, T. L. (2021). Predicting olfactory loss in chronic rhinosinusitis using machine learning. *Chemical Senses*, 46, bjab042.
+[https://doi.org/10.1093/chemse/bjab042](https://doi.org/10.1093/chemse/bjab042)
+1.	**Arbet, J.***, Brokamp, C.*, Meinzen-Derr, J.*, Trinkley, K. E.*, & Spratt, H. M. (2021), “Lessons and tips for designing a machine learning study using EHR data,” *Journal of Clinical and Translational Science*, 5(1).
+*: Authors contributed equally to this work as first authors.
+[https://doi.org/10.1017/cts.2020.513](https://doi.org/10.1017/cts.2020.513 )
+1.	Thomas, E.A., Zaman, A., Cornier, M.A., Catenacci, V.A., Tussey, E.J., Grau, L., **Arbet, J.**, Broussard, J.L. and Rynders, C.A. (2021), “Later Meal and Sleep Timing Predicts Higher Percent Body Fat,” *Nutrients*, 13(1), p.73. 
+[https://doi.org/10.3390/nu13010073](https://doi.org/10.3390/nu13010073) 
+1.	Reed, S. M., **Arbet, J.**, & Staubli, L. (2021), “Clinical Nurse Specialists in the United States Registered With a National Provider Identifier,” *Clinical Nurse Specialist*, 35(3), 119-128.
+[https://doi.org/10.1097/nur.0000000000000592](https://doi.org/10.1097/nur.0000000000000592)
+1.	Schmanski, A., Roberts, E., Coors, M., Wicks, S. J., **Arbet, J.**, Weber, R., ... & Taylor, M. R. (2021), “Research participant understanding and engagement in an institutional, self‐consent biobank model,” *Journal of Genetic Counseling*, 30(1), 257-267. 
+[https://doi.org/10.1002/jgc4.1316](https://doi.org/10.1002/jgc4.1316)
+1.	**Arbet, J.**, McGue, M., & Basu, S. (2020), “A robust and unified framework for estimating heritability in twin studies using generalized estimating equations,” *Statistics in Medicine*, 39(27), 3897-3913.
+[https://doi.org/10.1002/sim.8564](https://doi.org/10.1002/sim.8564)
+1.	Coleman-Minahan, K., Sheeder, J., **Arbet, J.**, & McLemore, M. R. (2020), “Interest in Medication and Aspiration Abortion Training among Colorado Nurse Practitioners, Nurse Midwives, and Physician Assistants,” *Women's Health Issues*, 30(3), 167-175.
+[https://doi.org/10.1016/j.whi.2020.02.001](https://doi.org/10.1016/j.whi.2020.02.001 )
+1.	Gance-Cleveland, B., Linton, A., **Arbet, J.**, Stiller, D., & Sylvain, G. (2020), “Predictors of Overweight and Obesity in Childhood Cancer Survivors,” *Journal of Pediatric Oncology Nursing*, 37(3), 154-162.
+[https://doi.org/10.1177%2F1043454219897102](https://doi.org/10.1177%2F1043454219897102 )
+1.	James-Allan, L. B., **Arbet, J.**, Teal, S. B., Powell, T. L., & Jansson, T. (2019), “Insulin stimulates GLUT4 trafficking to the syncytiotrophoblast basal plasma membrane in the human placenta,” *The Journal of Clinical Endocrinology & Metabolism*, 104(9), 4225-4238.
+[https://doi.org/10.1210/jc.2018-02778](https://doi.org/10.1210/jc.2018-02778)
+1.	**Arbet, J.**, McGue, M., Chatterjee, S., & Basu, S. (2017), “Resampling-based tests for Lasso in genome-wide association studies,” *BMC Genetics*, 18(1), 1-15.
+[https://doi.org/10.1186/s12863-017-0533-3](https://doi.org/10.1186/s12863-017-0533-3)
+1.	Grinde, K. E., **Arbet, J.**, Green, A., O'Connell, M., Valcarcel, A., Westra, J., & Tintle, N. (2017), “Illustrating, quantifying, and correcting for bias in post-hoc analysis of gene-based rare variant tests of association,” *Frontiers in Genetics*, 8, 117.
+[https://doi.org/10.3389/fgene.2017.00117](https://doi.org/10.3389/fgene.2017.00117)
+1.	Greco, B., Hainline, A., **Arbet, J.**, Grinde, K., Benitez, A., & Tintle, N. (2016), “A general approach for combining diverse rare variant association tests provides improved robustness across a wider range of genetic architectures,” *European Journal of Human Genetics*, 24(5), 767-773.
+[https://doi.org/10.1038/ejhg.2015.194](https://doi.org/10.1038/ejhg.2015.194 )
+
