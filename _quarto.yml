@@ -12,7 +12,7 @@ website:
       - href: index.qmd
         text: Home
       - research.qmd
-      - teaching.qmd
+      - presentations.qmd
     background: "#702963"
 
 format:

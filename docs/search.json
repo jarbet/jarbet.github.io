@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "jarbet.github.io",
+    "title": "Jaron Arbet, Ph.D.",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "I’m a biostatistician and data scientist working at the UCLA Jonsson Comprehensive Cancer Center in Dr. Paul Boutros’ Cancer Data Science lab.\nI’m passionate about using statistics, data science, and software development to advance cancer research and improve public health."
   },
   {
     "objectID": "about.html",
@@ -18,7 +18,7 @@
     "href": "research.html",
     "title": "Research",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Machine learning and predictive modeling\nWorking with high-dimensional “Big Data”\nVariable selection\nMulti-omics cancer data integration"
   },
   {
     "objectID": "presentations/causal-inference-observational-data-matching/causal-inference-observational-data-matching.html#why",
@@ -326,7 +326,7 @@
     "href": "teaching.html",
     "title": "Teaching",
     "section": "",
-    "text": "Presentations\n\n2023-09-24: Linear regression diagnostics\n2023-04-28: Causal inference with observational data using propensity score matching\n2022-08-25: Introduction to Bayesian statistics\n2022-04-22: Triplet matching: propensity score matching with 3 groups\n2021-11-21: Multiomics cancer data analysis\n2020-01-21: Interpretable machine learning"
+    "text": "Presentations\n\n2023-12-15: Nonparametric feature selection for big data with MARS\n2023-09-24: Linear regression diagnostics\n2023-04-28: Causal inference with observational data using propensity score matching\n2022-08-25: Introduction to Bayesian statistics\n2022-04-22: Triplet matching: propensity score matching with 3 groups\n2021-11-21: Multiomics cancer data analysis\n2020-01-21: Interpretable machine learning"
   },
   {
     "objectID": "presentations/causal-inference-matching/causal-inference-observational-data-matching.html",
@@ -775,5 +775,299 @@
     "title": "Regression Diagnostics",
     "section": "References",
     "text": "References\n\n\n\n\n\n\nLumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” Annual Review of Public Health 23 (1): 151–69."
+  },
+  {
+    "objectID": "research.html#publications",
+    "href": "research.html#publications",
+    "title": "Research",
+    "section": "Publications",
+    "text": "Publications\n\nNi, K., Rogowitz, E., Farahmand, A. K., Kaizer, L. K., Arbet, J., Cunningham, C. R., … & Saxon, D. R. (2024). Weight Loss Outcomes in a Veterans Affairs Pharmacotherapy-based Weight Management Clinic. Journal of the Endocrine Society, 8(5), bvae042. https://doi.org/10.1210/jendso/bvae042\nLippitt, W., Carlson, N. E., Arbet, J., Fingerlin, T. E., Maier, L. A., & Kechris, K. (2024). Limitations of clustering with PCA and correlated noise. Journal of Statistical Computation and Simulation, 1-29. https://doi.org/10.1080/00949655.2024.2329976\nGreca, A. L., Grau, L., Arbet, J., Liao, L. M., Sosa, J. A., Haugen, B. R., & Kitahara, C. M. (2023). Anthropometric, dietary, and lifestyle factors and risk of advanced thyroid cancer: The NIH‐AARP diet and health cohort study. Clinical Endocrinology, 99(6), 586-597. https://doi.org/10.1111/cen.14970\nChan, T. W., Dodson, J. P., Arbet, J., Boutros, P. C., & Xiao, X. (2023). Single-cell analysis in lung adenocarcinoma implicates RNA editing in cancer innate immunity and patient prognosis. Cancer research, 83(3), 374-385. https://doi.org/10.1158/0008-5472.CAN-22-1062\nGamallat Y, Choudhry M, Li Q, Rokne JG, Alhajj R, Abdelsalam R, Ghosh S, Arbet J, Boutros PC, Bismar TA. (2023) Serrate RNA Effector Molecule (SRRT) Is Associated with Prostate Cancer Progression and Is a Predictor of Poor Prognosis in Lethal Prostate Cancer. Cancers, 15(10):2867. https://doi.org/10.3390/cancers15102867\nGrau, L., Arbet, J., Ostendorf, D. M., Blankenship, J. M., Panter, S. L., Catenacci, V. A., … & Creasy, S. A. (2022). Creating an algorithm to identify indices of sleep quantity and quality from a wearable armband in adults. Sleep Science, 15(03), 279-287. https://doi.org/10.5935/1984-0063.20220052\nCreasy, S. A., Ostendorf, D. M., Blankenship, J. M., Grau, L., Arbet, J., Bessesen, D. H., … & Catenacci, V. A. (2022). Effect of sleep on weight loss and adherence to diet and physical activity recommendations during an 18-month behavioral weight loss intervention. International Journal of Obesity, 46(8), 1510-1517. https://doi.org/10.1038/s41366-022-01141-z\nLin, N. W., Arbet, J., Mroz, M. M., Liao, S. Y., Restrepo, C. I., Mayer, A. S., … & Maier, L. A. (2022). Clinical phenotyping in sarcoidosis using cluster analysis. Respiratory research, 23(1), 88. https://doi.org/10.1186/s12931-022-01993-z\nWood, C., Arbet, J., Amura, C. R., Nodine, P., Collins, M. R., Orlando, B. S., … & Anderson, J. (2022). Multicenter Study Evaluating Nitrous Oxide Use for Labor Analgesia at High-and Low-Altitude Institutions. Anesthesia & Analgesia, 134(2), 294-302. https://doi.org/10.1213/ane.0000000000005712\nOkamoto, Y., Devoe, S., Seto, N., Minarchick, V., Wilson, T., Rothfuss, H.M., Mohning, M.P., Arbet, J., Kroehl, M., Visser, A. and August, J., (2022). Association of sputum neutrophil extracellular trap subsets with IgA anti–citrullinated protein antibodies in subjects at risk for rheumatoid arthritis. Arthritis & Rheumatology, 74(1), pp.38-48. https://doi.org/10.1002/art.41948\nCarpenter, C. M., Frank, D. N., Williamson, K., Arbet, J., Wagner, B. D., Kechris, K., & Kroehl, M. E. (2021), “tidyMicro: a pipeline for microbiome data analysis and visualization using the tidyverse in R,” BMC Bioinformatics, 22(1), 1-13. https://doi.org/10.1186/s12859-021-03967-2\nOstendorf, D. M., Blankenship, J. M., Grau, L., Arbet, J., Mitchell, N. S., Creasy, S. A., … & Catenacci, V. A. (2021). Predictors of long‐term weight loss trajectories during a behavioral weight loss intervention: an exploratory analysis. Obesity Science & Practice, 7(5), 569-582. https://doi.org/10.1002/osp4.530\nNodine, P. M., Arbet, J., Jenkins, P. A., Rosenthal, L., Carrington, S., Purcell, S. K., … & Hoon, S. (2021), “Graduate nursing student stressors during the COVID-19 pandemic,” Journal of Professional Nursing, 37(4), 721-728. https://doi.org/10.1016/j.profnurs.2021.04.008\nRosenthal, L., Lee, S., Jenkins, P., Arbet, J., Carrington, S., Hoon, S., … & Nodine, P. (2021), “A Survey of Mental Health in Graduate Nursing Students during the COVID-19 Pandemic,” Nurse Educator. 46.4: 215-220. https://doi.org/10.1097/nne.0000000000001013\nArbet, J., Zhuang, Y., Litkowski, E., Saba, L., & Kechris, K. (2021), “Comparing Statistical Tests for Differential Network Analysis of Gene Modules,” Frontiers in Genetics, 12, 748. https://doi.org/10.3389/fgene.2021.630215\n\nRamakrishnan, V. R., Arbet, J., Mace, J. C., Suresh, K., Shintani Smith, S., Soler, Z. M., & Smith, T. L. (2021). Predicting olfactory loss in chronic rhinosinusitis using machine learning. Chemical Senses, 46, bjab042. https://doi.org/10.1093/chemse/bjab042\nArbet, J., Brokamp, C., Meinzen-Derr, J., Trinkley, K. E., & Spratt, H. M. (2021), “Lessons and tips for designing a machine learning study using EHR data,” Journal of Clinical and Translational Science, 5(1). *: Authors contributed equally to this work as first authors. https://doi.org/10.1017/cts.2020.513\nThomas, E.A., Zaman, A., Cornier, M.A., Catenacci, V.A., Tussey, E.J., Grau, L., Arbet, J., Broussard, J.L. and Rynders, C.A. (2021), “Later Meal and Sleep Timing Predicts Higher Percent Body Fat,” Nutrients, 13(1), p.73. https://doi.org/10.3390/nu13010073\nReed, S. M., Arbet, J., & Staubli, L. (2021), “Clinical Nurse Specialists in the United States Registered With a National Provider Identifier,” Clinical Nurse Specialist, 35(3), 119-128. https://doi.org/10.1097/nur.0000000000000592\nSchmanski, A., Roberts, E., Coors, M., Wicks, S. J., Arbet, J., Weber, R., … & Taylor, M. R. (2021), “Research participant understanding and engagement in an institutional, self‐consent biobank model,” Journal of Genetic Counseling, 30(1), 257-267. https://doi.org/10.1002/jgc4.1316\nArbet, J., McGue, M., & Basu, S. (2020), “A robust and unified framework for estimating heritability in twin studies using generalized estimating equations,” Statistics in Medicine, 39(27), 3897-3913. https://doi.org/10.1002/sim.8564\nColeman-Minahan, K., Sheeder, J., Arbet, J., & McLemore, M. R. (2020), “Interest in Medication and Aspiration Abortion Training among Colorado Nurse Practitioners, Nurse Midwives, and Physician Assistants,” Women’s Health Issues, 30(3), 167-175. https://doi.org/10.1016/j.whi.2020.02.001\nGance-Cleveland, B., Linton, A., Arbet, J., Stiller, D., & Sylvain, G. (2020), “Predictors of Overweight and Obesity in Childhood Cancer Survivors,” Journal of Pediatric Oncology Nursing, 37(3), 154-162. https://doi.org/10.1177%2F1043454219897102\nJames-Allan, L. B., Arbet, J., Teal, S. B., Powell, T. L., & Jansson, T. (2019), “Insulin stimulates GLUT4 trafficking to the syncytiotrophoblast basal plasma membrane in the human placenta,” The Journal of Clinical Endocrinology & Metabolism, 104(9), 4225-4238. https://doi.org/10.1210/jc.2018-02778\nArbet, J., McGue, M., Chatterjee, S., & Basu, S. (2017), “Resampling-based tests for Lasso in genome-wide association studies,” BMC Genetics, 18(1), 1-15. https://doi.org/10.1186/s12863-017-0533-3\nGrinde, K. E., Arbet, J., Green, A., O’Connell, M., Valcarcel, A., Westra, J., & Tintle, N. (2017), “Illustrating, quantifying, and correcting for bias in post-hoc analysis of gene-based rare variant tests of association,” Frontiers in Genetics, 8, 117. https://doi.org/10.3389/fgene.2017.00117\nGreco, B., Hainline, A., Arbet, J., Grinde, K., Benitez, A., & Tintle, N. (2016), “A general approach for combining diverse rare variant association tests provides improved robustness across a wider range of genetic architectures,” European Journal of Human Genetics, 24(5), 767-773. https://doi.org/10.1038/ejhg.2015.194"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html",
+    "href": "presentations/MARS/mars.html",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "",
+    "text": "library(BoutrosLab.plotting.general);\n\nLoading required package: lattice\n\n\nLoading required package: latticeExtra\n\n\nLoading required package: cluster\n\n\nLoading required package: hexbin\n\n\nWarning: package 'hexbin' was built under R version 4.1.3\n\n\nLoading required package: grid\n\n\n\nAttaching package: 'BoutrosLab.plotting.general'\n\n\nThe following object is masked from 'package:stats':\n\n    dist\n\nlibrary(GGally);\n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'ggplot2'\n\n\nThe following object is masked from 'package:latticeExtra':\n\n    layer\n\n\nRegistered S3 method overwritten by 'GGally':\n  method from   \n  +.gg   ggplot2\n\nlibrary(earth);\n\nLoading required package: Formula\n\n\nLoading required package: plotmo\n\n\nLoading required package: plotrix\n\n\nLoading required package: TeachingDemos\n\nlibrary(pdp);\nseed &lt;- 1234;\n\nsource('utilities.R');\ndata(PreDiabetes, package = 'MLDataR');\n\ndiabetes &lt;- data.frame(subset(x = PreDiabetes, select = c(Time_Pre_To_Diabetes, Sex, IMD_Decile, BMI, Age_PreDiabetes, HbA1C, PreDiabetes_Checks_Before_Diabetes)));\n\ncolnames(diabetes)[colnames(diabetes) == 'Time_Pre_To_Diabetes'] &lt;- 'Years_Pre_To_Diabetes';\ndata(fev, package = 'mplot');\ncolnames(fev)[colnames(fev) == 'height'] &lt;- 'height.inches';\nfev$sex &lt;- factor(fev$sex, levels = c(0,1), labels = c('Female', 'Male'));\nfev$smoke &lt;- factor(fev$smoke, levels = c(0, 1), labels = c('No', 'Yes'));"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#motivation",
+    "href": "presentations/MARS/mars.html#motivation",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Motivation",
+    "text": "Motivation\nGoal: build a flexible yet interpretable model like:\n\\[\\begin{equation}\n\\boldsymbol{y} = f(\\boldsymbol{x}_1, ..., \\boldsymbol{x}_P) + \\boldsymbol{e}\n\\end{equation}\\]\nGeneral linear models (GLM), e.g. linear or logistic regression are interpretable and can be flexible, but you need to decide:\n\nWhich predictors to include?\nFor each predictor: linear or non-linear effect?\nDo predictors interact? If yes, 2-way, 3-way, …?\n\n\n\n\n\n\n\n\nMARS (multivariate adaptive regression splines) automatically determines all of this for you 😃"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#piecewise-linear-functions",
+    "href": "presentations/MARS/mars.html#piecewise-linear-functions",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Piecewise linear functions",
+    "text": "Piecewise linear functions\nMARS uses simple piecewise linear functions (“splines”) that can approximate complex relationships\n\nKnots: points in \\(\\boldsymbol{X}\\) where effect on \\(\\boldsymbol{Y}\\) (slope) changes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuestion: what are 3 things you need to determine when fitting a piecewise linear spline?\n\n\nNumber of knots\nLocation of knots\nHow the slopes change at each knot (i.e. estimate separate slopes within each interval)\n\n\nMARS automatically decides all 3!\n\n\n\n\n\nEveringham, Y. L., J. Sexton, and Jimmy White. “An introduction to multivariate adaptive regression splines for the cane industry.” Proceedings of the 2011 Conference of the Australian Society of Sugar Cane Technologists. 2011.\nhttps://jekel.me/2017/Fit-a-piecewise-linear-function-to-data/\nhttps://flexbooks.ck12.org/cbook/ck-12-interactive-algebra-1-for-ccss/section/1.4/primary/lesson/piecewise-linear-functions-alg-1-ccss/"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#hinge-function",
+    "href": "presentations/MARS/mars.html#hinge-function",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Hinge function",
+    "text": "Hinge function\n\nMain building block of MARS used to construct the piecewise linear functions\nFor predictor \\(x\\) and knot at \\(x=t\\), hinge fn has 2 parts (Hastie et al. 2009):\n\n\n\n\n\n\n\n\n\n\n\n\nThe hinge fn comes in a pair of terms: Left \\((t-x)_+\\) and Right \\((x-t)_+\\)\nIf MARS selects a given hinge fn, it is input to a GLM and estimates 2 coefficients: \\(\\beta_{Left}(t-x)_+ + \\beta_{Right}(x-t)\\)"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#section",
+    "href": "presentations/MARS/mars.html#section",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "",
+    "text": "Suppose knot \\(t = 0.5\\). Here is what the hinge \\(\\beta_{L}(t-x)_+ + \\beta_{R}(x-t)\\) looks like for various coeffients:"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#why-piecewise-linear-hinge-functions",
+    "href": "presentations/MARS/mars.html#why-piecewise-linear-hinge-functions",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Why piecewise linear hinge functions?",
+    "text": "Why piecewise linear hinge functions?\n\nMany fancier splines exist (e.g. cubic, smoothing, penalized, B-splines)\n\n\n\nThe piecewise linear hinges are generally much faster and easier to implement for big data\n\n…the regression surface is built up parsimoniously, using nonzero components locally—only where they are needed. This is important, since one should “spend” parameters carefully in high dimensions, as they can run out quickly [“curse of dimensionality”]. The use of other basis functions such as polynomials, would produce a nonzero product everywhere, and would not work as well (Hastie et al. 2009)"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#overview",
+    "href": "presentations/MARS/mars.html#overview",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Overview",
+    "text": "Overview\n\nForward: build a large # hinges that overfit the data\nBackward: use backward VS to prune the model\nEstimate the final coefficients in lm/glm\n\n\n  http://www.milbo.org/doc/earth-notes.pdf\nNonparametric?\n\nParametric models require the user to pre-determine all parameters of the model to be estimated.\nNonparametric models like MARS automatically determine how to parameterize the model (# and form); more flexible."
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#forward-step",
+    "href": "presentations/MARS/mars.html#forward-step",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Forward step",
+    "text": "Forward step\n\n\\(\\boldsymbol{M}\\) = set of terms in model. Start with just an intercept \\(\\{1\\}\\).\n\\(\\boldsymbol{C}\\) = set of candidate hinge functions to add to model. Contains hinge functions at each observed value for each predictor (\\(N * P * 2\\) total terms):\n\n\\[\\begin{equation}\n\\boldsymbol{C} = \\big\\{(X_j - t)_+, (t - X_j)_+\\big\\} \\\\ t \\in \\{x_{1j}, x_{2j}, ..., x_{Nj}\\}; \\ j = 1,2, ..., P\n\\end{equation}\\]\n\n“At each stage we consider all products of a candidate hinge in \\(\\boldsymbol{C}\\) with a hinge in the model \\(\\boldsymbol{M}\\). The product that decreases the residual error the most is added into the current model.” (Hastie et al. 2009)\n\nThus at each step, it’s possible to add:\n\nInteraction term\nNew variable\nNew knot to an existing variable in the model\n\nExample first 3 steps:\n\n\n\n\n\n\n\n\nStop once maximum number of terms is reached"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#backwards-step",
+    "href": "presentations/MARS/mars.html#backwards-step",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Backwards step",
+    "text": "Backwards step\n\nForward step purposely builds a large model that overfits\nBackward step prunes the model to reduce overfitting:\n\n\nThe term whose removal causes the smallest increase in residual squared error is deleted from the model at each stage, producing an estimated best model \\(f_\\lambda\\) of each size (number of terms) \\(λ\\) (Hastie et al. 2009)\n\nThus the best models of size 1, 2, …, nprune features are identified\nBest? Measured by fast generalized cross validation (GCV) or more accurate but slower K-fold CV\n\nGCV provides a convenient approximation to leave-one out cross-validation for linear models [without needing to split/resample/refit data](Hastie et al. 2009)"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#tuning-mars",
+    "href": "presentations/MARS/mars.html#tuning-mars",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Tuning MARS",
+    "text": "Tuning MARS\nPotential tuning parameters:\n\nMax degree of interactions allowed (set to 1 for none).\nNumber of retained terms in the final model (nprune)\nMax number of terms in the Forward step (nk)\n\nSimplest tuning strategy:\n\nSet degree to a moderate value like 5 and use default nk\n\nGCV is used to automatically select nprune\nIf “Reached max number of terms” then increase nk\nIf many 5-way interactions, then increase degree\n\n\nMedium tuning strategy:\n\nSame as above but use K-fold CV to select nprune\n\nAdvanced tuning strategy:\n\nGrid for degree, nk and use K-fold CV to optimize."
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#example",
+    "href": "presentations/MARS/mars.html#example",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Example",
+    "text": "Example\n\nOutcome = forced expiatory volume in liters (fev)\nN = 654 youths age 3-19 from East Boston during 1970’s\n\n\n\nGGally::ggpairs(fev, showStrips = TRUE)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#fitting-mars-with-earth-r-package",
+    "href": "presentations/MARS/mars.html#fitting-mars-with-earth-r-package",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Fitting MARS with earth R package",
+    "text": "Fitting MARS with earth R package\n\nBy default, uses GCV to select optimal number of terms\n\n\nlibrary(earth);\nfit.gcv &lt;- earth(\n    formula = fev ~.,\n    data = fev,\n    degree = 5,\n    keepxy = TRUE\n    );\nprint(fit.gcv);\n\nSelected 6 of 17 terms, and 4 of 4 predictors\nTermination condition: Reached nk 21\nImportance: height.inches, sexMale, age, smokeYes\nNumber of terms at each degree of interaction: 1 3 2\nGCV 0.1487769    RSS 93.32458    GRSq 0.8024061    RSq 0.8098985\n\n\n\nSelected all 4 predictors, using 6 total hinge functions\nGRSq normalizes GCV from 0 to 1, similar to adjusted \\(R^2\\).\n\n\n\nplot(fit.gcv, which = c(1));"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#using-10-fold-cv-5-repeats-to-select-the-model-size",
+    "href": "presentations/MARS/mars.html#using-10-fold-cv-5-repeats-to-select-the-model-size",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Using 10-fold CV (5 repeats) to select the model size",
+    "text": "Using 10-fold CV (5 repeats) to select the model size\n\n\nset.seed(123);\nfit.cv &lt;- earth(\n    formula = fev ~.,\n    data = fev,\n    degree = 5,\n    keepxy = TRUE,\n    pmethod = 'cv',\n    nfold = 10,\n    ncross = 5\n    );\nprint(fit.cv);\n\nSelected 5 of 17 terms, and 3 of 4 predictors (pmethod=\"cv\")\nTermination condition: Reached nk 21\nImportance: height.inches, sexMale, age, smokeYes-unused\nNumber of terms at each degree of interaction: 1 3 1\nGRSq 0.8013863  RSq 0.8074228  mean.oof.RSq 0.7912661 (sd 0.049)\n\npmethod=\"backward\" would have selected:\n    6 terms 4 preds,  GRSq 0.8024061  RSq 0.8098985  mean.oof.RSq 0.7878347\n\nplot(fit.cv, which = 1);\n\n\n\n\n\n\nVery similar GRSq/RSq as using the simpler GCV tuning method, but 1 less term and omits smoke status"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#predictor-effects",
+    "href": "presentations/MARS/mars.html#predictor-effects",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Predictor effects",
+    "text": "Predictor effects\nLet’s explore the predictor effects from fit.gcv:\nSelected hinge functions and \\(\\hat{\\beta}\\):\n\nfit.gcv$coefficients;\n\n                                    fev\n(Intercept)                  2.74759130\nh(65-height.inches)         -0.09188745\nh(age-8)                     0.08327821\nh(height.inches-65)*sexMale  0.24942931\nh(height.inches-68)         -0.14391813\nh(age-8)*smokeYes           -0.02834601\n\n\nVariable importance scores:\n\n\nevimp(fit.gcv);\n\n              nsubsets   gcv    rss\nheight.inches        5 100.0  100.0\nsexMale              4  46.1   46.5\nage                  3  16.5   17.9\nsmokeYes             1   3.6    5.5\n\n\n\nPartial dependence plots:\n\nplotmo() can be used to plot the estimated effects\nI prefer the pdp R package for making similar plots:\n\n\n\nplot.features &lt;- list(\n    c('height.inches'),\n    c('age'),\n    c('sex'),\n    c('smoke'),\n    c('height.inches', 'sex'),\n    c('age', 'smoke')\n    );\npdps &lt;- lapply(\n    X = plot.features,\n    FUN = function(x) {\n        title &lt;- ifelse(length(x) == 1, x, paste(x, collapse = ', '));\n        p &lt;- pdp::partial(\n            object = fit.gcv,\n            pred.var = x,\n            rug = T\n            );\n        pdp::plotPartial(p, main = title, ylim = c(1, 4),  rug = TRUE, train = fit.gcv$data);\n        }\n    );\n\ncreate.multipanelplot(\n    filename = './figures/pdps.png',\n    resolution = 500,\n    plot.objects = pdps,\n    layout.width = 3,\n    layout.height = 2,\n    width = 10,\n    height = 7\n    );"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#extensions",
+    "href": "presentations/MARS/mars.html#extensions",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Extensions",
+    "text": "Extensions\n\nMARS/earth can be used for continuous, count, binary or multinomial outcomes\n\nIf multinomial, it’s recommended to also try using MARS with Flexable Discriminant Analaysis (FDA) - see “Notes on the earth package” for details.\n\nIn theory, MARS can handle missing values and time-to-event outcomes. However, I’m not aware of any R implementations that support this.\ncaret’s bagged MARS can improve prediction performance at the expense of interpretability"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#summary",
+    "href": "presentations/MARS/mars.html#summary",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Summary",
+    "text": "Summary\nMARS automatically handles:\n\nFeature engineering: what type of features to include? linear or non-linear, additive or interaction?\nFeature selection: given a high-dimensional set of initial features, which should you include?\n\nOther benefits:\n\nFast\nEasy to tune: simplest approach has 0 tuning parameters\nInterpretable\nHandles mixed numeric/categorical predictors without needing further transformation (similar to tree-methods)\nRobust to outliers in the predictors\n\nDownsides?\n\n\nIn my experience, although MARS is more interpretable, it generally has lower predictive performance compared to Random Forests. Bagging and/or random variable sets (like RF) might improve this, but needs further investigation.\nNo statistical inference (p-values or confidence intervals). I have ideas for how to do this, talk with me if interested.\nAlthough MARS in theory can handle missing values or time-to-event outcomes, I’m not aware of any free software that supports this. In contrast, many packages for tree-based models supports missing values and time-to-event outcomes (e.g. randomForestSRC R package)."
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#questions",
+    "href": "presentations/MARS/mars.html#questions",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "presentations/MARS/mars.html#references",
+    "href": "presentations/MARS/mars.html#references",
+    "title": "Nonparametric feature selection for big data with MARS",
+    "section": "References",
+    "text": "References\n\n“Notes on the earth package”\nOriginal MARS paper: Friedman, Jerome H. “Multivariate adaptive regression splines.” The annals of statistics 19.1 (1991): 1-67.\n\nA slightly more accessible Intro: Friedman, Jerome H., and Charles B. Roosen. “An introduction to multivariate adaptive regression splines.” Statistical methods in medical research 4.3 (1995): 197-217.\n\nIMO, the Elements of Statistical Learning chapter on MARS is the best short introduction"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html",
+    "title": "Regression Diagnostics",
+    "section": "",
+    "text": "library(BoutrosLab.plotting.general);\n\nLoading required package: lattice\n\n\nLoading required package: latticeExtra\n\n\nLoading required package: cluster\n\n\nLoading required package: hexbin\n\n\nWarning: package 'hexbin' was built under R version 4.1.3\n\n\nLoading required package: grid\n\n\n\nAttaching package: 'BoutrosLab.plotting.general'\n\n\nThe following object is masked from 'package:stats':\n\n    dist\n\nlibrary(mplot);\n\nWarning: package 'mplot' was built under R version 4.1.3\n\nlibrary(GGally);\n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'ggplot2'\n\n\nThe following object is masked from 'package:latticeExtra':\n\n    layer\n\n\nRegistered S3 method overwritten by 'GGally':\n  method from   \n  +.gg   ggplot2\n\nlibrary(sjPlot);\n\nLearn more about sjPlot with 'browseVignettes(\"sjPlot\")'.\n\nlibrary(car);\n\nLoading required package: carData\n\nseed &lt;- 1234;\n\nsource('utilities.R');\ndata(fev, package = 'mplot');\ncolnames(fev)[colnames(fev) == 'height'] &lt;- 'height.inches';\nfev$sex &lt;- factor(fev$sex, levels = c(0,1), labels = c('Female', 'Male'));\nfev$smoke &lt;- factor(fev$smoke, levels = c(0, 1), labels = c('No', 'Yes'));"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#overview",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#overview",
+    "title": "Regression Diagnostics",
+    "section": "Overview",
+    "text": "Overview\n\nWhat is linear regression?\nAssumptions\nDiagnostics and remedies for failed assumptions"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#linear-regression",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#linear-regression",
+    "title": "Regression Diagnostics",
+    "section": "Linear regression",
+    "text": "Linear regression\n\n\n\nContinuous response: \\(\\big\\{Y_i\\big\\}_{i=1}^N = (Y_1, ...., Y_N)\\)\nPredictors: \\(\\boldsymbol{X}_i = (X_{i1}, ..., X_{iP})\\)\n\n\n https://www.mathbootcamps.com/reading-scatterplots/ \n\nModel:\n\\[\\begin{equation}\nY_i = \\beta_0 + \\sum_{j=1}^P \\beta_j * X_{ij} + \\epsilon_i \\\\\n\\end{equation}\\]\nIndependent normal errors with constant variance:\n\\[\\begin{equation}\n\\epsilon_i \\overset{\\text{iid}}{\\sim} \\text{Normal}(0, \\sigma^2)\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#ordinary-least-squares-ols",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#ordinary-least-squares-ols",
+    "title": "Regression Diagnostics",
+    "section": "Ordinary Least Squares (OLS)",
+    "text": "Ordinary Least Squares (OLS)\n\nEstimate \\(\\hat{\\boldsymbol{\\beta}}\\) such that “sum of squared residuals” is minimized: \\(\\sum_{i=1}^n(y_i - \\hat{y})^2\\), where \\(\\hat{y}_i = \\hat{\\beta}_0 + \\sum_{j=1}^P \\hat{\\beta}_j * X_{ij}\\)\n\n\n\n\n\n\n https://medium.com/analytics-vidhya/ordinary-least-square-ols-method-for-linear-regression-ef8ca10aadfc"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#assumptions",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#assumptions",
+    "title": "Regression Diagnostics",
+    "section": "Assumptions",
+    "text": "Assumptions\n\n\nLinearity: relationship btwn \\(\\boldsymbol{X}\\) and \\(\\boldsymbol{Y}\\) is approximately linear\nNormally distributed residuals\n\nOR the sample size is large (Central Limit Theorem)\n\n\n…simulations studies show that “sufficiently large” is often under 100, and even for our extremely nonNormal medical cost data it is less than 500. (Lumley et al. 2002)\n\nHomoscedasticity (equal variance): the residuals have equal variance at every value of \\(\\boldsymbol{X}\\)\nIndependence: residuals are independent (not correlated)\n\nOther issues:\n\nMulticollinearity: highly correlated predictors can greatly increase Var(\\(\\hat{\\beta}\\))\nInfluencial observations/outliers can bias results\nAdditivity: by default, assumes no interactions btwn predictors. Need to manually add interaction terms."
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#example-dataset",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#example-dataset",
+    "title": "Regression Diagnostics",
+    "section": "Example dataset",
+    "text": "Example dataset\n\nOutcome = forced expiatory volume in liters (fev)\nN = 654 youths age 3-19 from East Boston during 1970’s\n\n\n\nGGally::ggpairs(fev, showStrips = TRUE)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#initial-model-with-all-variables",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#initial-model-with-all-variables",
+    "title": "Regression Diagnostics",
+    "section": "Initial model with all variables",
+    "text": "Initial model with all variables\n\n\nfit &lt;- lm(formula = fev ~., data = fev)\nsjPlot::tab_model(fit, ci.hyphen = ',&nbsp;', p.style = 'scientific', digits.p = 2);\n\n\n\n\n \nfev\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-4.46\n-4.89, -4.02\n1.07e-69\n\n\nage\n0.07\n0.05, 0.08\n1.21e-11\n\n\nheight inches\n0.10\n0.09, 0.11\n4.98e-80\n\n\nsex [Male]\n0.16\n0.09, 0.22\n2.74e-06\n\n\nsmoke [Yes]\n-0.09\n-0.20, 0.03\n1.41e-01\n\n\nObservations\n654\n\n\nR2 / R2 adjusted\n0.775 / 0.774"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#linearity",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#linearity",
+    "title": "Regression Diagnostics",
+    "section": "Linearity",
+    "text": "Linearity\n\n\nPlot residuals (\\(y - \\hat{y}\\)) vs. each predictor and \\(\\hat{y}\\). Want to see horizontal band around 0 with no patterns.\nCurvature in the plots suggests non-linear relationship\n\n\n\n\ncar::residualPlots(fit);\n\n\n\n\n\n\n\n\n              Test stat Pr(&gt;|Test stat|)    \nage              5.0256        6.500e-07 ***\nheight.inches    7.6489        7.354e-14 ***\nsex                                         \nsmoke                                       \nTukey test       8.3559        &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\ncar::residualPlots outputs a table which tests the linearity assumption of each continuous predictor. It reports the p-value for \\(X_j^2\\)."
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-non-linearity",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-non-linearity",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for non-linearity",
+    "text": "Remedies for non-linearity\n\nData transformation: transforming the outcome and/or predictor to make more normally distributed may help\nGAM: Generalized Additive Model automatically models linear/non-linear effects using smoothing splines: previous lab talks: 2022-12-08 and 2018-04-27\nPolynomials: e.g. \\(Age + Age^2 + Age^3 + ...\\)\n\nuse stats::poly() for uncorrelated polynomials; regular polynomials are usually highly correlated\n\n\n\n\nfit.poly &lt;- lm(fev ~ poly(age, 2) + poly(height.inches, 2) + sex + smoke, data = fev);\ncar::residualPlots(fit.poly, tests = FALSE);\n\n\n\n\n\n\n\n\n\n\nNote the adjusted \\(R^2\\) was 0.77 and 0.79 for the linear and polynomial models"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#normality-of-residuals-or-large-n",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#normality-of-residuals-or-large-n",
+    "title": "Regression Diagnostics",
+    "section": "Normality of residuals or large N",
+    "text": "Normality of residuals or large N\n\nSimulations and refs from (Lumley et al. 2002) suggest our N = 654 is sufficient. Nevertheless, you can visually check normality below.\nP-value tests of Normality are not recommended: low power in the scenario you care about (small N) but usually significant in the scenario you don’t care about (large N)\n\n\n\npar(mfrow = c(2, 2));\n\nhist(residuals(fit), main = 'Linear fit', xlim = c(-2, 2));\nhist(residuals(fit.poly), main = 'Polynomial fit', xlim = c(-2, 2));\nqqnorm(residuals(fit), main = 'Linear: Normal QQ plot');\nqqline(residuals(fit));\nqqnorm(residuals(fit.poly), main = 'Polynomial: Normal QQ plot');\nqqline(residuals(fit.poly));"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-non-normal-residuals",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-non-normal-residuals",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for non-normal residuals",
+    "text": "Remedies for non-normal residuals\n\nLarge \\(N\\)\nData transformation of outcome and/or predictors\nMake sure linearity assumption is met\nBootstrap confidence intervals for robust inference:\n\n\nset.seed(123);\nbootstrap &lt;- car::Boot(fit, method = 'case');\nround(confint(bootstrap), 3);\n\nBootstrap bca confidence intervals\n\n               2.5 % 97.5 %\n(Intercept)   -4.936 -3.940\nage            0.046  0.087\nheight.inches  0.093  0.114\nsexMale        0.103  0.231\nsmokeYes      -0.249  0.068"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#homoscedasticity-equal-variance",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#homoscedasticity-equal-variance",
+    "title": "Regression Diagnostics",
+    "section": "Homoscedasticity (equal variance)",
+    "text": "Homoscedasticity (equal variance)\n\n\nPlot residuals vs fitted values: want flat/horizontal band around 0\nFunnel pattern like &lt; or &gt; indicates heteroscedasticity\n\n\n\npar(mfrow = c(1,2))\ncar::residualPlot(fit, main = 'Linear fit');\ncar::residualPlot(fit.poly, main = 'Polynomial fit');\n\n\n\n\n\ncar::spreadLevelPlot: \\(log(|\\text{studentized residuals}|)\\) vs. \\(log(\\hat{y})\\)\n\nFlat horizontal line means equal variance\n\n\n\n\nSuggested power transformation:  0.3772182 \n\n\n\n\n\n\nSuggested power transformation:  -0.09245971 \n\n\n\ncar::ncvTest(fit);\n\nNon-constant Variance Score Test \nVariance formula: ~ fitted.values \nChisquare = 93.4299, Df = 1, p = &lt; 2.22e-16\n\ncar::ncvTest(fit.poly);\n\nNon-constant Variance Score Test \nVariance formula: ~ fitted.values \nChisquare = 127.954, Df = 1, p = &lt; 2.22e-16"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-unequal-variance",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-unequal-variance",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for unequal variance",
+    "text": "Remedies for unequal variance\n\nTransform \\(\\boldsymbol{Y}\\): car::spreadLevelPlot() prints a “Suggested power transformation” \\(\\tau\\). Refit model with \\(\\boldsymbol{Y}^\\tau\\).\nUnequal variance affects \\(Var({\\hat{\\beta}})\\) but not \\(\\hat{\\beta}\\). Thus, can use robust standard errors or bootstrap for CIs/pvalues:\n\n\n# robust standard errors\nrobust.se &lt;- lmtest::coeftest(\n    x = fit, \n    vcov = sandwich::vcovHC(fit)\n    );\nconfint(robust.se);"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#independent-residuals",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#independent-residuals",
+    "title": "Regression Diagnostics",
+    "section": "Independent residuals",
+    "text": "Independent residuals\n\nCorrelated residuals can occur from repeated measures, or when patients cluster by some group (e.g. family, hospital)\nPlot residuals vs time or other suspected clustering variables\nRemedies: robust sandwich standard errors to account for cluster effect; or linear mixed models"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#multicollinearity",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#multicollinearity",
+    "title": "Regression Diagnostics",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nHighly correlated predictors can increase \\(Var(\\hat{\\beta})\\), producing unreliable results\ncaret::findCorrelation removes predictors with corr &gt; cutoff\nVariance inflation factors: \\(\\text{VIF}(X_j) = \\frac{1}{1 - R^2_j}\\), where \\(R^2_j\\) is % variance of \\(X_j\\) explained by all other predictors\n\nVIF &gt; 10 is a common cutoff\n\n\n\ncar::vif(fit);\n\n          age height.inches           sex         smoke \n     3.019010      2.829728      1.060228      1.209564 \n\n\n\nOther remedies include PCA and regularized regression"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#influential-observations",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#influential-observations",
+    "title": "Regression Diagnostics",
+    "section": "Influential observations",
+    "text": "Influential observations\n\nExtreme values in \\(\\boldsymbol{Y}\\) and/or \\(\\boldsymbol{X}\\) can highly influence results\n\\(|\\text{Standardized residuals}| &gt; 3\\) indicates potential outlier (If normally distributed, expect 99.7% &lt; 3)\n\n\n\nplot(\n    x = fitted(fit),\n    y = rstandard(fit),\n    ylab = 'Standardized Residuals',\n    xlab = 'Fitted values'\n    );\nabline(h = -3, lty = 2);\nabline(h = 3, lty = 2);"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#cooks-distance",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#cooks-distance",
+    "title": "Regression Diagnostics",
+    "section": "Cook’s distance",
+    "text": "Cook’s distance\n\n\n\\(D_i = \\frac{\\sum_j(\\hat{y}_j - \\hat{y}_{j(i)})^2}{(p+1) * \\hat{\\sigma}^2}\\)\n\\(D_i\\) is proportional to the distance that the predicted values would move if the \\(i\\)th patient was excluded\nVarious cutoffs have been used in the literature, e.g. 1, \\(\\frac{4}{N}\\), or \\(\\frac{4}{N - p - 1}\\).. or visually identify patients with relatively large vals\n\n\n\n\ncar::influenceIndexPlot(fit, vars = 'Cook');"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-influential-observations",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#remedies-for-influential-observations",
+    "title": "Regression Diagnostics",
+    "section": "Remedies for influential observations",
+    "text": "Remedies for influential observations\n\nSensitivity analysis: fit 2 models that include or exclude influential obs. Do the results substantially change?\nRobust regression: include all patients but downweight influential observations\n\nR: https://www.john-fox.ca/Companion/appendices/Appendix-Robust-Regression.pdf\nquantreg::rq() for median regression"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#interactions",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#interactions",
+    "title": "Regression Diagnostics",
+    "section": "Interactions",
+    "text": "Interactions\n\nSomeone should do a short talk on interactions!\nBy default, linear regression assumes no interactions between predictors.\nYou can manually add interaction terms to the model to investigate. A*B in R formula gives A + B + A:B\n\n\n\n# allow all variables to interact with Sex\nfit.interaction &lt;- lm(fev ~ (age + height.inches + smoke) * sex, data = fev);\nsjPlot::tab_model(fit.interaction, ci.hyphen = ',&nbsp;', p.style = 'scientific', digits.p = 2);\n\n\n\n\n\n\n\n\n\n\n \nfev\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-3.36\n-4.07, -2.65\n1.93e-19\n\n\nage\n0.06\n0.03, 0.08\n5.05e-06\n\n\nheight inches\n0.09\n0.07, 0.10\n7.83e-30\n\n\nsmoke [Yes]\n-0.07\n-0.22, 0.08\n3.75e-01\n\n\nsex [Male]\n-1.32\n-2.23, -0.41\n4.48e-03\n\n\nage * sex [Male]\n0.03\n-0.01, 0.06\n1.39e-01\n\n\nheight inches * sex\n[Male]\n0.02\n0.00, 0.04\n4.07e-02\n\n\nsmoke [Yes] * sex [Male]\n0.02\n-0.22, 0.25\n8.93e-01\n\n\nObservations\n654\n\n\nR2 / R2 adjusted\n0.786 / 0.783\n\n\n\n\n\n\n\n\n\nIf you suspect many interactions, might be better to use a machine learning model that automatically handles interactions like decision-trees or Random Forest"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#summary",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#summary",
+    "title": "Regression Diagnostics",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\n\n\n\nAssumption \nAssessment \n\nSolution \n\n\n\n\nLinearity\ncar::residualPlots, want horizontal band around 0 for each predictor\n\n- Transform \\(Y\\) or \\(X\\) - GAM to automate linear/non-linear - Polynomials\n\n\nNormality of residuals\n- Histogram/density plot - Normal QQ plot\n\n- Large N - Transform \\(Y\\) or \\(X\\) - Make sure linear assumption met - Bootstrap CIs: confint(car::Boot(fit))\n\n\nEqual variance\n- car::residualPlot and car::spreadLevelPlot, want horizontal band around 0 - car::ncvTest\n\n- Transform \\(Y\\) using exponent from spreadLevelPlot - Robust standard errors or bootstrap CI\n\n\nIndependent residuals\nPlot residuals vs time or other suspected clustering variables\n\n- Robust sandwich standard errors for cluster effect - Linear mixed models\n\n\nMulticollinearity\n- Check correlation between predictors - car::vif, want VIF &lt; 10\n\n- Given 2 highly corr. predictors, only keep 1 - caret::findCorrelation to remove predictors with corr &gt; cutoff - PCA, regularized regression\n\n\nInfluential obs\n- Plot standardized residuals vs fitted values; |r| &gt; 3 outlier - Cook’s distance, car::influenceIndexPlot\n\n- Sensitivity analysis fitting models with/without influential obs - Robust regression to downweight influential obs: quantreg::rq\n\n\nInteractions\n- Manually add interaction terms, significant?\n\n- Manually add interaction terms - Stratify model by potential interaction terms - ML models that automatically handle interactions"
+  },
+  {
+    "objectID": "presentations/regression-diagnostics/regression_diagnostics.html#extensions-to-general-linear-models",
+    "href": "presentations/regression-diagnostics/regression_diagnostics.html#extensions-to-general-linear-models",
+    "title": "Regression Diagnostics",
+    "section": "Extensions to General Linear Models",
+    "text": "Extensions to General Linear Models\n\nGeneral linear model (GLM): for binary, multi-category, ordinal, or count outcomes\ncar::residualPlots to assess linearity of each predictor. Want to see horizontal band around 0 with no patterns. For non-linearity, use polynomials or GAM.\ncar::vif to assess multicollinearity\ncar::influenceIndexPlot to assess influential observations\ncar::Boot for robust bootstrap confidence intervals\nGLM also makes assumptions about the variance.. if false, can use bootstrap or robust standard errors:\n\n\nlmtest::coeftest(fit, vcov = sandwich::vcovHC(fit))"
+  },
+  {
+    "objectID": "research.html#interests",
+    "href": "research.html#interests",
+    "title": "Research",
+    "section": "",
+    "text": "Machine learning and predictive modeling\nWorking with high-dimensional “Big Data”\nVariable selection\nMulti-omics cancer data integration"
+  },
+  {
+    "objectID": "presentations.html",
+    "href": "presentations.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "Automatic feature selection and engineering with MARS\n\n2023-12-15: Nonparametric feature selection for big data with MARS\n\n2023-09-24: Linear regression diagnostics\n2023-04-28: Causal inference with observational data using propensity score matching\n2022-08-25: Introduction to Bayesian statistics\n2022-04-22: Triplet matching: propensity score matching with 3 groups\n2021-11-21: Multiomics cancer data analysis\n2020-01-21: Interpretable machine learning"
   }
 ]
