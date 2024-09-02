@@ -1068,6 +1068,6 @@
     "href": "presentations.html",
     "title": "Presentations",
     "section": "",
-    "text": "Automatic feature selection and engineering with MARS\n\n2023-12-15: Nonparametric feature selection for big data with MARS\n\n2023-09-24: Linear regression diagnostics\n2023-04-28: Causal inference with observational data using propensity score matching\n2022-08-25: Introduction to Bayesian statistics\n2022-04-22: Triplet matching: propensity score matching with 3 groups\n2021-11-21: Multiomics cancer data analysis\n2020-01-21: Interpretable machine learning"
+    "text": "Automatic feature selection and engineering with MARS\nLinear regression diagnostics\nCausal inference with observational data using propensity score matching\nIntroduction to Bayesian statistics\nTriplet matching: propensity score matching with 3 groups\nMultiomics cancer data analysis\nInterpretable machine learning"
   }
 ]
