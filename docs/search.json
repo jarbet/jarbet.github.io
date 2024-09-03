@@ -1068,6 +1068,13 @@
     "href": "presentations.html",
     "title": "Presentations",
     "section": "",
-    "text": "Automatic feature selection and engineering with MARS\nLinear regression diagnostics\nCausal inference with observational data using propensity score matching\nIntroduction to Bayesian statistics\nTriplet matching: propensity score matching with 3 groups\nMultiomics cancer data analysis\nInterpretable machine learning"
+    "text": "Robust regression for noisy biological data\nAutomatic feature selection and engineering with MARS\nLinear regression diagnostics\nCausal inference with observational data using propensity score matching\nIntroduction to Bayesian statistics\nTriplet matching: propensity score matching with 3 groups\nMultiomics cancer data analysis\nInterpretable machine learning"
+  },
+  {
+    "objectID": "temp.html",
+    "href": "temp.html",
+    "title": "hello",
+    "section": "",
+    "text": "hello\n\nimg &lt;- image_read(\"temp.tiff\")\nimage_write(img, \"temp-image.pdf\", format = \"pdf\")\nknitr::include_graphics(\"temp-image.pdf\")"
   }
 ]

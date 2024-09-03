@@ -2,6 +2,7 @@
 title: "Presentations"
 ---
 
+- [Robust regression for noisy biological data](https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html)
 - [Automatic feature selection and engineering with MARS](https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html)
 - [Linear regression diagnostics](https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html)
 - [Causal inference with observational data using propensity score matching](https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html)
