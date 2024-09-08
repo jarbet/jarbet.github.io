@@ -13,11 +13,10 @@ website:
         text: Home
       - research.qmd
       - presentations.qmd
-    background: "#702963"
 
 format:
   html:
-    theme: flatly
+    theme: pulse
     css: styles.css
     toc: true
 
