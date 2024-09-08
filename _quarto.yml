@@ -2,8 +2,7 @@ project:
   type: website
   output-dir: docs
   resources:
-     - './presentations/*.html'
-     - './presentations/*.pptx'
+     - './presentations/*.pdf'
 
 website:
   title: "Jaron Arbet, Ph.D."
@@ -11,8 +10,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - research.qmd
-      - presentations.qmd
+      - href: research.qmd
+        text: Research
+      - href: presentations.qmd
+        text: Presentations
 
 format:
   html:
