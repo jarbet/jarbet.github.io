@@ -17,7 +17,7 @@ website:
 
 format:
   html:
-    theme: pulse
+    theme: materia
     css: styles.css
     toc: true
 
