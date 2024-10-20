@@ -5,7 +5,7 @@ title: ""
 ## Interests
 
 * Machine learning and predictive modeling
-* Working with high-dimensional "Big Data"
+* High-dimensional "Big Data"
 * Variable selection
 * Multi-omics cancer data integration
 
