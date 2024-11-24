@@ -2,7 +2,7 @@
 title: ""
 bibliography: https://raw.githubusercontent.com/jarbet/CV/refs/heads/master/jaron_published.bib
 nocite: '@*'
-csl: https://raw.githubusercontent.com/jarbet/CV/refs/heads/master/apa-cv.csl
+csl: bib.csl
 filters:
   - dociteproc.lua
   - bold-arbet.lua
