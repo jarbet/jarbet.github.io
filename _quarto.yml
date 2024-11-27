@@ -12,7 +12,7 @@ website:
         text: Home
       - href: research.qmd
         text: Research
-      - href: presentations.qmd
+      - href: ./presentations
         text: Presentations
     right:
       - icon: github
