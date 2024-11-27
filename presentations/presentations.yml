@@ -1,0 +1,68 @@
+- title: Automatic feature selection and engineering with MARS
+  path: https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html
+  description: >
+    Multivariate adaptive regression splines (MARS) is a nonparametric machine learning method
+    that automatically identifies which features are important for predicting the target variable (feature selection)
+    as well as what forms the features should take (feature engineering), *i.e.* whether a feature should have
+    a linear, non-linear, additive, or interaction effect. It is fairly fast method for working with big data
+    and produces an interpretable model (not a black box).
+  categories: [Variable selection, Machine Learning, Nonparametric]
+  date: 2023-12-15
+  
+- title: Interpretable machine learning
+  path: ./2020-01-21_interpretable_machine_learning.pdf
+  description: >
+    Many machine learning models are considered "black boxes": data is input and predictions are output, but we have little insight into how the model makes its decisions.
+    This presentation covers methods for interpreting models, including visualizing the relationships between predictors and outcome, variable importance scores,
+    interaction scores to identify predictors that interact, and methods to explain how a model makes a prediction for a given subject (LIME and Shapley values).
+  categories: [Machine Learning]
+  date: 2020-01-21
+  
+- title: Multi-omics data integration
+  path: ./2021-11-21_multiomics_cancer.pdf
+  description: >
+    Multi-omics data integration is the process of combining data from different omics platforms (*e.g.* genomics, transcriptomics, epigenomics) to gain a more comprehensive understanding of biological systems.
+    This presentation explains how to download multi-omics data from the TCGA database.
+    Then dimension reduction methods are considered (PCA, PLS and CCA), and are shown to identify groups of correlated features.
+    Lastly, two machine learning methods are compared for using multi-omic features to predict survival in kidney cancer patients.
+  categories: [Multi-omics]
+  date: 2021-11-21
+
+- title: Robust regression for noisy biological data
+  path: https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html
+  description: >
+    Biological variables are often non-normally distributed, contain outliers, may have lower limits of detection, excessive zeros or multiple modes.
+    The proportional odds (PO) regression model can easily handle these issues and is a robust alternative to linear regression and other parametric models.
+    Indeed, the PO model can be thought of as an extension of the robust Wilcoxon rank-sum test that can adjust for covariates.
+  categories: [Nonparametric, Regression]
+  date: 2024-09-06
+
+- title: Linear regression diagnostics
+  path: https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html
+  description: >
+    This presentation introduces linear regression, covering its core assumptions, diagnostic techniques for assessing them, and strategies for addressing violations.
+  categories: [Regression]
+  date: 2024-07-25
+
+- title: Causal inference with observational data using propensity score matching
+  path: https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html
+  description: >
+    This presentation introduces propensity score matching as a method for attempting causal inference with observational data.
+  categories: [Causal inference]
+  date: 2023-04-23
+
+- title: "Triplet matching: propensity score matching with 3 groups"
+  path: 20220422_triplet_matching.pdf
+  description: >
+    Propensity score matching is a popular method for attempting causal inference with observational data.
+    However, the vast majority of implementations focus on matching only two groups for a binary exposure variable.
+    This presentation introduces triplet matching, a generalization of propensity score matching to three groups.
+  categories: [Causal inference]
+  date: 2022-04-22
+
+- title: Introduction to Bayesian statistics
+  path: 2022-08-25_Bayesian_stats.pdf
+  description: >
+   An introduction to the basics of Bayesian statistics, including Bayes' Theorem, the 3 key aspects of Bayesian analysis (prior, model and posterior), and a comparison with traditional Frequentist statistics. 
+  categories: [Bayesian statistics]
+  date: 2022-08-25
