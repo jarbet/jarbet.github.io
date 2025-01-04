@@ -1,0 +1,40 @@
+---
+title: "Introduction to survival (time-to-event) analysis"
+description: "This is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic."
+categories: [survival analysis]
+image: /blog/pics/survival.png
+execute:
+  cache: true
+date: 2025-01-04
+author: Jaron Arbet
+---
+
+
+# Intro
+
+* [Quick intro](https://www.nature.com/articles/s41592-022-01563-7)
+* [Example R code for common survival analysis methods](https://www.openintro.org/go/?id=survival_analysis_in_R&referrer=/book/surv_in_r/index.php).  Covers 3 of the most common methods used in survival analysis: log-rank test and Kaplan Meir plots for comparing survival curves between groups, and Cox proportional hazards regression model.
+* [logrank test for comparing survival curves between groups](https://www.bmj.com/content/bmj/328/7447/1073.full.pdf)
+
+# How to interpret hazard ratios
+
+* [https://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004](https://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004)
+* The “hazard ratio” is the most common effect size used in survival analysis.  Briefly, it compares the risk of having the event occur in the next instant between groups
+
+
+# Regression for time-to-event outcomes
+
+* [https://www.nature.com/articles/s41592-022-01689-8](https://www.nature.com/articles/s41592-022-01689-8)
+* Intro to the **Cox proportional hazard model** (most common regression model for survival data)
+* Also introduces the **accelerated failure time model (AFTR)**.  Although less commonly used , this model has a nice interpretation that uses “time ratios”: it compares the ratio of the average time of event in group 1 to the average time of event in group 2.
+
+
+# Machine learning
+
+Here are 2 popular machine learning models used for time-to-event outcomes:
+
+* [Regularized Cox model](https://glmnet.stanford.edu/articles/Coxnet.html) (i.e. a modified version of the Cox model that performs automatic feature selection)
+* [Random survival forest](https://www.randomforestsrc.org/articles/survival.html).  Perhaps you’ve heard of “random forests” before, it is one of the most popular machine learning methods that [has been shown to work well across a wide variety of applications](https://www.jmlr.org/papers/volume15/delgado14a/delgado14a.pdf?source=post_page---------------------------).
+
+The **C-index** can be used to assess the predictive accuracy of a survival model. It is similar to the AUROC in that it ranges from 0 to 1, with 0.5 indicating no predictive ability and 1 indicating perfect predictive ability.  Most survival model R functions will calculate the C-index for you, but if not, there are a few R packages for calculating it and comparing C between different models: [survcomp](https://www.bioconductor.org/packages/release/bioc/html/survcomp.html), [compareC](https://cran.r-project.org/web/packages/compareC/), [survC1](https://cran.r-project.org/web/packages/survC1/index.html)
+

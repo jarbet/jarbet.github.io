@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Jaron Arbet, Ph.D.</title>
+<link>https://jarbet.github.io/blog.html</link>
+<atom:link href="https://jarbet.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<description>My personal website and blog</description>
+<generator>quarto-1.5.57</generator>
+<lastBuildDate>Sat, 04 Jan 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>Imputing missing data</title>
+  <dc:creator>Jaron Arbet</dc:creator>
+  <link>https://jarbet.github.io/posts/imputation/imputation.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p><a href="https://www.annualreviews.org/doi/abs/10.1146/annurev.psych.58.110405.085530">Missing data analysis: Making it work in the real world</a></p>
+<ul>
+<li>Multiple imputation is the gold standard method for handling missing data but is computationally intensive.</li>
+<li>EM algorithm works well, but lack of general software.</li>
+<li>If doing likelihood-based regression modeling, then as long as you adjust for variables that influence missingness, results will not be biased due to missing data (although patients with missing values are dropped from the model, thus decreasing power).
+<ul>
+<li>Imputation likely still better due to improved power (i.e.&nbsp;all patients can be included).</li>
+</ul></li>
+</ul>
+</section>
+<section id="single-imputation" class="level1">
+<h1>Single imputation</h1>
+<p>There are various scenarios where one wants to impute missing values a single time:</p>
+<ul>
+<li>When the goal is not statistical inference, but prediction</li>
+<li>If you want to cluster your data before using <code>BoutrosLab.plotting.general::create.heatmap</code></li>
+<li>If the goal is statistical inference, often people will still do single imputation despite multiple imputation being the gold standard. Single imputation is so much easier/faster although more biased.</li>
+</ul>
+<p><strong>R notes</strong>:</p>
+<ul>
+<li>Set the seed beforehand</li>
+<li>All of these methods will throw errors if some features have 0 variance (i.e.&nbsp;they only take on 1 value). Remove such features beforehand.</li>
+<li>For <code>missForest/missMDA</code>: make sure rownames are set to patient.id beforehand</li>
+<li>For <code>impute::impute.knn</code>: make sure rownames are feature names and colnames are patient.id</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">suppressPackageStartupMessages</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(missForest));</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">suppressPackageStartupMessages</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(missMDA));</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">suppressPackageStartupMessages</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(impute));</span></code></pre></div>
+</div>
+<section id="continuous" class="level2">
+<h2 class="anchored" data-anchor-id="continuous">Continuous</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">123</span>);</span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'geno'</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">package =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'missMDA'</span>); </span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># impute.knn (features in rows, samples in cols)</span></span>
+<span id="cb2-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># this is my preferred method for high dimensional continuous data since it is relatively fast</span></span>
+<span id="cb2-7">knn.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> impute<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">impute.knn</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">t</span>(geno))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>data;</span>
+<span id="cb2-8">knn.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">t</span>(knn.imp), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">check.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>);</span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># PCA (samples in rows, features in cols)</span></span>
+<span id="cb2-11">ncomp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> missMDA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">estim_ncpPCA</span>(geno, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncp.min =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncp.max =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>);</span>
+<span id="cb2-12">pca.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> missMDA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">imputePCA</span>(geno, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncp =</span> ncomp<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ncp, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>completeObs;</span>
+<span id="cb2-13"></span>
+<span id="cb2-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># missForest</span></span>
+<span id="cb2-15">mf.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> missForest<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">missForest</span>(geno)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ximp;</span></code></pre></div>
+</div>
+</section>
+<section id="categorical" class="level2">
+<h2 class="anchored" data-anchor-id="categorical">Categorical</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'vnf'</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">package =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'missMDA'</span>);</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># missForest</span></span>
+<span id="cb3-4">mf.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> missForest<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">missForest</span>(vnf)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ximp;</span>
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MCA</span></span>
+<span id="cb3-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#ncomp &lt;- missMDA::estim_ncpMCA(vnf); # slow method to estimate number of components</span></span>
+<span id="cb3-8">mca.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> missMDA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">imputeMCA</span>(vnf, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncp =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>complete.obs;</span></code></pre></div>
+</div>
+</section>
+<section id="mixed-continuouscategorical" class="level2">
+<h2 class="anchored" data-anchor-id="mixed-continuouscategorical">Mixed continuous/categorical</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'snorena'</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">package =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'missMDA'</span>); </span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># missForest</span></span>
+<span id="cb4-4">mf.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> missForest<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">missForest</span>(snorena)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ximp;</span>
+<span id="cb4-5"></span>
+<span id="cb4-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># FAMD</span></span>
+<span id="cb4-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#missMDA::estim_ncpFAMD(snorena); # slow method to estimate number of components</span></span>
+<span id="cb4-8">famd.imp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> missMDA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">imputeFAMD</span>(snorena, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncp =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>completeObs</span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="multiple-imputation" class="level1">
+<h1>Multiple imputation</h1>
+<ul>
+<li>As mentioned in the intro, multiple imputation is the gold standard for handling missing data because it accounts for uncertainty in the imputed values.</li>
+<li>Impute dataset multiple times to create <em>multiple imputed datasets</em>. Analyze each dataset separately then pool the results for statistical inference.</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/mpr.329">Multiple imputation by chained equations: what is it and how does it work?</a></li>
+<li><a href="https://cran.r-project.org/web/packages/mice/index.html">mice R package</a>
+<ul>
+<li><a href="https://www.jstatsoft.org/article/view/v045i03">mice JSS article</a></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand for Session Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.4.1 (2024-06-14 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 10 x64 (build 19045)
+
+Matrix products: default
+
+
+locale:
+[1] LC_COLLATE=English_United States.utf8 
+[2] LC_CTYPE=English_United States.utf8   
+[3] LC_MONETARY=English_United States.utf8
+[4] LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.utf8    
+
+time zone: America/Los_Angeles
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] impute_1.80.0  missMDA_1.19   missForest_1.5
+
+loaded via a namespace (and not attached):
+ [1] shape_1.4.6.1        gtable_0.3.5         xfun_0.49           
+ [4] ggplot2_3.5.1        htmlwidgets_1.6.4    ggrepel_0.9.6       
+ [7] lattice_0.22-6       vctrs_0.6.5          tools_4.4.1         
+[10] generics_0.1.3       parallel_4.4.1       sandwich_3.1-1      
+[13] tibble_3.2.1         fansi_1.0.6          pan_1.9             
+[16] cluster_2.1.6        jomo_2.7-6           pkgconfig_2.0.3     
+[19] Matrix_1.7-0         rngtools_1.5.2       scatterplot3d_0.3-44
+[22] lifecycle_1.0.4      compiler_4.4.1       munsell_0.5.1       
+[25] leaps_3.2            codetools_0.2-20     htmltools_0.5.8.1   
+[28] glmnet_4.1-8         yaml_2.3.10          mice_3.17.0         
+[31] nloptr_2.1.1         pillar_1.9.0         FactoMineR_2.11     
+[34] tidyr_1.3.1          MASS_7.3-60.2        flashClust_1.01-2   
+[37] DT_0.33              doRNG_1.8.6          iterators_1.0.14    
+[40] rpart_4.1.23         boot_1.3-30          mitml_0.4-5         
+[43] multcomp_1.4-26      foreach_1.5.2        nlme_3.1-164        
+[46] tidyselect_1.2.1     digest_0.6.37        mvtnorm_1.3-1       
+[49] dplyr_1.1.4          purrr_1.0.2          splines_4.4.1       
+[52] fastmap_1.2.0        grid_4.4.1           colorspace_2.1-1    
+[55] cli_3.6.3            magrittr_2.0.3       randomForest_4.7-1.2
+[58] survival_3.6-4       utf8_1.2.4           broom_1.0.7         
+[61] TH.data_1.1-2        scales_1.3.0         backports_1.5.0     
+[64] estimability_1.5.1   rmarkdown_2.28       emmeans_1.10.6      
+[67] nnet_7.3-19          lme4_1.1-35.5        zoo_1.8-12          
+[70] coda_0.19-4.1        evaluate_1.0.0       knitr_1.48          
+[73] doParallel_1.0.17    rlang_1.1.4          itertools_0.1-3     
+[76] Rcpp_1.0.13          xtable_1.8-4         glue_1.8.0          
+[79] minqa_1.2.8          rstudioapi_0.16.0    jsonlite_1.8.9      
+[82] R6_2.5.1             multcompView_0.1-10 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>missing-data</category>
+  <guid>https://jarbet.github.io/posts/imputation/imputation.html</guid>
+  <pubDate>Sat, 04 Jan 2025 08:00:00 GMT</pubDate>
+  <media:content url="https://jarbet.github.io/posts/pics/missing.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Introduction to survival (time-to-event) analysis</title>
+  <dc:creator>Jaron Arbet</dc:creator>
+  <link>https://jarbet.github.io/posts/intro_survival/intro_survival.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<ul>
+<li><a href="https://www.nature.com/articles/s41592-022-01563-7">Quick intro</a></li>
+<li><a href="https://www.openintro.org/go/?id=survival_analysis_in_R&amp;referrer=/book/surv_in_r/index.php">Example R code for common survival analysis methods</a>. Covers 3 of the most common methods used in survival analysis: log-rank test and Kaplan Meir plots for comparing survival curves between groups, and Cox proportional hazards regression model.</li>
+<li><a href="https://www.bmj.com/content/bmj/328/7447/1073.full.pdf">logrank test for comparing survival curves between groups</a></li>
+</ul>
+</section>
+<section id="how-to-interpret-hazard-ratios" class="level1">
+<h1>How to interpret hazard ratios</h1>
+<ul>
+<li><a href="https://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004">https://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004</a></li>
+<li>The “hazard ratio” is the most common effect size used in survival analysis. Briefly, it compares the risk of having the event occur in the next instant between groups</li>
+</ul>
+</section>
+<section id="regression-for-time-to-event-outcomes" class="level1">
+<h1>Regression for time-to-event outcomes</h1>
+<ul>
+<li><a href="https://www.nature.com/articles/s41592-022-01689-8">https://www.nature.com/articles/s41592-022-01689-8</a></li>
+<li>Intro to the <strong>Cox proportional hazard model</strong> (most common regression model for survival data)</li>
+<li>Also introduces the <strong>accelerated failure time model (AFTR)</strong>. Although less commonly used , this model has a nice interpretation that uses “time ratios”: it compares the ratio of the average time of event in group 1 to the average time of event in group 2.</li>
+</ul>
+</section>
+<section id="machine-learning" class="level1">
+<h1>Machine learning</h1>
+<p>Here are 2 popular machine learning models used for time-to-event outcomes:</p>
+<ul>
+<li><a href="https://glmnet.stanford.edu/articles/Coxnet.html">Regularized Cox model</a> (i.e.&nbsp;a modified version of the Cox model that performs automatic feature selection)</li>
+<li><a href="https://www.randomforestsrc.org/articles/survival.html">Random survival forest</a>. Perhaps you’ve heard of “random forests” before, it is one of the most popular machine learning methods that <a href="https://www.jmlr.org/papers/volume15/delgado14a/delgado14a.pdf?source=post_page---------------------------">has been shown to work well across a wide variety of applications</a>.</li>
+</ul>
+<p>The <strong>C-index</strong> can be used to assess the predictive accuracy of a survival model. It is similar to the AUROC in that it ranges from 0 to 1, with 0.5 indicating no predictive ability and 1 indicating perfect predictive ability. Most survival model R functions will calculate the C-index for you, but if not, there are a few R packages for calculating it and comparing C between different models: <a href="https://www.bioconductor.org/packages/release/bioc/html/survcomp.html">survcomp</a>, <a href="https://cran.r-project.org/web/packages/compareC/">compareC</a>, <a href="https://cran.r-project.org/web/packages/survC1/index.html">survC1</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>survival analysis</category>
+  <guid>https://jarbet.github.io/posts/intro_survival/intro_survival.html</guid>
+  <pubDate>Sat, 04 Jan 2025 08:00:00 GMT</pubDate>
+  <media:content url="https://jarbet.github.io/blog/pics/survival.png" medium="image" type="image/png"/>
+</item>
+</channel>
+</rss>

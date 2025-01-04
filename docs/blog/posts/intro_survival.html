@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jaron Arbet">
+<meta name="dcterms.date" content="2025-01-04">
+<meta name="description" content="This is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic.">
 
-<title>Presentations – Jaron Arbet, Ph.D.</title>
+<title>Introduction to survival (time-to-event) analysis – Jaron Arbet, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,65 +69,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-description","listing-categories","listing-date"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -137,7 +80,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Jaron Arbet, Ph.D.</span>
     </a>
   </div>
@@ -148,19 +91,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
+    <a class="nav-link" href="../../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href=".././presentations"> 
+    <a class="nav-link" href="../.././presentations"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href=".././blog"> 
+    <a class="nav-link" href="../.././blog"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -187,21 +130,50 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Bayesian statistics">Bayesian statistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Causal inference">Causal inference <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Machine Learning">Machine Learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Multi-omics">Multi-omics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Nonparametric">Nonparametric <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Regression">Regression <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Variable selection">Variable selection <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#how-to-interpret-hazard-ratios" id="toc-how-to-interpret-hazard-ratios" class="nav-link" data-scroll-target="#how-to-interpret-hazard-ratios">How to interpret hazard ratios</a></li>
+  <li><a href="#regression-for-time-to-event-outcomes" id="toc-regression-for-time-to-event-outcomes" class="nav-link" data-scroll-target="#regression-for-time-to-event-outcomes">Regression for time-to-event outcomes</a></li>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link" data-scroll-target="#machine-learning">Machine learning</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Presentations</h1>
-</div>
+<h1 class="title">Introduction to survival (time-to-event) analysis</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">survival analysis</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    This is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jaron Arbet </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 4, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -211,226 +183,42 @@ window.Quarto = {
 </header>
 
 
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<ul>
+<li><a href="https://www.nature.com/articles/s41592-022-01563-7">Quick intro</a></li>
+<li><a href="https://www.openintro.org/go/?id=survival_analysis_in_R&amp;referrer=/book/surv_in_r/index.php">Example R code for common survival analysis methods</a>. Covers 3 of the most common methods used in survival analysis: log-rank test and Kaplan Meir plots for comparing survival curves between groups, and Cox proportional hazards regression model.</li>
+<li><a href="https://www.bmj.com/content/bmj/328/7447/1073.full.pdf">logrank test for comparing survival curves between groups</a></li>
+</ul>
+</section>
+<section id="how-to-interpret-hazard-ratios" class="level1">
+<h1>How to interpret hazard ratios</h1>
+<ul>
+<li><a href="https://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004">https://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004</a></li>
+<li>The “hazard ratio” is the most common effect size used in survival analysis. Briefly, it compares the risk of having the event occur in the next instant between groups</li>
+</ul>
+</section>
+<section id="regression-for-time-to-event-outcomes" class="level1">
+<h1>Regression for time-to-event outcomes</h1>
+<ul>
+<li><a href="https://www.nature.com/articles/s41592-022-01689-8">https://www.nature.com/articles/s41592-022-01689-8</a></li>
+<li>Intro to the <strong>Cox proportional hazard model</strong> (most common regression model for survival data)</li>
+<li>Also introduces the <strong>accelerated failure time model (AFTR)</strong>. Although less commonly used , this model has a nice interpretation that uses “time ratios”: it compares the ratio of the average time of event in group 1 to the average time of event in group 2.</li>
+</ul>
+</section>
+<section id="machine-learning" class="level1">
+<h1>Machine learning</h1>
+<p>Here are 2 popular machine learning models used for time-to-event outcomes:</p>
+<ul>
+<li><a href="https://glmnet.stanford.edu/articles/Coxnet.html">Regularized Cox model</a> (i.e.&nbsp;a modified version of the Cox model that performs automatic feature selection)</li>
+<li><a href="https://www.randomforestsrc.org/articles/survival.html">Random survival forest</a>. Perhaps you’ve heard of “random forests” before, it is one of the most popular machine learning methods that <a href="https://www.jmlr.org/papers/volume15/delgado14a/delgado14a.pdf?source=post_page---------------------------">has been shown to work well across a wide variety of applications</a>.</li>
+</ul>
+<p>The <strong>C-index</strong> can be used to assess the predictive accuracy of a survival model. It is similar to the AUROC in that it ranges from 0 to 1, with 0.5 indicating no predictive ability and 1 indicating perfect predictive ability. Most survival model R functions will calculate the C-index for you, but if not, there are a few R packages for calculating it and comparing C between different models: <a href="https://www.bioconductor.org/packages/release/bioc/html/survcomp.html">survcomp</a>, <a href="https://cran.r-project.org/web/packages/compareC/">compareC</a>, <a href="https://cran.r-project.org/web/packages/survC1/index.html">survC1</a></p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Nonparametric,Regression" data-listing-date-sort="1725606000000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external">Robust regression for noisy biological data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Nonparametric'); return false;">
-Nonparametric
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Regression'); return false;">
-Regression
-</div>
-</div>
-<div class="listing-description">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external">Biological variables are often non-normally distributed, contain outliers, may have lower limits of detection, excessive zeros or multiple modes. The proportional odds (PO) regression model can easily handle these issues and is a robust alternative to linear regression and other parametric models. Indeed, the PO model can be thought of as an extension of the robust Wilcoxon rank-sum test that can adjust for covariates. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external">
-<div class="listing-date">
-Sep 6, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Regression" data-listing-date-sort="1721890800000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external">Linear regression diagnostics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Regression'); return false;">
-Regression
-</div>
-</div>
-<div class="listing-description">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external">This presentation introduces linear regression, covering its core assumptions, diagnostic techniques for assessing them, and strategies for addressing violations. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external">
-<div class="listing-date">
-Jul 25, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Variable selection,Machine Learning,Nonparametric" data-listing-date-sort="1702627200000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external">Automatic feature selection and engineering with MARS</a>
-</h3>
-<div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Variable selection'); return false;">
-Variable selection
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
-Machine Learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Nonparametric'); return false;">
-Nonparametric
-</div>
-</div>
-<div class="listing-description">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external">Multivariate adaptive regression splines (MARS) is a nonparametric machine learning method that automatically identifies which features are important for predicting the target variable (feature selection) as well as what forms the features should take (feature engineering), <em>i.e.</em> whether a feature should have a linear, non-linear, additive, or interaction effect. It is fairly fast method for working with big data and produces an interpretable model (not a black box). </a>
-</div>
-</div>
-<div class="metadata">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external">
-<div class="listing-date">
-Dec 15, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Causal inference" data-listing-date-sort="1682233200000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external">Causal inference with observational data using propensity score matching</a>
-</h3>
-<div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Causal inference'); return false;">
-Causal inference
-</div>
-</div>
-<div class="listing-description">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external">This presentation introduces propensity score matching as a method for attempting causal inference with observational data. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external">
-<div class="listing-date">
-Apr 23, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Bayesian statistics" data-listing-date-sort="1661410800000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external">Introduction to Bayesian statistics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Bayesian statistics'); return false;">
-Bayesian statistics
-</div>
-</div>
-<div class="listing-description">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external">An introduction to the basics of Bayesian statistics, including Bayes’ Theorem, the 3 key aspects of Bayesian analysis (prior, model and posterior), and a comparison with traditional Frequentist statistics. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external">
-<div class="listing-date">
-Aug 25, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Causal inference" data-listing-date-sort="1650610800000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="20220422_triplet_matching.pdf" class="no-external">Triplet matching: propensity score matching with 3 groups</a>
-</h3>
-<div class="listing-subtitle">
-<a href="20220422_triplet_matching.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Causal inference'); return false;">
-Causal inference
-</div>
-</div>
-<div class="listing-description">
-<a href="20220422_triplet_matching.pdf" class="no-external">Propensity score matching is a popular method for attempting causal inference with observational data. However, the vast majority of implementations focus on matching only two groups for a binary exposure variable. This presentation introduces triplet matching, a generalization of propensity score matching to three groups. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="20220422_triplet_matching.pdf" class="no-external">
-<div class="listing-date">
-Apr 22, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="Multi-omics" data-listing-date-sort="1637481600000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external">Multi-omics data integration</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Multi-omics'); return false;">
-Multi-omics
-</div>
-</div>
-<div class="listing-description">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external">Multi-omics data integration is the process of combining data from different omics platforms (<em>e.g.</em> genomics, transcriptomics, epigenomics) to gain a more comprehensive understanding of biological systems. This presentation explains how to download multi-omics data from the TCGA database. Then dimension reduction methods are considered (PCA, PLS and CCA), and are shown to identify groups of correlated features. Lastly, two machine learning methods are compared for using multi-omic features to predict survival in kidney cancer patients. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external">
-<div class="listing-date">
-Nov 21, 2021
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="Machine Learning" data-listing-date-sort="1579593600000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external">Interpretable machine learning</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
-Machine Learning
-</div>
-</div>
-<div class="listing-description">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external">Many machine learning models are considered “black boxes”: data is input and predictions are output, but we have little insight into how the model makes its decisions. This presentation covers methods for interpreting models, including visualizing the relationships between predictors and outcome, variable importance scores, interaction scores to identify predictors that interact, and methods to explain how a model makes a prediction for a given subject (LIME and Shapley values). </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external">
-<div class="listing-date">
-Jan 21, 2020
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

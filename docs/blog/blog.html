@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Presentations – Jaron Arbet, Ph.D.</title>
+<title>Possibly Significant – Jaron Arbet, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-description","listing-categories","listing-date"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -128,7 +128,7 @@ window.Quarto = {
 };
 </script>
 
-</head>
+<link rel="alternate" type="application/rss+xml" title="Jaron Arbet, Ph.D." href="blog.xml" data-external="1"></head>
 
 <body class="nav-fixed">
 
@@ -175,6 +175,11 @@ window.Quarto = {
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -188,13 +193,13 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Bayesian statistics">Bayesian statistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Causal inference">Causal inference <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Machine Learning">Machine Learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Multi-omics">Multi-omics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Nonparametric">Nonparametric <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Regression">Regression <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Variable selection">Variable selection <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="missing-data">missing-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="survival analysis">survival analysis <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Presentations</h1>
+<h1 class="title">Possibly Significant</h1>
 </div>
 
 
@@ -211,217 +216,59 @@ window.Quarto = {
 </header>
 
 
+<p>Welcome to my blog <em>Possibly Significant</em>. This is place for me to test out new statistical ideas, share short R stats tutorials, and organize notes. This is not meant to be highly polished material, but is more a place for me to quickly organize my thoughts on various stats topics, share new ideas and short R scripts for common statistical analyses. Perhaps you will find something significant here.</p>
 
 
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Nonparametric,Regression" data-listing-date-sort="1725606000000">
+<div class="quarto-post image-right" data-index="0" data-categories="missing-data" data-listing-date-sort="1735977600000" data-listing-file-modified-sort="1736020051548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="373">
+<div class="thumbnail">
+<p><a href="../blog/posts/imputation.html" class="no-external"></a></p><a href="../blog/posts/imputation.html" class="no-external">
+<p><img loading="lazy" src="../blog/pics/missing.jpeg" class="thumbnail-image"></p>
+</a><p><a href="../blog/posts/imputation.html" class="no-external"></a></p>
+</div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external">Robust regression for noisy biological data</a>
+<a href="../blog/posts/imputation.html" class="no-external">Imputing missing data</a>
 </h3>
 <div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Nonparametric'); return false;">
-Nonparametric
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Regression'); return false;">
-Regression
-</div>
+<a href="../blog/posts/imputation.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external">Biological variables are often non-normally distributed, contain outliers, may have lower limits of detection, excessive zeros or multiple modes. The proportional odds (PO) regression model can easily handle these issues and is a robust alternative to linear regression and other parametric models. Indeed, the PO model can be thought of as an extension of the robust Wilcoxon rank-sum test that can adjust for covariates. </a>
+<a href="../blog/posts/imputation.html" class="no-external">Introduction to methods for imputing missing values</a>
 </div>
 </div>
 <div class="metadata">
-<a href="https://jarbet.github.io/presentation-ordinal-regression/ordinal_regression.html" class="no-external">
+<a href="../blog/posts/imputation.html" class="no-external">
 <div class="listing-date">
-Sep 6, 2024
+Jan 4, 2025
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Regression" data-listing-date-sort="1721890800000">
+<div class="quarto-post image-right" data-index="1" data-categories="survival analysis" data-listing-date-sort="1735977600000" data-listing-file-modified-sort="1736020062362" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="284">
+<div class="thumbnail">
+<p><a href="../blog/posts/intro_survival.html" class="no-external"></a></p><a href="../blog/posts/intro_survival.html" class="no-external">
+<p><img loading="lazy" src="../blog/pics/survival.png" class="thumbnail-image"></p>
+</a><p><a href="../blog/posts/intro_survival.html" class="no-external"></a></p>
+</div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external">Linear regression diagnostics</a>
+<a href="../blog/posts/intro_survival.html" class="no-external">Introduction to survival (time-to-event) analysis</a>
 </h3>
 <div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Regression'); return false;">
-Regression
-</div>
+<a href="../blog/posts/intro_survival.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external">This presentation introduces linear regression, covering its core assumptions, diagnostic techniques for assessing them, and strategies for addressing violations. </a>
+<a href="../blog/posts/intro_survival.html" class="no-external">This is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic.</a>
 </div>
 </div>
 <div class="metadata">
-<a href="https://jarbet.github.io/presentation-regression-diagnostics/regression_diagnostics.html" class="no-external">
+<a href="../blog/posts/intro_survival.html" class="no-external">
 <div class="listing-date">
-Jul 25, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Variable selection,Machine Learning,Nonparametric" data-listing-date-sort="1702627200000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external">Automatic feature selection and engineering with MARS</a>
-</h3>
-<div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Variable selection'); return false;">
-Variable selection
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
-Machine Learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Nonparametric'); return false;">
-Nonparametric
-</div>
-</div>
-<div class="listing-description">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external">Multivariate adaptive regression splines (MARS) is a nonparametric machine learning method that automatically identifies which features are important for predicting the target variable (feature selection) as well as what forms the features should take (feature engineering), <em>i.e.</em> whether a feature should have a linear, non-linear, additive, or interaction effect. It is fairly fast method for working with big data and produces an interpretable model (not a black box). </a>
-</div>
-</div>
-<div class="metadata">
-<a href="https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html" class="no-external">
-<div class="listing-date">
-Dec 15, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Causal inference" data-listing-date-sort="1682233200000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external">Causal inference with observational data using propensity score matching</a>
-</h3>
-<div class="listing-subtitle">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Causal inference'); return false;">
-Causal inference
-</div>
-</div>
-<div class="listing-description">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external">This presentation introduces propensity score matching as a method for attempting causal inference with observational data. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="https://jarbet.github.io/presentation-causal-inference-matching/causal_inference_matching.html" class="no-external">
-<div class="listing-date">
-Apr 23, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Bayesian statistics" data-listing-date-sort="1661410800000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external">Introduction to Bayesian statistics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Bayesian statistics'); return false;">
-Bayesian statistics
-</div>
-</div>
-<div class="listing-description">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external">An introduction to the basics of Bayesian statistics, including Bayes’ Theorem, the 3 key aspects of Bayesian analysis (prior, model and posterior), and a comparison with traditional Frequentist statistics. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="2022-08-25_Bayesian_stats.pdf" class="no-external">
-<div class="listing-date">
-Aug 25, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Causal inference" data-listing-date-sort="1650610800000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="20220422_triplet_matching.pdf" class="no-external">Triplet matching: propensity score matching with 3 groups</a>
-</h3>
-<div class="listing-subtitle">
-<a href="20220422_triplet_matching.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Causal inference'); return false;">
-Causal inference
-</div>
-</div>
-<div class="listing-description">
-<a href="20220422_triplet_matching.pdf" class="no-external">Propensity score matching is a popular method for attempting causal inference with observational data. However, the vast majority of implementations focus on matching only two groups for a binary exposure variable. This presentation introduces triplet matching, a generalization of propensity score matching to three groups. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="20220422_triplet_matching.pdf" class="no-external">
-<div class="listing-date">
-Apr 22, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="Multi-omics" data-listing-date-sort="1637481600000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external">Multi-omics data integration</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Multi-omics'); return false;">
-Multi-omics
-</div>
-</div>
-<div class="listing-description">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external">Multi-omics data integration is the process of combining data from different omics platforms (<em>e.g.</em> genomics, transcriptomics, epigenomics) to gain a more comprehensive understanding of biological systems. This presentation explains how to download multi-omics data from the TCGA database. Then dimension reduction methods are considered (PCA, PLS and CCA), and are shown to identify groups of correlated features. Lastly, two machine learning methods are compared for using multi-omic features to predict survival in kidney cancer patients. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./2021-11-21_multiomics_cancer.pdf" class="no-external">
-<div class="listing-date">
-Nov 21, 2021
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="Machine Learning" data-listing-date-sort="1579593600000">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external">Interpretable machine learning</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
-Machine Learning
-</div>
-</div>
-<div class="listing-description">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external">Many machine learning models are considered “black boxes”: data is input and predictions are output, but we have little insight into how the model makes its decisions. This presentation covers methods for interpreting models, including visualizing the relationships between predictors and outcome, variable importance scores, interaction scores to identify predictors that interact, and methods to explain how a model makes a prediction for a given subject (LIME and Shapley values). </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./2020-01-21_interpretable_machine_learning.pdf" class="no-external">
-<div class="listing-date">
-Jan 21, 2020
+Jan 4, 2025
 </div>
 </a>
 </div>
@@ -523,7 +370,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jarbet\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

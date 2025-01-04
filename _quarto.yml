@@ -6,6 +6,8 @@ project:
 
 website:
   title: "Jaron Arbet, Ph.D."
+  site-url: https://jarbet.github.io/
+  description: "My personal website and blog"
   navbar:
     left:
       - href: index.qmd
@@ -14,11 +16,15 @@ website:
         text: Research
       - href: ./presentations
         text: Presentations
+      - href: blog.qmd
+        text: Blog
     right:
       - icon: github
         href: https://github.com/jarbet
       - icon: linkedin
         href: https://www.linkedin.com/in/jaron-arbet-6307b61b5/
+      - icon: rss
+        href: blog.xml
 
 format:
   html:

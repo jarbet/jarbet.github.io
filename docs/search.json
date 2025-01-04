@@ -1195,5 +1195,131 @@
     "title": "Presentations",
     "section": "Bayesian statistics",
     "text": "Bayesian statistics\n\nIntroduction to Bayesian statistics"
+  },
+  {
+    "objectID": "blog/posts/intro_survival.html",
+    "href": "blog/posts/intro_survival.html",
+    "title": "Introduction to survival (time-to-event) analysis",
+    "section": "",
+    "text": "Intro\n\nQuick intro\nExample R code for common survival analysis methods. Covers 3 of the most common methods used in survival analysis: log-rank test and Kaplan Meir plots for comparing survival curves between groups, and Cox proportional hazards regression model.\nlogrank test for comparing survival curves between groups\n\n\n\nHow to interpret hazard ratios\n\nhttps://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004\nThe “hazard ratio” is the most common effect size used in survival analysis. Briefly, it compares the risk of having the event occur in the next instant between groups\n\n\n\nRegression for time-to-event outcomes\n\nhttps://www.nature.com/articles/s41592-022-01689-8\nIntro to the Cox proportional hazard model (most common regression model for survival data)\nAlso introduces the accelerated failure time model (AFTR). Although less commonly used , this model has a nice interpretation that uses “time ratios”: it compares the ratio of the average time of event in group 1 to the average time of event in group 2.\n\n\n\nMachine learning\nHere are 2 popular machine learning models used for time-to-event outcomes:\n\nRegularized Cox model (i.e. a modified version of the Cox model that performs automatic feature selection)\nRandom survival forest. Perhaps you’ve heard of “random forests” before, it is one of the most popular machine learning methods that has been shown to work well across a wide variety of applications.\n\nThe C-index can be used to assess the predictive accuracy of a survival model. It is similar to the AUROC in that it ranges from 0 to 1, with 0.5 indicating no predictive ability and 1 indicating perfect predictive ability. Most survival model R functions will calculate the C-index for you, but if not, there are a few R packages for calculating it and comparing C between different models: survcomp, compareC, survC1"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Possibly Significant",
+    "section": "",
+    "text": "Welcome to my blog Possibly Significant. This is place for me to test out new statistical ideas, share short R stats tutorials, and organize notes. This is not meant to be highly polished material, but is more a place for me to quickly organize my thoughts on various stats topics, share new ideas and short R scripts for common statistical analyses. Perhaps you will find something significant here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImputing missing data\n\n\n\n\n\nIntroduction to methods for imputing missing values\n\n\n\n\n\nJan 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to survival (time-to-event) analysis\n\n\n\n\n\nThis is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic.\n\n\n\n\n\nJan 4, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/posts/imputation.html",
+    "href": "blog/posts/imputation.html",
+    "title": "Imputing missing data",
+    "section": "",
+    "text": "Missing data analysis: Making it work in the real world\n\nmultiple imputation is the gold standard method for handling missing data but is computationally intensive.\nEM algorithm works well, but lack of general software.\nIf doing likelihood-based regression modeling, then as long as you adjust for variables that influence missingness, results will not be biased due to missing data (although patients with missing values are dropped from the model, thus decreasing power).\n\nImputation likely still better due to improved power (i.e. all patients can be included)."
+  },
+  {
+    "objectID": "blog/posts/imputation.html#continuous",
+    "href": "blog/posts/imputation.html#continuous",
+    "title": "Imputing missing data",
+    "section": "Continuous",
+    "text": "Continuous\n\nset.seed(123);\n\ndata('geno', package = 'missMDA'); \n\n# impute.knn (features in rows, samples in cols)\n# this is my preferred method for high dimensional continuous data since it is relatively fast\nknn.imp &lt;- impute::impute.knn(t(geno))$data;\nknn.imp &lt;- data.frame(t(knn.imp), check.names = FALSE);\n\n# PCA (samples in rows, features in cols)\nncomp &lt;- missMDA::estim_ncpPCA(geno, ncp.min = 0, ncp.max = 6);\npca.imp &lt;- missMDA::imputePCA(geno, ncp = ncomp$ncp, scale = TRUE)$completeObs;\n\n# missForest\nmf.imp &lt;- missForest::missForest(geno)$ximp;"
+  },
+  {
+    "objectID": "blog/posts/imputation.html#categorical",
+    "href": "blog/posts/imputation.html#categorical",
+    "title": "Imputing missing data",
+    "section": "Categorical",
+    "text": "Categorical\n\ndata('vnf', package = 'missMDA');\n\n# missForest\nmf.imp &lt;- missForest::missForest(vnf)$ximp;\n\n# MCA\n#ncomp &lt;- missMDA::estim_ncpMCA(vnf); # slow method to estimate number of components\nmca.imp &lt;- missMDA::imputeMCA(vnf, ncp = 3)$complete.obs;"
+  },
+  {
+    "objectID": "blog/posts/imputation.html#mixed-continuouscategorical",
+    "href": "blog/posts/imputation.html#mixed-continuouscategorical",
+    "title": "Imputing missing data",
+    "section": "Mixed continuous/categorical",
+    "text": "Mixed continuous/categorical\n\ndata('snorena', package = 'missMDA'); \n\n# missForest\nmf.imp &lt;- missForest::missForest(snorena)$ximp;\n\n# FAMD\n#missMDA::estim_ncpFAMD(snorena); # slow method to estimate number of components\nfamd.imp &lt;- missMDA::imputeFAMD(snorena, ncp = 3)$completeObs"
+  },
+  {
+    "objectID": "blog/blog.html",
+    "href": "blog/blog.html",
+    "title": "Possibly Significant",
+    "section": "",
+    "text": "Welcome to my blog Possibly Significant. This is place for me to test out new statistical ideas, share short R stats tutorials, and organize notes. This is not meant to be highly polished material, but is more a place for me to quickly organize my thoughts on various stats topics, share new ideas and short R scripts for common statistical analyses. Perhaps you will find something significant here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImputing missing data\n\n\n\n\n\nIntroduction to methods for imputing missing values\n\n\n\n\n\nJan 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to survival (time-to-event) analysis\n\n\n\n\n\nThis is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic.\n\n\n\n\n\nJan 4, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/intro_survival.html",
+    "href": "posts/intro_survival.html",
+    "title": "Introduction to survival (time-to-event) analysis",
+    "section": "",
+    "text": "Intro\n\nQuick intro\nExample R code for common survival analysis methods. Covers 3 of the most common methods used in survival analysis: log-rank test and Kaplan Meir plots for comparing survival curves between groups, and Cox proportional hazards regression model.\nlogrank test for comparing survival curves between groups\n\n\n\nHow to interpret hazard ratios\n\nhttps://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004\nThe “hazard ratio” is the most common effect size used in survival analysis. Briefly, it compares the risk of having the event occur in the next instant between groups\n\n\n\nRegression for time-to-event outcomes\n\nhttps://www.nature.com/articles/s41592-022-01689-8\nIntro to the Cox proportional hazard model (most common regression model for survival data)\nAlso introduces the accelerated failure time model (AFTR). Although less commonly used , this model has a nice interpretation that uses “time ratios”: it compares the ratio of the average time of event in group 1 to the average time of event in group 2.\n\n\n\nMachine learning\nHere are 2 popular machine learning models used for time-to-event outcomes:\n\nRegularized Cox model (i.e. a modified version of the Cox model that performs automatic feature selection)\nRandom survival forest. Perhaps you’ve heard of “random forests” before, it is one of the most popular machine learning methods that has been shown to work well across a wide variety of applications.\n\nThe C-index can be used to assess the predictive accuracy of a survival model. It is similar to the AUROC in that it ranges from 0 to 1, with 0.5 indicating no predictive ability and 1 indicating perfect predictive ability. Most survival model R functions will calculate the C-index for you, but if not, there are a few R packages for calculating it and comparing C between different models: survcomp, compareC, survC1"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Possibly Significant",
+    "section": "",
+    "text": "Welcome to my blog Possibly Significant. This is place for me to test out new statistical ideas, share short R stats tutorials, and organize notes. This is not meant to be highly polished material, but is more a place for me to quickly organize my thoughts on various stats topics, share new ideas and short R scripts for common statistical analyses. Perhaps you will find something significant here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImputing missing data\n\n\n\n\n\nIntroduction to methods for imputing missing values\n\n\n\n\n\nJan 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to survival (time-to-event) analysis\n\n\n\n\n\nThis is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic.\n\n\n\n\n\nJan 4, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/imputation.html",
+    "href": "posts/imputation.html",
+    "title": "Imputing missing data",
+    "section": "",
+    "text": "Missing data analysis: Making it work in the real world\n\nmultiple imputation is the gold standard method for handling missing data but is computationally intensive.\nEM algorithm works well, but lack of general software.\nIf doing likelihood-based regression modeling, then as long as you adjust for variables that influence missingness, results will not be biased due to missing data (although patients with missing values are dropped from the model, thus decreasing power).\n\nImputation likely still better due to improved power (i.e. all patients can be included)."
+  },
+  {
+    "objectID": "posts/imputation.html#continuous",
+    "href": "posts/imputation.html#continuous",
+    "title": "Imputing missing data",
+    "section": "Continuous",
+    "text": "Continuous\n\nset.seed(123);\n\ndata('geno', package = 'missMDA'); \n\n# impute.knn (features in rows, samples in cols)\n# this is my preferred method for high dimensional continuous data since it is relatively fast\nknn.imp &lt;- impute::impute.knn(t(geno))$data;\nknn.imp &lt;- data.frame(t(knn.imp), check.names = FALSE);\n\n# PCA (samples in rows, features in cols)\nncomp &lt;- missMDA::estim_ncpPCA(geno, ncp.min = 0, ncp.max = 6);\npca.imp &lt;- missMDA::imputePCA(geno, ncp = ncomp$ncp, scale = TRUE)$completeObs;\n\n# missForest\nmf.imp &lt;- missForest::missForest(geno)$ximp;"
+  },
+  {
+    "objectID": "posts/imputation.html#categorical",
+    "href": "posts/imputation.html#categorical",
+    "title": "Imputing missing data",
+    "section": "Categorical",
+    "text": "Categorical\n\ndata('vnf', package = 'missMDA');\n\n# missForest\nmf.imp &lt;- missForest::missForest(vnf)$ximp;\n\n# MCA\n#ncomp &lt;- missMDA::estim_ncpMCA(vnf); # slow method to estimate number of components\nmca.imp &lt;- missMDA::imputeMCA(vnf, ncp = 3)$complete.obs;"
+  },
+  {
+    "objectID": "posts/imputation.html#mixed-continuouscategorical",
+    "href": "posts/imputation.html#mixed-continuouscategorical",
+    "title": "Imputing missing data",
+    "section": "Mixed continuous/categorical",
+    "text": "Mixed continuous/categorical\n\ndata('snorena', package = 'missMDA'); \n\n# missForest\nmf.imp &lt;- missForest::missForest(snorena)$ximp;\n\n# FAMD\n#missMDA::estim_ncpFAMD(snorena); # slow method to estimate number of components\nfamd.imp &lt;- missMDA::imputeFAMD(snorena, ncp = 3)$completeObs"
+  },
+  {
+    "objectID": "posts/imputation/imputation.html",
+    "href": "posts/imputation/imputation.html",
+    "title": "Imputing missing data",
+    "section": "",
+    "text": "Missing data analysis: Making it work in the real world\n\nMultiple imputation is the gold standard method for handling missing data but is computationally intensive.\nEM algorithm works well, but lack of general software.\nIf doing likelihood-based regression modeling, then as long as you adjust for variables that influence missingness, results will not be biased due to missing data (although patients with missing values are dropped from the model, thus decreasing power).\n\nImputation likely still better due to improved power (i.e. all patients can be included)."
+  },
+  {
+    "objectID": "posts/imputation/imputation.html#continuous",
+    "href": "posts/imputation/imputation.html#continuous",
+    "title": "Imputing missing data",
+    "section": "Continuous",
+    "text": "Continuous\n\nset.seed(123);\n\ndata('geno', package = 'missMDA'); \n\n# impute.knn (features in rows, samples in cols)\n# this is my preferred method for high dimensional continuous data since it is relatively fast\nknn.imp &lt;- impute::impute.knn(t(geno))$data;\nknn.imp &lt;- data.frame(t(knn.imp), check.names = FALSE);\n\n# PCA (samples in rows, features in cols)\nncomp &lt;- missMDA::estim_ncpPCA(geno, ncp.min = 0, ncp.max = 6);\npca.imp &lt;- missMDA::imputePCA(geno, ncp = ncomp$ncp, scale = TRUE)$completeObs;\n\n# missForest\nmf.imp &lt;- missForest::missForest(geno)$ximp;"
+  },
+  {
+    "objectID": "posts/imputation/imputation.html#categorical",
+    "href": "posts/imputation/imputation.html#categorical",
+    "title": "Imputing missing data",
+    "section": "Categorical",
+    "text": "Categorical\n\ndata('vnf', package = 'missMDA');\n\n# missForest\nmf.imp &lt;- missForest::missForest(vnf)$ximp;\n\n# MCA\n#ncomp &lt;- missMDA::estim_ncpMCA(vnf); # slow method to estimate number of components\nmca.imp &lt;- missMDA::imputeMCA(vnf, ncp = 3)$complete.obs;"
+  },
+  {
+    "objectID": "posts/imputation/imputation.html#mixed-continuouscategorical",
+    "href": "posts/imputation/imputation.html#mixed-continuouscategorical",
+    "title": "Imputing missing data",
+    "section": "Mixed continuous/categorical",
+    "text": "Mixed continuous/categorical\n\ndata('snorena', package = 'missMDA'); \n\n# missForest\nmf.imp &lt;- missForest::missForest(snorena)$ximp;\n\n# FAMD\n#missMDA::estim_ncpFAMD(snorena); # slow method to estimate number of components\nfamd.imp &lt;- missMDA::imputeFAMD(snorena, ncp = 3)$completeObs"
+  },
+  {
+    "objectID": "posts/intro_survival/intro_survival.html",
+    "href": "posts/intro_survival/intro_survival.html",
+    "title": "Introduction to survival (time-to-event) analysis",
+    "section": "",
+    "text": "Intro\n\nQuick intro\nExample R code for common survival analysis methods. Covers 3 of the most common methods used in survival analysis: log-rank test and Kaplan Meir plots for comparing survival curves between groups, and Cox proportional hazards regression model.\nlogrank test for comparing survival curves between groups\n\n\n\nHow to interpret hazard ratios\n\nhttps://journals.asm.org/doi/full/10.1128/aac.48.8.2787-2792.2004\nThe “hazard ratio” is the most common effect size used in survival analysis. Briefly, it compares the risk of having the event occur in the next instant between groups\n\n\n\nRegression for time-to-event outcomes\n\nhttps://www.nature.com/articles/s41592-022-01689-8\nIntro to the Cox proportional hazard model (most common regression model for survival data)\nAlso introduces the accelerated failure time model (AFTR). Although less commonly used , this model has a nice interpretation that uses “time ratios”: it compares the ratio of the average time of event in group 1 to the average time of event in group 2.\n\n\n\nMachine learning\nHere are 2 popular machine learning models used for time-to-event outcomes:\n\nRegularized Cox model (i.e. a modified version of the Cox model that performs automatic feature selection)\nRandom survival forest. Perhaps you’ve heard of “random forests” before, it is one of the most popular machine learning methods that has been shown to work well across a wide variety of applications.\n\nThe C-index can be used to assess the predictive accuracy of a survival model. It is similar to the AUROC in that it ranges from 0 to 1, with 0.5 indicating no predictive ability and 1 indicating perfect predictive ability. Most survival model R functions will calculate the C-index for you, but if not, there are a few R packages for calculating it and comparing C between different models: survcomp, compareC, survC1"
   }
 ]

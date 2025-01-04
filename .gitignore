@@ -6,3 +6,6 @@
 jarbet.github.io.Rproj
 
 /.quarto/
+
+# Ignore all folders ending with '_cache'
+*_cache/
