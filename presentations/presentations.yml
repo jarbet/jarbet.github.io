@@ -1,3 +1,12 @@
+- title: p-value histograms
+  path: https://jarbet.github.io/presentation-pvalue-histograms/
+  description: >
+    p-value histograms are a diagnostic tool that can be used answer 2 important questions:
+    1) Is there evidence of a signal in your study? and 2) are there any
+    problems with your analysis?
+  categories: [Miscellaneous]
+  date: 2025-01-23
+
 - title: Automatic feature selection and engineering with MARS
   path: https://jarbet.github.io/presentation-mars.github.io/presentation-mars.html
   description: >
