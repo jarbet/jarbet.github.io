@@ -81,5 +81,5 @@
   description: >
     Batch effects are systematic non-biological differences between groups of samples that can confound the results of an experiment.
     This presentation explains how to identify batch effects in high-dimensional data, and how to account for them in your analyses.
-  categories: [General Bioinformatics]
+  categories: [Miscellaneous]
   date: 2025-05-08
