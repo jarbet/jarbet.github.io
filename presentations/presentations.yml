@@ -66,3 +66,11 @@
    An introduction to the basics of Bayesian statistics, including Bayes' Theorem, the 3 key aspects of Bayesian analysis (prior, model and posterior), and a comparison with traditional Frequentist statistics. 
   categories: [Bayesian statistics]
   date: 2022-08-25
+  
+- title: 'Batch effects: problem and solution'
+  path: ./2025-05-08_batch_effects_nowhite.pdf
+  description: >
+    Batch effects are systematic non-biological differences between groups of samples that can confound the results of an experiment.
+    This presentation explains how to identify batch effects in high-dimensional data, and how to account for them in your analyses.
+  categories: [General Bioinformatics]
+  date: 2025-05-08
