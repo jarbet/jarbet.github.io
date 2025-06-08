@@ -1,6 +1,6 @@
 ---
 title: ""
-bibliography: https://raw.githubusercontent.com/jarbet/CV/refs/heads/master/jaron_published.bib
+bibliography: https://raw.githubusercontent.com/jarbet/CV/refs/heads/master/jaron_published_orcid.bib
 nocite: '@*'
 csl: bib.csl
 filters:

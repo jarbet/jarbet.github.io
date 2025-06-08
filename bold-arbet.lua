@@ -1,17 +1,32 @@
-function Block(el)
-    -- Check if the block is of type Para or Plain
-    if el.t == "Para" or el.t == "Plain" then
-        -- Iterate through each element in the block
-        for k, _ in ipairs(el.content) do
-            -- Check if the element is a string (text) and if the text contains "Arbet"
-            if el.content[k].t == "Str" then
-                -- If the text contains "Arbet", replace it with the bolded version
-                if el.content[k].text:find("Arbet,") then
-                    -- Replace "Arbet" with bolded "Arbet"
-                    el.content[k] = pandoc.Strong(pandoc.Str("Arbet,"))
-                end
-            end
-        end
+function Inlines(inlines)
+  local i = 1
+  while i <= (#inlines - 1) do
+    local a = inlines[i]
+    local b = inlines[i+1]
+    local c = inlines[i+2]
+
+    if a.t == "Str" and a.text == "Arbet," and b and b.t == "Space" then
+      -- Case 1: Arbet, J.,
+      if c and c.t == "Str" and c.text == "J.," then
+        inlines[i] = pandoc.Strong({
+          pandoc.Str("Arbet,"),
+          pandoc.Space(),
+          pandoc.Str("J.")
+        })
+        inlines[i+1] = pandoc.Str(",") -- just the comma
+        table.remove(inlines, i+2)     -- remove the original "J.,"
+      -- Case 2: Arbet, J.
+      elseif c and c.t == "Str" and c.text == "J." then
+        inlines[i] = pandoc.Strong({
+          pandoc.Str("Arbet,"),
+          pandoc.Space(),
+          pandoc.Str("J.")
+        })
+        table.remove(inlines, i+1) -- remove Space
+        table.remove(inlines, i+1) -- remove J.
+      end
     end
-    return el
+    i = i + 1
+  end
+  return inlines
 end
