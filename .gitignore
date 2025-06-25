@@ -9,3 +9,7 @@ jarbet.github.io.Rproj
 
 # Ignore all folders ending with '_cache'
 *_cache/
+
+# Dont upload files from the _freeze folder
+_freeze/
+

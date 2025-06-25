@@ -9,7 +9,7 @@
 <link>https://jarbet.github.io/blog.html</link>
 <atom:link href="https://jarbet.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>My personal website and blog</description>
-<generator>quarto-1.5.57</generator>
+<generator>quarto-1.7.32</generator>
 <lastBuildDate>Sat, 04 Jan 2025 08:00:00 GMT</lastBuildDate>
 <item>
   <title>Imputing missing data</title>
@@ -397,7 +397,7 @@ loaded via a namespace (and not attached):
   <category>survival analysis</category>
   <guid>https://jarbet.github.io/posts/intro_survival/intro_survival.html</guid>
   <pubDate>Sat, 04 Jan 2025 08:00:00 GMT</pubDate>
-  <media:content url="https://jarbet.github.io/blog/pics/survival.png" medium="image" type="image/png"/>
+  <media:content url="https://jarbet.github.io/posts/pics/survival.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 </channel>
 </rss>

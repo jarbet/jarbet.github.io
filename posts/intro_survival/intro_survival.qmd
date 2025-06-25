@@ -2,7 +2,7 @@
 title: "Introduction to survival (time-to-event) analysis"
 description: "This is a collection of introductory resources on survival time-to-event analysis that I often share with students and colleagues who are new to the topic."
 categories: [survival analysis]
-image: /blog/pics/survival.png
+image: /posts/pics/survival.png
 execute:
   cache: true
 date: 2025-01-04
