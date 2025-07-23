@@ -1,3 +1,10 @@
+- title: Mendelian Randomization in R
+  path: https://jarbet.github.io/presentation-mendelian-randomization/
+  description: >
+    Mendelian randomization (MR) is a method for inferring causal relationships between exposures and outcomes in observational data by utilizing genetic variants.
+  categories: [Causal inference]
+  date: 2025-07-23
+
 - title: p-value histograms
   path: https://jarbet.github.io/presentation-pvalue-histograms/
   description: >
