@@ -18,6 +18,9 @@ about:
     - text: Scholar
       icon: google
       href: https://scholar.google.com/citations?user=hbqQUw0AAAAJ&hl=en
+    - text: CV
+      icon: file-text
+      href: https://raw.githubusercontent.com/jarbet/cv/master/cv.pdf
 ---
 
 :::{#jaron-heading}
