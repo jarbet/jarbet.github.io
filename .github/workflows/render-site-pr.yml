@@ -48,6 +48,5 @@ jobs:
             _freeze/**
             listings.json
             search.json
-            posts/**/execute-results/**
           delete-branch: false
           skip-empty: true
