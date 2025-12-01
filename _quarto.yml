@@ -16,8 +16,6 @@ website:
         text: Research
       - href: ./presentations
         text: Presentations
-      - href: blog.qmd
-        text: Blog
     right:
       - icon: github
         href: https://github.com/jarbet
