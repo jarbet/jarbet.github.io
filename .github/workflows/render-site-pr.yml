@@ -33,10 +33,6 @@ jobs:
           title: "Rebuild site — ${{ github.run_number }}"
           base: main
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
-          paths: |
-            docs/**
-            listings.json
-            search.json
           delete-branch: true
           skip-empty: true
           signoff: false
