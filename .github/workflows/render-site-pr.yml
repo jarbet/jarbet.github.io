@@ -34,7 +34,6 @@ jobs:
           base: main
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           delete-branch: true
-          skip-empty: true
           signoff: false
           assignees: jarbet
           reviewers: jarbet
