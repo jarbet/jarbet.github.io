@@ -21,8 +21,6 @@ website:
         href: https://github.com/jarbet
       - icon: linkedin
         href: https://www.linkedin.com/in/jaron-arbet-6307b61b5/
-      - icon: rss
-        href: blog.xml
 
 format:
   html:
