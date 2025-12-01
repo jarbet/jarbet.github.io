@@ -8,7 +8,7 @@ about:
   links:
     - text: Email
       icon: envelope
-      href: mailto:jarbet@mednet.ucla.edu
+      href: mailto:jarbet@coh.org
     - text: LinkedIn
       icon: linkedin
       href: https://www.linkedin.com/in/jaron-arbet-6307b61b5/
@@ -24,8 +24,7 @@ about:
 ---
 
 :::{#jaron-heading}
-I'm a biostatistician and data scientist working at the [UCLA Jonsson Comprehensive Cancer
-Center](https://www.uclahealth.org/cancer) in [Dr. Paul Boutros' Cancer Data Science lab](https://www.uclahealth.org/departments/urology/iuo/research/faculty-labs/dr-paul-boutros-lab).
+I'm an Assistant Research Professor - Biostatistician working at the [City of Hope - Beckman Research Institute - Department of Population Sciences](https://www.cityofhope.org/research/beckman-research-institute/population-sciences).
 
 I'm passionate about using statistics, data science, and software development to advance cancer research and improve public health.
 :::
