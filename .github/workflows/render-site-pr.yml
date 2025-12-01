@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   render-and-pr:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,7 +25,7 @@ jobs:
         with:
           cache: true
 
-      - uses: quarto-dev/quarto-actions/setup-quarto@v2
+      - uses: quarto-dev/quarto-actions/setup@v2
         with:
           quarto-version: 'latest'
 
