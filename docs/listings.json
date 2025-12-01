@@ -1,10 +1,7 @@
 [
   {
     "listing": "/blog.html",
-    "items": [
-      "/posts/imputation/imputation.html",
-      "/posts/intro_survival/intro_survival.html"
-    ]
+    "items": []
   },
   {
     "listing": "/presentations/index.html",

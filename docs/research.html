@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -52,14 +52,15 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-718792cf89c2932a3ff73bcf5333a67a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a7e8c5db3db0f0488ef6f2a1029755b6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -184,7 +185,7 @@ div.csl-indent {
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Jones_2025" class="csl-entry" role="listitem">
-1. Jones, L. W., Lavery, J. A., Tsai, B. L., Moskowitz, C. S., Lee, C. P., Harrison, J., Michalski, M. G., Stoeckel, K., Graham, C., Iyengar, N. M., Bhanot, U., Linkov, I., Jain, M., Jochelson, M. S., Monetti, M., Seewaldt, V. L., Pilewskie, M. L., Pribil, P., Zhu, C., <strong>Arbet, J.</strong>, Mangino, D. A., &amp; Boutros, P. C. (2025). A co-clinical trial of exercise therapy in breast cancer prevention. <em>Clinical Cancer Research</em>, OF1–OF11. <a href="https://doi.org/10.1158/1078-0432.ccr-24-4298">https://doi.org/10.1158/1078-0432.ccr-24-4298</a>
+1. Jones, L. W., Lavery, J. A., Tsai, B. L., Moskowitz, C. S., Lee, C. P., Harrison, J., Michalski, M. G., Stoeckel, K., Graham, C., Iyengar, N. M., Bhanot, U., Linkov, I., Jain, M., Jochelson, M. S., Monetti, M., Seewaldt, V. L., Pilewskie, M. L., Pribil, P., Zhu, C., <strong>Arbet, J.</strong>, Mangino, D. A., &amp; Boutros, P. C. (2025). A co-clinical trial of exercise therapy in breast cancer prevention. <em>Clinical Cancer Research</em>, <em>31</em>(16), 3377–3387. <a href="https://doi.org/10.1158/1078-0432.ccr-24-4298">https://doi.org/10.1158/1078-0432.ccr-24-4298</a>
 </div>
 <div id="ref-Tohi_2025" class="csl-entry" role="listitem">
 2. Tohi, Y., Sahrmann, J. M., <strong>Arbet, J.</strong>, Kato, T., Lee, L. S., Peacock, M., Ginsburg, K., Pavlovich, C., Carroll, P., Bangma, C. H., Sugimoto, M., &amp; Boutros, P. C. (2025). De-escalation of monitoring in active surveillance for prostate cancer: Results from the GAP3 consortium. <em>European Urology Oncology</em>, <em>8</em>(2), 347–354. <a href="https://doi.org/10.1016/j.euo.2024.07.006">https://doi.org/10.1016/j.euo.2024.07.006</a>
@@ -331,13 +332,14 @@ div.csl-indent {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
