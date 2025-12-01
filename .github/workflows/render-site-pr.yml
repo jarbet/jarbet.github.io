@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   render-and-pr:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,7 +25,7 @@ jobs:
         run: |
           quarto render --no-cache
 
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: rebuild site (quarto render) - ${{ github.run_id }}"
