@@ -1,0 +1,42 @@
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  delete-branch:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            if (!pr) return;
+            const headRef = pr.head.ref;
+            const headRepoFull = pr.head.repo.full_name;
+            const repoFull = `${context.repo.owner}/${context.repo.repo}`;
+            const defaultBranch = context.payload.repository.default_branch;
+            // Only delete branches that belong to this repository (not forks),
+            // and never delete the default branch.
+            if (headRepoFull !== repoFull) {
+              console.log(`Skipping delete: head repo (${headRepoFull}) != target repo (${repoFull})`);
+              return;
+            }
+            if (headRef === defaultBranch) {
+              console.log(`Skipping delete: branch is default branch (${defaultBranch})`);
+              return;
+            }
+            try {
+              await github.rest.git.deleteRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `heads/${headRef}`,
+              });
+              console.log(`Deleted branch heads/${headRef}`);
+            } catch (err) {
+              console.log(`Branch delete failed: ${err.message}`);
+            }
