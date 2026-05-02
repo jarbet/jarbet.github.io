@@ -16,7 +16,7 @@ website:
         text: Research
       - href: ./presentations
         text: Presentations
-      - href: https://jarbet.github.io/possibly-significant/
+      - href: https://jarbet.github.io/possibly-significant/about.html
         text: Blog
     right:
       - icon: github
