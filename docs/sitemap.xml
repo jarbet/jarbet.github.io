@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jarbet.github.io/research.html</loc>
-    <lastmod>2026-10-11T03:12:27.343Z</lastmod>
-  </url>
-  <url>
     <loc>https://jarbet.github.io/index.html</loc>
-    <lastmod>2026-10-11T03:12:27.266Z</lastmod>
+    <lastmod>2026-11-01T03:04:56.972Z</lastmod>
   </url>
   <url>
     <loc>https://jarbet.github.io/presentations/index.html</loc>
-    <lastmod>2026-10-11T03:12:27.342Z</lastmod>
+    <lastmod>2026-11-01T03:04:57.050Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jarbet.github.io/research.html</loc>
+    <lastmod>2026-11-01T03:04:57.051Z</lastmod>
   </url>
 </urlset>
